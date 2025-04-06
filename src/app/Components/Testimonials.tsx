@@ -22,7 +22,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   return (
     <div className="p-4 rounded-lg flex flex-col">
       <div className="mb-4 flex flex-row bg-gray-50 p-6 rounded-xl w-full max-w-7xl">
-        <span className="text-orange-600 text-7xl">"</span>
+        <span className="text-orange-600 text-7xl">&quot</span>
         <p className="text-black text-base p-4">{quote}</p>
       </div>
       <div className='flex flex-col p-6 py-1'>
@@ -74,7 +74,7 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({ name, position, com
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <Image 
+        <Image
           src={imageUrl || "/api/placeholder/400/320"} 
           alt={`${name} video testimonial`}
           className="object-cover grayscale"
@@ -119,7 +119,7 @@ interface VideoTestimonialData {
   imageUrl: string;
 }
 
-const Reviews: React.FC = () => {
+const Testimonial: React.FC = () => {
   const testimonials: Testimonial[] = [
     {
       quote: "Working with this team felt like having a secret weapon. They took our scattered ideas and turned them into a website that screams 'wow!' Our customers can't stop raving about it!",
@@ -255,4 +255,4 @@ const Reviews: React.FC = () => {
   );   
 };
   
-export default Reviews;
+export default Testimonial;
