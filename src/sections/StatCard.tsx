@@ -21,6 +21,7 @@ export const StatCard = ({
   const ref = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
 
+  // Watch element intersection
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -38,6 +39,7 @@ export const StatCard = ({
     return () => observer.disconnect();
   }, []);
 
+  // Animate number on visibility
   useEffect(() => {
     if (isInView) {
       animate(count, endValue, {
@@ -45,7 +47,8 @@ export const StatCard = ({
         ease: "easeOut",
       });
     }
-  }, [isInView, endValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInView, endValue]); // `count` is a stable motion value, safe to ignore
 
   return (
     <div
