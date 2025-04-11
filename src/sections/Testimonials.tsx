@@ -330,7 +330,7 @@ const Testimonial: React.FC = () => {
   ];
 
 
-  const testimonialRows: Testimonial[][] = [];
+  const testimonialRows = [];
   for (let i = 0; i < testimonials.length; i += 3) {
     testimonialRows.push(testimonials.slice(i, i + 3));
   }
