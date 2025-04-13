@@ -9,6 +9,7 @@ import { StatCard } from "./StatCard";
 
 const Hero = () => {
   const heroTextRef = useRef<HTMLDivElement>(null);
+  const videoWrapperRef = useRef<HTMLDivElement>(null);
   const { ref: mediaRef, inView: mediaInView } = useInView({
     threshold: 0.8,
     triggerOnce: false,
@@ -21,7 +22,7 @@ const Hero = () => {
     triggerOnce: true,
   });
 
-  // Text animation on load
+  // Animate hero text on load
   useEffect(() => {
     if (heroTextRef.current) {
       animate(
@@ -32,9 +33,27 @@ const Hero = () => {
     }
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLVideoElement>) => {
-    setCursorPosition({ x: e.clientX, y: e.clientY });
-  };
+  // Track mouse globally and detect hover over video
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const bounds = videoWrapperRef.current?.getBoundingClientRect();
+      if (bounds) {
+        const isInside =
+          e.clientX >= bounds.left &&
+          e.clientX <= bounds.right &&
+          e.clientY >= bounds.top &&
+          e.clientY <= bounds.bottom;
+
+        setHover(isInside);
+        if (isInside) {
+          setCursorPosition({ x: e.clientX, y: e.clientY });
+        }
+      }
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    return () => document.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
     <section
@@ -42,7 +61,6 @@ const Hero = () => {
       className="relative w-full flex flex-col items-center text-center px-6 lg:px-12 py-16 md:py-20 lg:py-24 xl:py-28 overflow-hidden"
     >
       <div className="w-full max-w-6xl mx-auto px-6 lg:px-16 text-left">
-        {/* Headline with fade-in */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           className="hero-text text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black max-w-4xl"
@@ -52,7 +70,6 @@ const Hero = () => {
           supercharge <span className="text-black">⚡</span> your brand!
         </motion.h1>
 
-        {/* Subtext with delay */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           className="hero-text text-gray-600 text-lg md:text-xl mt-4 max-w-2xl"
@@ -61,7 +78,6 @@ const Hero = () => {
           deliver. We turn ideas into lasting impressions.
         </motion.p>
 
-        {/* CTA Button with hover animation */}
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           whileHover={{
@@ -75,7 +91,6 @@ const Hero = () => {
           Get Template
         </motion.button>
 
-        {/* Reviews with fade-in */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           className="hero-text flex items-center space-x-2 mt-6 text-gray-700"
@@ -96,48 +111,42 @@ const Hero = () => {
       </div>
 
       {/* Media Section */}
-      <div ref={mediaRef} className="w-full max-w-7xl mt-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full items-center">
-          {/* Left Image */}
+      <div ref={mediaRef} className="relative w-full max-w-7xl mt-16 h-[500px]">
+        <motion.div
+          initial="initial"
+          animate={mediaInView ? "expanded" : "initial"}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full h-full items-center relative z-10"
+          variants={{
+            initial: { gridTemplateColumns: "1fr 1fr 1fr" },
+            expanded: { gridTemplateColumns: "0fr 1fr 0fr" },
+          }}
+          transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
+          style={{ display: "grid" }}
+        >
           <motion.div
             initial={{ x: 0, opacity: 1 }}
             animate={
-              mediaInView ? { x: "-110%", opacity: 0 } : { x: 0, opacity: 1 }
+              mediaInView ? { x: "-100%", opacity: 1 } : { x: 0, opacity: 1 }
             }
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="h-[400px] md:h-[500px] w-full relative"
+            transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
+            className="h-full w-full relative overflow-hidden rounded-xl shadow-2xl"
           >
             <Image
               src="https://framerusercontent.com/images/IFY0RoqssWJA9ANeSyRcZCmZg.jpg?scale-down-to=1024"
               alt="Left Image"
               fill
               priority
-              className="object-cover rounded-xl"
+              className="object-cover"
             />
           </motion.div>
 
-          {/* Center Video */}
+          {/* Center Video with hover tracking */}
           <motion.div
-            initial={{ width: "100%", height: "400px", position: "relative" }}
-            animate={
-              mediaInView
-                ? {
-                    width: "100vw",
-                    height: "100vh",
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    zIndex: 20,
-                    borderRadius: 0,
-                  }
-                : {
-                    width: "100%",
-                    height: "400px",
-                    position: "relative",
-                  }
-            }
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="overflow-hidden shadow-xl flex justify-center items-center bg-black"
+            ref={videoWrapperRef}
+            initial={{ width: "100%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
+            className="h-full w-full relative overflow-hidden rounded-xl shadow-2xl bg-black"
           >
             <video
               className="w-full h-full object-cover cursor-none"
@@ -147,30 +156,26 @@ const Hero = () => {
               muted
               playsInline
               preload="auto"
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
-              onMouseMove={handleMouseMove}
             />
           </motion.div>
 
-          {/* Right Image */}
           <motion.div
             initial={{ x: 0, opacity: 1 }}
             animate={
-              mediaInView ? { x: "110%", opacity: 0 } : { x: 0, opacity: 1 }
+              mediaInView ? { x: "100%", opacity: 1 } : { x: 0, opacity: 1 }
             }
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="h-[400px] md:h-[500px] w-full relative"
+            transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
+            className="h-full w-full relative overflow-hidden rounded-xl shadow-2xl"
           >
             <Image
               src="https://framerusercontent.com/images/PDDdZBn0j0Udoh6FeuU6U8nJ8.jpg?scale-down-to=1024"
               alt="Right Image"
               fill
               priority
-              className="object-cover rounded-xl"
+              className="object-cover"
             />
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Custom Cursor */}
@@ -200,7 +205,7 @@ const Hero = () => {
         </motion.div>
       )}
 
-      {/* Stats Section with blur animation */}
+      {/* Stats Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -243,14 +248,12 @@ const Hero = () => {
             title="Projects Delivered"
             description="We've successfully completed over 250 projects—and we're just getting started!"
           />
-
           <StatCard
             endValue={70}
             suffix="%"
             title="Business Growth"
             description="Our strategies have helped clients achieve up to 70% revenue growth in just one year!"
           />
-
           <StatCard
             endValue={500}
             suffix="+"
