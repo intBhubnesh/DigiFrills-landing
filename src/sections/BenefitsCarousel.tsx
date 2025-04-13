@@ -1,19 +1,16 @@
-
-
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { section } from "framer-motion/client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-// Main Carousel Component
 export default function Services() {
-  const [currentServiceIndex, setCurrentServiceIndex] = useState(0); // Keeps track of current first visible card
-  const [direction, setDirection] = useState(0); // Controls animation direction
-  const [windowWidth, setWindowWidth] = useState(0); // Used to determine screen size for responsiveness
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
 
-  // Your carousel cards
   const services = [
     {
       title: "We take care of generating leads while you focus on doing what you love—running your business!",
@@ -37,7 +34,6 @@ export default function Services() {
     },
   ];
 
-  // Get screen width on mount & resize
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     handleResize();
@@ -45,11 +41,10 @@ export default function Services() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Show different no. of cards based on screen width
   const getVisibleCards = () => {
-    if (windowWidth < 640) return 1; // Mobile: 1 card
-    if (windowWidth < 1024) return 2; // Tablet: 2 cards
-    return 4; // Desktop: 3.5 cards (using 4 for smooth scroll)
+    if (windowWidth <= 807) return 1;
+    if (windowWidth < 1024) return 2;
+    return 4;
   };
 
   const handleNext = () => {
@@ -63,12 +58,10 @@ export default function Services() {
   };
 
   const visibleCount = getVisibleCards();
-
   const visibleServices = Array.from({ length: visibleCount }, (_, i) =>
     services[(currentServiceIndex + i) % services.length]
   );
 
-  // Animation variants for sliding
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 500 : -500,
@@ -88,7 +81,6 @@ export default function Services() {
         {/* --- Title Section --- */}
         <div className="mb-10 text-center lg:text-left">
           <div className="flex justify-center lg:justify-start items-center gap-2 mb-2">
-            {/* Small icon */}
             <div className="w-[29px] h-[29px] bg-gray-900 rounded-full flex items-center justify-center p-[9px]">
               <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
@@ -98,8 +90,6 @@ export default function Services() {
             </div>
             <span className="text-[#0F0F0F] text-[15px] font-inter font-semibold">Benefits</span>
           </div>
-
-          {/* Main Heading */}
           <h2 className="text-[#0F0F0F] text-[32px] sm:text-[48px] font-inter font-bold leading-tight max-w-[590px] mx-auto lg:mx-0">
             See why partnering with us is the smartest move.
           </h2>
@@ -107,30 +97,22 @@ export default function Services() {
 
         {/* --- Carousel Section --- */}
         <div className="relative w-full h-[534px] py-[54px] mx-auto">
-          
-          {/* Navigation Buttons (mobile/tablet) */}
-          <div className="flex sm:hidden justify-between absolute top-[50%] left-0 right-0 px-4 z-10">
-            <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={handlePrev}
-              className="w-[45px] h-[45px] bg-orange-500 text-white rounded-[15px] flex items-center justify-center shadow-md"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </motion.button>
-            <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={handleNext}
-              className="w-[45px] h-[45px] bg-orange-500 text-white rounded-[15px] flex items-center justify-center shadow-md"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </motion.button>
-          </div>
 
-          {/* Navigation Buttons (desktop only) */}
-          <div className="hidden sm:flex absolute right-0 top-0 gap-4 mr-[45px]">
-            <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={handleNext}
-              className="w-[45px] h-[45px] bg-orange-500 text-white rounded-[15px] flex items-center justify-center shadow-md mt-[-10px]"
+          {/* --- Responsive Navigation Buttons --- */}
+          <div className="custom-nav-buttons absolute z-10 flex gap-4 transition-all duration-300">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={handlePrev}
+              className="w-[45px] h-[45px] bg-orange-500 text-white rounded-[15px] flex items-center justify-center shadow-md"
             >
               <ChevronLeft className="w-6 h-6" />
             </motion.button>
-            <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={handlePrev}
-              className="w-[45px] h-[45px] bg-orange-500 text-white rounded-[15px] flex items-center justify-center shadow-md mt-[-10px]"
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={handleNext}
+              className="w-[45px] h-[45px] bg-orange-500 text-white rounded-[15px] flex items-center justify-center shadow-md"
             >
               <ChevronRight className="w-6 h-6" />
             </motion.button>
@@ -152,20 +134,34 @@ export default function Services() {
                       x: { type: "spring", stiffness: 300, damping: 30 },
                       opacity: { duration: 0.2 },
                     }}
-                    className="w-[335.775px] min-w-[335.775px] h-[480px] bg-[#F5F7F9] rounded-2xl pt-[40px] px-[40px] hover:shadow-lg transition-shadow"
+                    className="
+                      w-full
+                      min-w-0
+                      min-h-[480px]
+                      bg-[#F5F7F9]
+                      rounded-2xl
+                      pt-[40px]
+                      px-[40px]
+                      hover:shadow-lg
+                      transition-shadow
+                      sm:min-w-[calc(50%-10px)] 
+                      lg:min-w-[335.775px] 
+                      lg:max-w-[335.775px]
+                      flex flex-col
+                    "
                   >
-                    <div className="mb-4">
+                    <div className="mb-4 min-h-[96px] flex items-start">
                       <h3 className="text-[#0F0F0F] text-[20px] font-semibold font-inter">
                         {service.title}
                       </h3>
                     </div>
-                    <div className="w-full h-[274px]">
+                    <div className="flex-1 flex items-center justify-center">
                       <Image
                         src={service.image}
                         alt={service.title}
                         width={255.71}
                         height={274}
-                        className="object-cover mix-blend-multiply"
+                        className="object-contain mix-blend-multiply"
                       />
                     </div>
                   </motion.div>
@@ -175,7 +171,28 @@ export default function Services() {
           </div>
         </div>
       </div>
+
+      {/* Custom responsive nav button styling */}
+      <style jsx>{`
+        .custom-nav-buttons {
+          top: 50%;
+          left: 0;
+          right: 0;
+          justify-content: space-between;
+          padding: 0 16px;
+          transform: translateY(-50%);
+        }
+
+        @media (min-width: 808px) {
+          .custom-nav-buttons {
+            top: 0;
+            left: auto;
+            right: 45px;
+            transform: none;
+            justify-content: flex-end;
+          }
+        }
+      `}</style>
     </section>
   );
 }
-
