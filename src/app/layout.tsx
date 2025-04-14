@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Inter  } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 const InterSans = Inter({
   variable: "--font-Inter-sans",
   subsets: ["latin"],
 });
-
 
 export const metadata: Metadata = {
   title: "DigiFrills",
@@ -20,11 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${InterSans.variable}  antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${InterSans.variable}  antialiased`}>{children}</body>
     </html>
   );
 }

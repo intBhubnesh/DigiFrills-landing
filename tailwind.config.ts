@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -14,7 +14,7 @@ const config: Config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
-         md: '808px', // override md
+        md: "808px", // override md
       },
     },
     extend: {
@@ -75,6 +75,6 @@ const config: Config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
 
-export default config
+export default config;

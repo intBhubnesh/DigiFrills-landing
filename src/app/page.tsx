@@ -13,9 +13,9 @@ export default function Home() {
     <div>
       <Navbar />
       <Hero />
+      <BenefitsCarousel />
       <GrowTogetherSection />
       <Work />
-      <BenefitsCarousel />
       <Testimonial />
       <QuoteSection />
       <Footer />
