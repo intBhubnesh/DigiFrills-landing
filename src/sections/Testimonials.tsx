@@ -2,6 +2,11 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { Inter } from "next/font/google";
+
+const InterSans = Inter({
+  subsets: ["latin"],
+});
 
 interface TestimonialCardProps {
   quote: string;
@@ -54,7 +59,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   return (
     <div 
       ref={cardRef}
-      className={`p-4 rounded-lg flex flex-col transform transition-all ease-out ${
+      className={`p-2 rounded-lg flex flex-col transform transition-all ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-32 opacity-0'
       }`}
       style={{ 
@@ -62,9 +67,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         transitionDuration: `${animationDuration}ms` 
       }}
     >
-      <div className="mb-4 flex flex-row bg-gray-50 p-6 rounded-xl w-full max-w-7xl">
+      <div className="mb-4 flex flex-row bg-[#F5F7F9] p-8  rounded-3xl w-full max-w-7xl mx-auto text-left">
         <span className="text-orange-600 text-7xl">&quot;</span>
-        <p className="text-black text-base p-4">{quote}</p>
+        <p className="text-black text-sm font-medium p-2">&quot;{quote}&quot;</p>
       </div>
       <div className='flex flex-col p-6 py-1'>
         <div className="flex items-center flex-row">
@@ -72,7 +77,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             <Image 
               src={avatarSrc || "/api/placeholder/60/60"} 
               alt={clientName} 
-              className="rounded-full object-cover"
+              className="rounded-full object-cover grayscale"
               fill
             />
           </div>
@@ -81,15 +86,15 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
               <Image 
                 src={logoSrc} 
                 alt={`${company} logo`}
-                className="rounded-full object-contain p-1"
+                className="rounded-full object-scale-down p-1"
                 fill
               />
             </div>
           )}
         </div>
         <div className="flex-1">
-          <h3 className="font-bold text-black text-lg">{clientName}</h3>
-          <p className="text-gray-600 text-sm uppercase tracking-wide">
+          <h3 className="font-medium text-black text-lg pb-1">{clientName}</h3>
+          <p className="text-gray-800 text-sm uppercase tracking-wide font-medium text-[11px] pb-4">
             {position}{company ? `, ${company}` : ''}
           </p>
         </div>
@@ -155,7 +160,7 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
   return (
     <div 
   ref={videoRef}
-  className={`bg-[#F5F6F7] rounded-3xl p-3 shadow-md transform transition-all ease-out ${
+  className={`bg-[#F5F6F7] rounded-4xl p-3 transform transition-all ease-out ${
     isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
   }`}
   style={{ 
@@ -164,7 +169,7 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
   }}
 >
   <div 
-    className="relative w-full h-80 rounded-xl overflow-hidden"
+    className="relative w-full h-95 rounded-4xl overflow-hidden  "
     onMouseEnter={() => setIsHovered(true)}
     onMouseLeave={() => setIsHovered(false)}
     onClick={() => setPlayVideo(true)}
@@ -173,7 +178,7 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
       <iframe
         src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
         title={`${name} video testimonial`}
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full  object-cover sm:object-cover md:object-cover lg:object-cover"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
@@ -182,15 +187,15 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
         <img 
           src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`} 
           alt={`${name} video thumbnail`} 
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover "
         />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className={`w-20 h-14 rounded-xl flex items-center justify-center ${isHovered ? 'bg-red-600' : 'bg-gray-800'} transition-colors duration-300`}>
+          <div className={`w-19 h-14 rounded-2xl flex items-center justify-center ${isHovered ? 'bg-red-600' : 'bg-black opacity-65'} transition-colors duration-300`}>
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               viewBox="0 0 24 24" 
               fill="white" 
-              className="w-8 h-8"
+              className="w-9 h-9"
             >
               <path d="M8 5v14l11-7z" />
             </svg>
@@ -199,9 +204,9 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
       </>
     )}
   </div>
-  <div className="pt-6 text-center">
-    <h3 className="text-black text-xl font-medium">{name}</h3>
-    <p className="text-gray-500 uppercase text-sm tracking-wide">
+  <div className=" text-center py-3">
+    <h3 className="text-black text-xl font-medium text-[17px]">{name}</h3>
+    <p className="text-gray-500 uppercase text-sm text-[11px] tracking-wide">
       {position}, {company}
     </p>
   </div>
@@ -337,7 +342,7 @@ const Testimonial: React.FC = () => {
   
   return (
     <>
-      <div className="bg-white py-16 px-4 items-center">
+      <div className={`${InterSans.className} bg-white py-16 px-2 items-center text-Inter overflow-hidden`}>
         <div className="max-w-7xl mx-auto">
           <div 
             ref={headerRef}
@@ -347,46 +352,64 @@ const Testimonial: React.FC = () => {
             style={{ transitionDuration: `${animationDuration}ms` }}
           >
            
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex items-center bg-gray-100 px-3 py-1 rounded-full">
+            <div className="flex justify-center mb-2">
+              <div className="inline-flex items-center bg-gray-100  py-1 rounded-full">
                 <div className="bg-black text-white rounded-full p-2 mr-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <span className="font-medium text-black text-xs">Client Stories</span>
+                <p className=" text-black pr-2">Client Stories</p>
               </div>
             </div>
-
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
-                Hear stories 
-                <span className="inline-block mx-2 relative">
-                  <div className="flex -space-x-2 overflow-hidden">
-                    {["https://framerusercontent.com/images/MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512", "https://framerusercontent.com/images/5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512", "https://framerusercontent.com/images/6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512", "https://framerusercontent.com/images/6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512", "https://framerusercontent.com/images/XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512"].map((i) => (
-                      <div key={i} className="inline-block h-12 w-12 rounded-sm ring-2 ring-white relative">
-                        <Image 
-                          src={i} 
-                          alt={'Client'}
-                          fill
-                          className="rounded-2xl"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </span> 
-                straight from the people we helped!
-              </h2>
-            </div>
+          <div className="flex justify-center mb-10">
+  <div className="text-center">
+    <h2 className="hidden md:block text-3xl md:text-3xl lg:text-5xl lg:w-[64rem] font-bold font-inter text-black leading-snug">
+      Hear stories
+      <span className="inline-flex items-center mx-2 -space-x-2 align-middle">
+        {["https://framerusercontent.com/images/MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512", "https://framerusercontent.com/images/5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512", "https://framerusercontent.com/images/6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512", "https://framerusercontent.com/images/6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512", "https://framerusercontent.com/images/XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512"].map((src, index) => (
+          <div
+            key={index}
+            className="inline-block h-6 w-6 sm:h-8 sm:w-8 md:h-12 md:w-12 rounded-lg sm:rounded-lg md:rounded-2xl lg:rounded-2xl ring-4 ring-white overflow-hidden"
+          >
+            <img
+              src={src}
+              alt={`Client ${index + 1}`}
+              className="h-full w-full object-cover"
+            />
           </div>
+        ))}
+      </span>
+      straight from the people we helped!
+    </h2>
+    <h2 className="md:hidden text-3xl font-bold font-inter text-black leading-snug">
+      Hear stories straight from the people 
+      <span className="inline-flex items-center mx-2 -space-x-2 align-middle">
+        {["https://framerusercontent.com/images/MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512", "https://framerusercontent.com/images/5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512", "https://framerusercontent.com/images/6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512", "https://framerusercontent.com/images/6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512", "https://framerusercontent.com/images/XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512"].map((src, index) => (
+          <div
+            key={index}
+            className="inline-block h-6 w-6 sm:h-8 sm:w-8 rounded-lg sm:rounded-lg ring-4 ring-white overflow-hidden"
+          >
+            <img
+              src={src}
+              alt={`Client ${index + 1}`}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        ))}
+      </span>
+      we helped!
+    </h2>
+  </div>
+</div>
+        </div>
     
-          {/* Render testimonials grid with row-based animation */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
             {testimonialRows.map((row, rowIndex) => (
               <React.Fragment key={`row-${rowIndex}`}>
                 {row.map((testimonial, colIndex) => {
-                  // Each element in a row gets the same delay (based on row only)
-                  const rowDelay = rowIndex * rowDelayInterval; // Configurable row delay
+                  const rowDelay = rowIndex * rowDelayInterval; 
                   return (
                     <TestimonialCard 
                       key={`testimonial-${rowIndex}-${colIndex}`}
@@ -407,9 +430,9 @@ const Testimonial: React.FC = () => {
         </div>
       </div>
   
-      <div className="py-16 px-4 bg-white">
+      <div className="px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {videoTestimonials.map((testimonial, index) => (
               <VideoTestimonial 
                 key={index}
@@ -424,7 +447,7 @@ const Testimonial: React.FC = () => {
           </div>
         </div>
       </div>
-      
+      <div className="mt-20"></div>
     </>
   );   
 };
