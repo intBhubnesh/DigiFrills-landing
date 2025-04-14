@@ -3,55 +3,48 @@ import ExpandableCardsSection from "../components/expandable-cards-section";
 export default function Work() {
   return (
     <main className="min-h-screen">
-      <header className="flex justify-between items-center p-4 md:p-6 lg:px-12">
-        {/* <div className="flex items-center">
-          <div className="text-[#ff5c35] font-bold text-2xl flex items-center">
-            <div className="w-8 h-8 bg-[#ff5c35] rounded mr-2"></div>
-            Agencie
-          </div>
-        </div> */}
+      <header className="flex justify-between items-center p-4 md:p-6 lg:px-12"></header>
 
-        {/* <nav className="hidden md:flex items-center space-x-8">
-          <a href="#" className="font-medium">
-            Services
-          </a>
-          <a href="#" className="font-medium">
-            Projects
-          </a>
-          <a href="#" className="font-medium">
-            Process
-          </a>
-          <a href="#" className="font-medium">
-            Reviews
-          </a>
-          <a href="#" className="font-medium">
-            Pricing
-          </a>
-        </nav> */}
-
-        <div>
-          {/* <button className="hidden md:block bg-black text-white px-6 py-3 rounded-full font-medium">
-            Get Template
-          </button> */}
-          {/* <button className="md:hidden">
+      {/* Work Process Section */}
+      <section className="text-center px-4 py-12">
+        <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full mx-auto mb-6">
+          {/* Tilted N Icon with Dots */}
+          <div className="w-6 h-6 rounded-full bg-black flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              className="text-white"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="1.5" // Reduced stroke width for the N lines
               strokeLinecap="round"
               strokeLinejoin="round"
+              style={{
+                transform: "rotate(20deg)", // Adding a tilt
+                width: "12px", // Keeping circle size the same
+                height: "12px", // Keeping circle size the same
+              }}
             >
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
+              <circle cx="5" cy="5" r="1.5" />
+              <circle cx="19" cy="5" r="1.5" />
+              <circle cx="5" cy="19" r="1.5" />
+              <circle cx="19" cy="19" r="1.5" />
+              <path d="M5 19L5 5M5 5L19 19M19 19L19 5" />
             </svg>
-          </button> */}
+          </div>
+          <span className="text-sm font-medium text-black">
+            Our Work Process
+          </span>
         </div>
-      </header>
+
+        <h2 className="text-3xl md:text-5xl font-semibold leading-tight text-black max-w-4xl mx-auto">
+          From idea to impact—
+          <br />
+          our process makes it easy,
+          <br />
+          exciting, and effective!
+        </h2>
+      </section>
 
       <ExpandableCardsSection />
     </main>

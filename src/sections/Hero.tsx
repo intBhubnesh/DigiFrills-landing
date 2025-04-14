@@ -60,14 +60,16 @@ const Hero = () => {
       ref={heroTextRef}
       className="relative w-full flex flex-col items-center text-center px-6 lg:px-12 py-16 md:py-20 lg:py-24 xl:py-28 overflow-hidden"
     >
-      <div className="w-full max-w-6xl mx-auto px-6 lg:px-16 text-left">
+      <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-left relative">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
-          className="hero-text text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-black max-w-4xl"
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-left font-sans text-4xl md:text-5xl lg:text-6xl font-medium leading-none text-black max-w-5xl tracking-tight left-2"
         >
           Big ideas, smart strategies, <br />
           and endless creativity to <br />
-          supercharge <span className="text-black">⚡</span> your brand!
+          supercharge <span className="text-yellow-500">⚡</span> your brand!
         </motion.h1>
 
         <motion.p

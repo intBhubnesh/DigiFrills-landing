@@ -17,7 +17,7 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <div className="hidden md:flex space-x-8 text-lg font-medium">
+      <div className="hidden md:flex space-x-8 text-sm font-medium">
         {["Services", "Projects", "Process", "Reviews", "Pricing"].map(
           (item) => (
             <Link
@@ -53,7 +53,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-6 text-lg font-medium z-40"
+            className="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-6 text-sm font-medium z-40"
           >
             {["Services", "Projects", "Process", "Pricing", "Reviews"].map(
               (item) => (
@@ -69,6 +69,7 @@ const Navbar = () => {
             <button className="bg-black text-white px-6 py-2 rounded-full shadow-lg">
               Get Template
             </button>
+
             {/* Close Button */}
             <button
               className="absolute top-6 right-6 text-black p-2 rounded-lg bg-gray-100 shadow-lg"
