@@ -7,6 +7,7 @@ import BenefitsCarousel from "../sections/BenefitsCarousel";
 import QuoteSection from "@/sections/QuoteSection";
 import Footer from "@/sections/Footer";
 import GrowTogetherSection from "@/sections/GrowTogether";
+import Comparison from "@/sections/Comparison";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <BenefitsCarousel />
       <GrowTogetherSection />
       <Work />
+      <Comparison />
       <Testimonial />
       <QuoteSection />
       <Footer />
