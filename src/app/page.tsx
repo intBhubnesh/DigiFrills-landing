@@ -8,6 +8,7 @@ import QuoteSection from "@/sections/QuoteSection";
 import Footer from "@/sections/Footer";
 import GrowTogetherSection from "@/sections/GrowTogether";
 import Comparison from "@/sections/Comparison";
+import ServiceSection from "@/sections/ServiceSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <BenefitsCarousel />
+      <ServiceSection />
       <GrowTogetherSection />
       <Work />
       <Comparison />
