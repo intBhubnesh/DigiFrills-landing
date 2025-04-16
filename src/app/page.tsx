@@ -12,7 +12,7 @@ import ServiceSection from "@/sections/ServiceSection";
 
 export default function Home() {
   return (
-    <div>
+    <div className="w-full  overflow-hidden">
       <Navbar />
       <Hero />
       <BenefitsCarousel />

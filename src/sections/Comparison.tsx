@@ -72,7 +72,7 @@ const Comparison = () => {
           </div>
 
           {/* Heading Text */}
-          <h2 className="text-3xl md:text-5xl font-medium text-gray-900 leading-tight">
+          <h2 className="section-heading  text-3xl md:text-5xl font-medium text-gray-900 leading-tight">
             While others copy and paste,
             <br />
             we innovate and elevate.
