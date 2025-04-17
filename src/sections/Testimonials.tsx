@@ -178,14 +178,14 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
       <iframe
         src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
         title={`${name} video testimonial`}
-        className="absolute inset-0 w-full h-full  object-cover sm:object-cover md:object-cover lg:object-cover"
+        className="absolute inset-0 w-full h-full object-cover object-center"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
     ) : (
       <>
         <img 
-          src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`} 
+         src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
           alt={`${name} video thumbnail`} 
           className="absolute inset-0 w-full h-full object-cover "
         />
@@ -206,7 +206,7 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
   </div>
   <div className=" text-center py-3">
     <h3 className="text-black text-xl font-medium text-[17px]">{name}</h3>
-    <p className="text-gray-500 uppercase text-sm text-[11px] tracking-wide">
+    <p className="text-black/65 font-semibold uppercase text-sm text-[11px] tracking-wide">
       {position}, {company}
     </p>
   </div>
@@ -255,8 +255,6 @@ const Testimonial: React.FC = () => {
     if (headerRef.current) {
       observer.observe(headerRef.current);
     }
-
-    // Set hasAnimated to true after component mounts to ensure animation only happens once
     if (!hasAnimated) {
       setHasAnimated(true);
     }
@@ -355,20 +353,18 @@ const Testimonial: React.FC = () => {
             <div className="flex justify-center mb-2">
               <div className="inline-flex items-center bg-gray-100  py-1 rounded-full">
                 <div className="bg-black text-white rounded-full p-2 mr-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 256 256" fill="currentColor">
+                    <path fillRule="evenodd" d="M172,108a12,12,0,0,1-12,12H96a12,12,0,0,1,0-24h64A12,12,0,0,1,172,108Zm-12,28H96a12,12,0,0,0,0,24h64a12,12,0,0,0,0-24Zm76-8A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <p className=" text-black pr-2">Client Stories</p>
+                <p className=" text-black font-medium text-[14px] pr-2">Client Stories</p>
               </div>
             </div>
           <div className="flex justify-center mb-10">
-  <div className="text-center">
-    <h2 className="hidden md:block text-3xl md:text-3xl lg:text-5xl lg:w-[64rem] font-bold font-inter text-black leading-snug">
-      Hear stories
-      <span className="inline-flex items-center mx-2 -space-x-2 align-middle">
-        {["https://framerusercontent.com/images/MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512", "https://framerusercontent.com/images/5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512", "https://framerusercontent.com/images/6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512", "https://framerusercontent.com/images/6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512", "https://framerusercontent.com/images/XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512"].map((src, index) => (
-          <div
+            <div className="text-center">
+              <h2 className="hidden md:block text-2xl md:text-2xl lg:text-5xl lg:w-[64rem] font-bold font-inter text-black leading-snug">Hear stories
+                <span className="inline-flex items-center mx-2 -space-x-2 align-middle">{["https://framerusercontent.com/images/MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512", "https://framerusercontent.com/images/5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512", "https://framerusercontent.com/images/6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512", "https://framerusercontent.com/images/6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512", "https://framerusercontent.com/images/XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512"].map((src, index) => (
+                <div
             key={index}
             className="inline-block h-6 w-6 sm:h-8 sm:w-8 md:h-12 md:w-12 rounded-lg sm:rounded-lg md:rounded-2xl lg:rounded-2xl ring-4 ring-white overflow-hidden"
           >
