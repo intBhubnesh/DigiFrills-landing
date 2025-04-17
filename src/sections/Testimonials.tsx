@@ -1,7 +1,6 @@
-
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { Inter } from "next/font/google";
 
 const InterSans = Inter({
@@ -19,15 +18,15 @@ interface TestimonialCardProps {
   animationDuration?: number;
 }
 
-const TestimonialCard: React.FC<TestimonialCardProps> = ({ 
-  quote, 
-  clientName, 
-  position, 
-  company, 
-  logoSrc, 
+const TestimonialCard: React.FC<TestimonialCardProps> = ({
+  quote,
+  clientName,
+  position,
+  company,
+  logoSrc,
   avatarSrc,
   rowDelay = 0,
-  animationDuration = 1000
+  animationDuration = 1000,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -42,7 +41,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
     );
 
     if (cardRef.current) {
@@ -57,34 +56,36 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   }, [rowDelay]);
 
   return (
-    <div 
+    <div
       ref={cardRef}
       className={`p-2 rounded-lg flex flex-col transform transition-all ease-out ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-32 opacity-0'
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-32 opacity-0"
       }`}
-      style={{ 
+      style={{
         transitionDelay: `${rowDelay}ms`,
-        transitionDuration: `${animationDuration}ms` 
+        transitionDuration: `${animationDuration}ms`,
       }}
     >
-      <div className="mb-4 flex flex-row bg-[#F5F7F9] p-8  rounded-3xl w-full max-w-7xl mx-auto text-left">
+      <div className="mb-4 flex flex-row bg-[#F5F7F9] p-8 rounded-3xl w-full max-w-7xl mx-auto text-left">
         <span className="text-orange-600 text-7xl">&quot;</span>
-        <p className="text-black text-sm font-medium p-2">&quot;{quote}&quot;</p>
+        <p className="text-black text-sm font-medium p-2">
+          &quot;{quote}&quot;
+        </p>
       </div>
-      <div className='flex flex-col p-6 py-1'>
+      <div className="flex flex-col p-6 py-1">
         <div className="flex items-center flex-row">
           <div className="w-16 h-16 mr-4 relative">
-            <Image 
-              src={avatarSrc || "/api/placeholder/60/60"} 
-              alt={clientName} 
+            <Image
+              src={avatarSrc || "/api/placeholder/60/60"}
+              alt={clientName}
               className="rounded-full object-cover grayscale"
               fill
             />
           </div>
           {logoSrc && (
             <div className="w-16 h-8 mr-4 relative">
-              <Image 
-                src={logoSrc} 
+              <Image
+                src={logoSrc}
                 alt={`${company} logo`}
                 className="rounded-full object-scale-down p-1"
                 fill
@@ -95,7 +96,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         <div className="flex-1">
           <h3 className="font-medium text-black text-lg pb-1">{clientName}</h3>
           <p className="text-gray-800 text-sm uppercase tracking-wide font-medium text-[11px] pb-4">
-            {position}{company ? `, ${company}` : ''}
+            {position}
+            {company ? `, ${company}` : ""}
           </p>
         </div>
       </div>
@@ -112,13 +114,13 @@ interface VideoTestimonialProps {
   animationDuration?: number;
 }
 
-const VideoTestimonial: React.FC<VideoTestimonialProps> = ({ 
-  name, 
-  position, 
-  company, 
-  videoUrl, 
+const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
+  name,
+  position,
+  company,
+  videoUrl,
   rowDelay = 0,
-  animationDuration = 1000 
+  animationDuration = 1000,
 }) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [playVideo, setPlayVideo] = useState<boolean>(false);
@@ -126,9 +128,10 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
   const videoRef = useRef<HTMLDivElement>(null);
 
   const getYoutubeId = (url: string): string => {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const regExp =
+      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : '';
+    return match && match[2].length === 11 ? match[2] : "";
   };
 
   const videoId = getYoutubeId(videoUrl);
@@ -143,7 +146,7 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
     );
 
     if (videoRef.current) {
@@ -215,7 +218,6 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
   );
 };
 
-
 interface Testimonial {
   quote: string;
   clientName: string;
@@ -236,10 +238,9 @@ const Testimonial: React.FC = () => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
-  
-  // Animation configuration - Adjust these values to change animation speed
-  const rowDelayInterval = 30; // milliseconds between each row (lower = faster)
-  const animationDuration = 600; // milliseconds for the animation itself (lower = faster)
+
+  const rowDelayInterval = 30;
+  const animationDuration = 600;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -255,6 +256,8 @@ const Testimonial: React.FC = () => {
     if (headerRef.current) {
       observer.observe(headerRef.current);
     }
+
+    
     if (!hasAnimated) {
       setHasAnimated(true);
     }
@@ -268,53 +271,34 @@ const Testimonial: React.FC = () => {
 
   const testimonials: Testimonial[] = [
     {
-      quote: "Working with this team felt like having a secret weapon. They took our scattered ideas and turned them into a website that screams 'wow!' Our customers can't stop raving about it!",
+      quote: "Working with this team felt like having a secret weapon...",
       clientName: "Tobias Green",
       position: "FOUNDER",
       company: "GREENSPARK INNOVATIONS",
-      logoSrc: "https://framerusercontent.com/images/3Y1x3Iz9CnzoCeLjfRflZMOiF0.svg",
-      avatarSrc: "https://framerusercontent.com/images/UsPZoUaacWnpNKo5ow2OkPMrpw0.jpg"
+      logoSrc:
+        "https://framerusercontent.com/images/3Y1x3Iz9CnzoCeLjfRflZMOiF0.svg",
+      avatarSrc:
+        "https://framerusercontent.com/images/UsPZoUaacWnpNKo5ow2OkPMrpw0.jpg",
     },
     {
-      quote: "Finally, an agency that speaks our language! They understood our vision better than we did and brought it to life in a way that exceeded expectations. 10/10 would recommend!",
+      quote: "Finally, an agency that speaks our language!",
       clientName: "Silas Leighton",
       position: "MANAGING DIRECTOR",
       company: "VENTUREVISTA",
-      logoSrc: "https://framerusercontent.com/images/6QEz8kJbwqWFzbNDcgcMwaBk7Jk.svg",
-      avatarSrc: "https://framerusercontent.com/images/ItbAaHsEW3CUnztIn91H9TiuKHc.jpg?scale-down-to=512"
+      logoSrc:
+        "https://framerusercontent.com/images/6QEz8kJbwqWFzbNDcgcMwaBk7Jk.svg",
+      avatarSrc:
+        "https://framerusercontent.com/images/ItbAaHsEW3CUnztIn91H9TiuKHc.jpg",
     },
     {
-      quote: "I came in with high hopes, and they absolutely blew me away. From strategy to execution, every detail was on point. I'm telling everyone I know—hire them!",
+      quote: "I came in with high hopes, and they absolutely blew me away.",
       clientName: "Orion Vance",
       position: "CEO",
       company: "LUNAR LUX CO.",
       logoSrc: "",
-      avatarSrc: "https://framerusercontent.com/images/2Zm0QnC5KdYbFQFAK2RQ8DRekU.jpg"
+      avatarSrc:
+        "https://framerusercontent.com/images/2Zm0QnC5KdYbFQFAK2RQ8DRekU.jpg",
     },
-    {
-      quote: "Our brand went from a whisper to a roar. The team's creativity and expertise made all the difference. We're getting noticed like never before!",
-      clientName: "Callum Yates",
-      position: "CO-FOUNDER",
-      company: "DRIFTWOOD MEDIA",
-      logoSrc: "https://framerusercontent.com/images/mGAxAGDBjt0JHg8MI0F9P9FkW0g.svg",
-      avatarSrc: "https://framerusercontent.com/images/ciqeScb6bZagxmIXqN70lJt6x10.jpg?scale-down-to=512"
-    },
-    {
-      quote: "Our online presence went from zero to hero in no time. The team made the process so seamless, I almost forgot I was working on a big project!",
-      clientName: "Jasper Lowell",
-      position: "CEO",
-      company: "COPPERLEAF ENTERPRISES",
-      logoSrc: "",
-      avatarSrc: "https://framerusercontent.com/images/NE0HbZCpk08RqUBmljkId4i3oEw.jpg?scale-down-to=512"
-    },
-    {
-      quote: "They made us feel like their most important client. The attention to detail, quick responses, and innovative ideas were top-notch. We'll definitely be back for more!",
-      clientName: "Jasper Lowell",
-      position: "BRAND MANAGER",
-      company: "STELLAR BLOOM STUDIO",
-      logoSrc: "https://framerusercontent.com/images/RsaJCL4Sj4fVM9spQ7bKyrgyngo.svg",
-      avatarSrc: "https://framerusercontent.com/images/Zm4yodZZxdIXJhenN7bdKUq5KM.jpg"
-    }
   ];
 
   const videoTestimonials: VideoTestimonialData[] = [
@@ -322,22 +306,21 @@ const Testimonial: React.FC = () => {
       name: "Magnus Hawthorne",
       position: "OWNER",
       company: "BAYLEAF",
-      videoUrl: "https://youtu.be/Ly1auHs_ofo" 
+      videoUrl: "https://youtu.be/Ly1auHs_ofo",
     },
     {
       name: "Thaddeus Montgomery",
       position: "OWNER",
       company: "GOLDGARDEN",
-      videoUrl: "https://youtu.be/ay2e0VXtmfI" 
-    }
+      videoUrl: "https://youtu.be/ay2e0VXtmfI",
+    },
   ];
-
-
   const testimonialRows = [];
   for (let i = 0; i < testimonials.length; i += 3) {
     testimonialRows.push(testimonials.slice(i, i + 3));
   }
-  
+
+
   return (
     <>
       <div className={`${InterSans.className} bg-white py-16 px-2 items-center text-Inter overflow-hidden`}>
@@ -447,5 +430,5 @@ const Testimonial: React.FC = () => {
     </>
   );   
 };
-  
+
 export default Testimonial;

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 interface FaqItem {
   question: string;
@@ -27,7 +28,7 @@ const Faq = ({ faqs }: FaqProps) => {
           <div className="flex flex-col">
             {/* Icon + Label */}
             <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-100 rounded-full w-fit">
-              <img
+              <Image
                 src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png"
                 alt="FAQ icon"
                 className="w-6 h-6"
@@ -41,12 +42,12 @@ const Faq = ({ faqs }: FaqProps) => {
             <h1 className="text-4xl font-bold text-gray-900 mt-4">
               <div>FAQ It Up! Your curiosity</div>
               <div>meets our expertise</div>
-              <div>—let's clear things up!</div>
+              <div>&mdash;let&apos;s clear things up!</div>
             </h1>
 
             {/* Paragraph */}
             <p className="text-gray-500 text-lg mt-4">
-              We've gathered all the important info right here.
+              We&apos;ve gathered all the important info right here.
               <br />
               Explore our FAQs and find the answers you need.
             </p>
