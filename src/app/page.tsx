@@ -9,6 +9,50 @@ import Footer from "@/sections/Footer";
 import GrowTogetherSection from "@/sections/GrowTogether";
 import Comparison from "@/sections/Comparison";
 import ServiceSection from "@/sections/ServiceSection";
+import Faq from "@/sections/Faq";
+
+const faqItems = [
+  {
+    question: "How long does it take to design a website?",
+    answer:
+      "The timeline varies based on project complexity, but most standard websites take between 4-8 weeks from initial consultation to launch.",
+  },
+  {
+    question: "Do you work with small businesses or just big brands?",
+    answer:
+      "We work with businesses of all sizes! We're passionate about helping small businesses establish their online presence.",
+  },
+  {
+    question: "Can I customize the packages you offer?",
+    answer:
+      "Absolutely! Our packages are starting points that we can tailor to your specific needs and budget.",
+  },
+  {
+    question: "How do you measure the success of a marketing campaign?",
+    answer:
+      "We use a variety of KPIs including conversion rates, engagement metrics, ROI, and customer acquisition costs to measure success.",
+  },
+  {
+    question: "What if I don't like the designs or strategies?",
+    answer:
+      "We include revision rounds in our process to ensure you're completely satisfied with the results.",
+  },
+  {
+    question: "How do I get started?",
+    answer:
+      "Simply contact us through our website or give us a call. We'll schedule a free consultation to discuss your project.",
+  },
+  {
+    question: "Do you provide support after launching my website or campaign?",
+    answer:
+      "Yes, we offer various maintenance and support packages to keep your digital presence running smoothly.",
+  },
+  {
+    question: "What makes your agency different from the rest?",
+    answer:
+      "Our unique combination of creative design, technical expertise, and data-driven marketing strategies sets us apart.",
+  },
+];
 
 export default function Home() {
   return (
@@ -21,6 +65,7 @@ export default function Home() {
       <Work />
       <Comparison />
       <Testimonial />
+      <Faq faqs={faqItems} />
       <QuoteSection />
       <Footer />
     </div>
