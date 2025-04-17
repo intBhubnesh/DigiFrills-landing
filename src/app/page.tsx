@@ -56,7 +56,7 @@ const faqItems = [
 
 export default function Home() {
   return (
-    <div>
+    <div className="w-full  overflow-hidden">
       <Navbar />
       <Hero />
       <BenefitsCarousel />

@@ -4,3 +4,37 @@
 html {
   scroll-behavior: smooth;
 }
+
+.form-heading {
+  color: #FFFEF5;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 52.8px; /* 110% */
+  letter-spacing: -2.4px;
+}
+
+.form-description {
+  color: #FFFEF5;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 31.2px; /* 130% */
+  letter-spacing: -0.96px;
+}
+
+input {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.section-heading {
+  color: #0F0F0F;
+  text-align: center;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 52.8px; /* 110% */
+  letter-spacing: -2.4px;
+}
