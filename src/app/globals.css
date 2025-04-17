@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Add smooth scrolling to the entire document */
+html {
+  scroll-behavior: smooth;
+}
