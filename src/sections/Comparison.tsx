@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import {
   FaSadTear,
-  FaRocket,
-  FaChartBar,
   FaHandshake,
   FaTags,
   FaTools,
