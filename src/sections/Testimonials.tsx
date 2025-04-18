@@ -257,7 +257,6 @@ const Testimonial: React.FC = () => {
       observer.observe(headerRef.current);
     }
 
-    // Set hasAnimated to true after component mounts to ensure animation only happens once
     if (!hasAnimated) {
       setHasAnimated(true);
     }
@@ -441,7 +440,6 @@ const Testimonial: React.FC = () => {
           </div>
         </div>
       </div>
-  
       <div className="px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -462,7 +460,7 @@ const Testimonial: React.FC = () => {
       <div className="mt-20"></div>
     </>
   );   
-
 };
+
 
 export default Testimonial;
