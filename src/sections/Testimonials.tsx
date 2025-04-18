@@ -161,63 +161,60 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
   }, [rowDelay]);
 
   return (
-    <div
-      ref={videoRef}
-      className={`bg-[#F5F6F7] rounded-4xl p-3 transform transition-all ease-out ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-      }`}
-      style={{
-        transitionDelay: `${rowDelay}ms`,
-        transitionDuration: `${animationDuration}ms`,
-      }}
-    >
-      <div
-        className="relative w-full h-95 rounded-4xl overflow-hidden"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={() => setPlayVideo(true)}
-      >
-        {playVideo ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-            title={`${name} video testimonial`}
-            className="absolute inset-0 w-full h-full object-cover"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        ) : (
-          <>
-            <img
-              src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-              alt={`${name} video thumbnail`}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div
-                className={`w-19 h-14 rounded-2xl flex items-center justify-center ${
-                  isHovered ? "bg-red-600" : "bg-black opacity-65"
-                } transition-colors duration-300`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  className="w-9 h-9"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
-          </>
-        )}
-      </div>
-      <div className="text-center py-3">
-        <h3 className="text-black text-xl font-medium text-[17px]">{name}</h3>
-        <p className="text-gray-500 uppercase text-sm text-[11px] tracking-wide">
-          {position}, {company}
-        </p>
-      </div>
-    </div>
+    <div 
+  ref={videoRef}
+  className={`bg-[#F5F6F7] rounded-4xl p-3 transform transition-all ease-out ${
+    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+  }`}
+  style={{ 
+    transitionDelay: `${rowDelay}ms`,
+    transitionDuration: `${animationDuration}ms`
+  }}
+>
+  <div 
+    className="relative w-full h-95 rounded-4xl overflow-hidden  "
+    onMouseEnter={() => setIsHovered(true)}
+    onMouseLeave={() => setIsHovered(false)}
+    onClick={() => setPlayVideo(true)}
+  >
+    {playVideo ? (
+      <iframe
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+        title={`${name} video testimonial`}
+        className="absolute inset-0 w-full h-full  object-cover sm:object-cover md:object-cover lg:object-cover"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    ) : (
+      <>
+        <img 
+          src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+          alt={`${name} video thumbnail`} 
+          className="absolute inset-0 w-full h-full object-cover "
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className={`w-19 h-14 rounded-2xl flex items-center justify-center ${isHovered ? 'bg-red-600' : 'bg-black opacity-65'} transition-colors duration-300`}>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 24 24" 
+              fill="white" 
+              className="w-9 h-9"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+        </div>
+      </>
+    )}
+  </div>
+  <div className=" text-center py-3">
+    <h3 className="text-black text-xl font-medium text-[17px]">{name}</h3>
+    <p className="className=text-black/65 font-semibold uppercase text-sm text-[11px] tracking-wide">
+      {position}, {company}
+    </p>
+  </div>
+</div>
+
   );
 };
 
@@ -301,6 +298,31 @@ const Testimonial: React.FC = () => {
       avatarSrc:
         "https://framerusercontent.com/images/2Zm0QnC5KdYbFQFAK2RQ8DRekU.jpg",
     },
+    {
+      quote: "Our brand went from a whisper to a roar. The team's creativity and expertise made all the difference. We're getting noticed like never before!",
+      clientName: "Callum Yates",
+      position: "CO-FOUNDER",
+      company: "DRIFTWOOD MEDIA",
+      logoSrc: "https://framerusercontent.com/images/mGAxAGDBjt0JHg8MI0F9P9FkW0g.svg",
+      avatarSrc: "https://framerusercontent.com/images/ciqeScb6bZagxmIXqN70lJt6x10.jpg?scale-down-to=512"
+    },
+    {
+      quote: "Our online presence went from zero to hero in no time. The team made the process so seamless, I almost forgot I was working on a big project!",
+      clientName: "Jasper Lowell",
+      position: "CEO",
+      company: "COPPERLEAF ENTERPRISES",
+      logoSrc: "",
+      avatarSrc: "https://framerusercontent.com/images/NE0HbZCpk08RqUBmljkId4i3oEw.jpg?scale-down-to=512"
+    },
+    {
+      quote: "They made us feel like their most important client. The attention to detail, quick responses, and innovative ideas were top-notch. We'll definitely be back for more!",
+      clientName: "Jasper Lowell",
+      position: "BRAND MANAGER",
+      company: "STELLAR BLOOM STUDIO",
+      logoSrc: "https://framerusercontent.com/images/RsaJCL4Sj4fVM9spQ7bKyrgyngo.svg",
+      avatarSrc: "https://framerusercontent.com/images/Zm4yodZZxdIXJhenN7bdKUq5KM.jpg"
+    }
+
   ];
 
   const videoTestimonials: VideoTestimonialData[] = [
@@ -318,53 +340,127 @@ const Testimonial: React.FC = () => {
     },
   ];
 
+
+  const testimonialRows = [];
+  for (let i = 0; i < testimonials.length; i += 3) {
+    testimonialRows.push(testimonials.slice(i, i + 3));
+  }
   return (
-    <section
-      className={`${InterSans.className} bg-white py-20 px-4 sm:px-10`}
-      id="testimonials"
-    >
-      <div ref={headerRef} className="max-w-5xl mx-auto text-center mb-10">
-        <h2
-          className={`text-3xl sm:text-4xl font-bold transition-opacity duration-1000 ${
-            isHeaderVisible ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          What Our Clients Say
-        </h2>
-        <p
-          className={`mt-4 text-gray-600 transition-opacity duration-1000 ${
-            isHeaderVisible ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          Real stories from real people we’ve helped.
-        </p>
-      </div>
+<>
+      <div className={`${InterSans.className} bg-white py-16 px-2 items-center text-Inter overflow-hidden`}>
+        <div className="max-w-7xl mx-auto">
+          <div 
+            ref={headerRef}
+            className={`transform transition-all ease-out ${
+              isHeaderVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+            }`}
+            style={{ transitionDuration: `${animationDuration}ms` }}
+          >
+           
+            <div className="flex justify-center mb-2">
+              <div className="inline-flex items-center bg-gray-100  py-1 rounded-full">
+                <div className="bg-black text-white rounded-full p-2 mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 256 256" fill="currentColor">
+  <path fillRule="evenodd" d="M172,108a12,12,0,0,1-12,12H96a12,12,0,0,1,0-24h64A12,12,0,0,1,172,108Zm-12,28H96a12,12,0,0,0,0,24h64a12,12,0,0,0,0-24Zm76-8A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z" clipRule="evenodd" />
+</svg>
 
-      {/* Text Testimonials */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        {testimonials.map((testimonial, index) => (
-          <TestimonialCard
-            key={index}
-            {...testimonial}
-            rowDelay={index * rowDelayInterval}
-            animationDuration={animationDuration}
-          />
-        ))}
-      </div>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 256 256" fill="currentColor">
+  <path fillRule="evenodd" d="M172,108a12,12,0,0,1-12,12H96a12,12,0,0,1,0-24h64A12,12,0,0,1,172,108Zm-12,28H96a12,12,0,0,0,0,24h64a12,12,0,0,0,0-24Zm76-8A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z" clipRule="evenodd" />
+</svg>
 
-      {/* Video Testimonials */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {videoTestimonials.map((video, index) => (
-          <VideoTestimonial
+                </div>
+                <p className="text-black font-medium text-[14px] pr-2">Client Stories</p>
+                <p className="text-black font-medium text-[14px] pr-2">Client Stories</p>
+              </div>
+            </div>
+          <div className="flex justify-center mb-10">
+  <div className="text-center">
+    <h2 className="hidden md:block text-3xl md:text-3xl lg:text-5xl lg:w-[64rem] font-bold font-inter text-black leading-snug">
+      Hear stories
+      <span className="inline-flex items-center mx-2 -space-x-2 align-middle">
+        {["https://framerusercontent.com/images/MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512", "https://framerusercontent.com/images/5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512", "https://framerusercontent.com/images/6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512", "https://framerusercontent.com/images/6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512", "https://framerusercontent.com/images/XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512"].map((src, index) => (
+          <div
             key={index}
-            {...video}
-            rowDelay={index * rowDelayInterval}
-            animationDuration={animationDuration}
-          />
+            className="inline-block h-6 w-6 sm:h-8 sm:w-8 md:h-12 md:w-12 rounded-lg sm:rounded-lg md:rounded-2xl lg:rounded-2xl ring-4 ring-white overflow-hidden"
+          >
+            <img
+              src={src}
+              alt={`Client ${index + 1}`}
+              className="h-full w-full object-cover"
+            />
+          </div>
         ))}
+      </span>
+      straight from the people we helped!
+    </h2>
+    <h2 className="md:hidden text-3xl font-bold font-inter text-black leading-snug">
+      Hear stories straight from the people 
+      <span className="inline-flex items-center mx-2 -space-x-2 align-middle">
+        {["https://framerusercontent.com/images/MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512", "https://framerusercontent.com/images/5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512", "https://framerusercontent.com/images/6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512", "https://framerusercontent.com/images/6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512", "https://framerusercontent.com/images/XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512"].map((src, index) => (
+          <div
+            key={index}
+            className="inline-block h-6 w-6 sm:h-8 sm:w-8 rounded-lg sm:rounded-lg ring-4 ring-white overflow-hidden"
+          >
+            <img
+              src={src}
+              alt={`Client ${index + 1}`}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        ))}
+      </span>
+      we helped!
+    </h2>
+  </div>
+</div>
+        </div>
+    
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+            {testimonialRows.map((row, rowIndex) => (
+              <React.Fragment key={`row-${rowIndex}`}>
+                {row.map((testimonial, colIndex) => {
+                  const rowDelay = rowIndex * rowDelayInterval; 
+                  return (
+                    <TestimonialCard 
+                      key={`testimonial-${rowIndex}-${colIndex}`}
+                      quote={testimonial.quote}
+                      clientName={testimonial.clientName}
+                      position={testimonial.position}
+                      company={testimonial.company}
+                      logoSrc={testimonial.logoSrc}
+                      avatarSrc={testimonial.avatarSrc}
+                      rowDelay={rowDelay}
+                      animationDuration={animationDuration}
+                    />
+                  );
+                })}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
       </div>
-    </section>
-  );
+      <div className="px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {videoTestimonials.map((testimonial, index) => (
+              <VideoTestimonial 
+                key={index}
+                name={testimonial.name}
+                position={testimonial.position}
+                company={testimonial.company}
+                videoUrl={testimonial.videoUrl}
+                rowDelay={testimonialRows.length * rowDelayInterval + 50}
+                animationDuration={animationDuration}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="mt-20"></div>
+    </>
+  );   
 };
+
 
 export default Testimonial;
