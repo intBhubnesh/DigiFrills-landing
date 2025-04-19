@@ -270,7 +270,7 @@ const Testimonial: React.FC = () => {
 
   const testimonials: Testimonial[] = [
     {
-      quote: "Working with this team felt like having a secret weapon. They took our scattered ideas and turned them into a website that screams wow! Our customers can't stop raving about it",
+      quote: "Working with this team felt like having a secret weapon. They took our scattered ideas and turned them into a website that screams 'wow!' Our customers can't stop raving about it!",
       clientName: "Tobias Green",
       position: "FOUNDER",
       company: "GREENSPARK INNOVATIONS",
