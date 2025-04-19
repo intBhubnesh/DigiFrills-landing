@@ -270,7 +270,7 @@ const Testimonial: React.FC = () => {
 
   const testimonials: Testimonial[] = [
     {
-      quote: "Working with this team felt like having a secret weapon...",
+      quote: "Working with this team felt like having a secret weapon. They took our scattered ideas and turned them into a website that screams 'wow!' Our customers can't stop raving about it!",
       clientName: "Tobias Green",
       position: "FOUNDER",
       company: "GREENSPARK INNOVATIONS",
@@ -280,7 +280,7 @@ const Testimonial: React.FC = () => {
         "https://framerusercontent.com/images/UsPZoUaacWnpNKo5ow2OkPMrpw0.jpg",
     },
     {
-      quote: "Finally, an agency that speaks our language!",
+      quote: "Finally, an agency that speaks our language! They understood our vision better than we did and brought it to life in a way that exceeded expectations. 10/10 would recommend!",
       clientName: "Silas Leighton",
       position: "MANAGING DIRECTOR",
       company: "VENTUREVISTA",
@@ -290,7 +290,7 @@ const Testimonial: React.FC = () => {
         "https://framerusercontent.com/images/ItbAaHsEW3CUnztIn91H9TiuKHc.jpg",
     },
     {
-      quote: "I came in with high hopes, and they absolutely blew me away.",
+      quote: "I came in with high hopes, and they absolutely blew me away. From strategy to execution, every detail was on point. I'm telling everyone I know-hire them!",
       clientName: "Orion Vance",
       position: "CEO",
       company: "LUNAR LUX CO.",
@@ -360,14 +360,9 @@ const Testimonial: React.FC = () => {
             <div className="flex justify-center mb-2">
               <div className="inline-flex items-center bg-gray-100  py-1 rounded-full">
                 <div className="bg-black text-white rounded-full p-2 mr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 256 256" fill="currentColor">
-  <path fillRule="evenodd" d="M172,108a12,12,0,0,1-12,12H96a12,12,0,0,1,0-24h64A12,12,0,0,1,172,108Zm-12,28H96a12,12,0,0,0,0,24h64a12,12,0,0,0,0-24Zm76-8A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z" clipRule="evenodd" />
-</svg>
-
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 256 256" fill="currentColor">
-  <path fillRule="evenodd" d="M172,108a12,12,0,0,1-12,12H96a12,12,0,0,1,0-24h64A12,12,0,0,1,172,108Zm-12,28H96a12,12,0,0,0,0,24h64a12,12,0,0,0,0-24Zm76-8A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z" clipRule="evenodd" />
-</svg>
-
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 256 256" fill="currentColor">
+                      <path fillRule="evenodd" d="M172,108a12,12,0,0,1-12,12H96a12,12,0,0,1,0-24h64A12,12,0,0,1,172,108Zm-12,28H96a12,12,0,0,0,0,24h64a12,12,0,0,0,0-24Zm76-8A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z" clipRule="evenodd" />
+                    </svg>
                 </div>
                 <p className="text-black font-medium text-[14px] pr-2">Client Stories</p>
                 <p className="text-black font-medium text-[14px] pr-2">Client Stories</p>
