@@ -31,6 +31,8 @@ const Faq = ({ faqs }: FaqProps) => {
               <Image
                 src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png"
                 alt="FAQ icon"
+                width={24}
+                height={24}
                 className="w-6 h-6"
               />
               <span className="text-sm font-medium text-gray-800">

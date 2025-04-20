@@ -60,21 +60,21 @@ const Hero = () => {
       ref={heroTextRef}
       className="relative w-full flex flex-col items-center text-center px-6 lg:px-12 py-16 md:py-20 lg:py-24 xl:py-28 overflow-hidden"
     >
-      <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-left relative">
+      <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-left relative pt-12 lg:pt-0">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-left font-sans text-4xl md:text-5xl lg:text-6xl font-medium leading-none text-black max-w-5xl tracking-tight left-2"
+          className="sm:text-left text-center text-4xl md:text-5xl lg:text-[65px] max-w-5xl left-2 text-gray font-[inter] font-medium leading-[65px] tracking-[-4px]"
         >
           Big ideas, smart strategies, <br />
           and endless creativity to <br />
-          supercharge <span className="text-yellow-500">⚡</span> your brand!
+          supercharge<span className="text-yellow-500">⚡</span>your brand!
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          className="hero-text text-gray-600 text-lg md:text-xl mt-4 max-w-2xl"
+          className="hero-text text-lg md:text-xl mt-6 max-w-[530px] text-[#0f0f0f] font-[inter] font-normal leading-[25.2px] tracking-[-0.18px] opacity-80"
         >
           Your go-to agency for designs that inspire and strategies that
           deliver. We turn ideas into lasting impressions.
@@ -88,7 +88,7 @@ const Hero = () => {
           }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="hero-text bg-black text-white px-6 py-2 rounded-full shadow-lg mt-6"
+          className="hero-text bg-black text-white px-6 py-2 rounded-full shadow-lg mt-6 font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px]"
         >
           Get Template
         </motion.button>
@@ -106,7 +106,7 @@ const Hero = () => {
               />
             ))}
           </div>
-          <p className="text-gray-600 font-medium">
+          <p className="text-[#0F0F0F] font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px] opacity-60">
             Over 200+ Five Star Reviews
           </p>
         </motion.div>
@@ -227,15 +227,16 @@ const Hero = () => {
                 }
               : {}
           }
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
+          className="text-3xl md:text-4xl font-semibold text-center mb-12 text-[#0F0F0F] font-[inter] lg:text-[52px] leading-[52px] tracking-[-2.08px]"
         >
           <span className="text-[rgb(241,85,51)]">Building</span>
           <span className="text-black"> brands, </span>
           <span className="text-[rgb(241,85,51)]">boosting</span>
-          <span className="text-black"> businesses, and </span>
+          <span className="text-black"> businesses,</span>
           <br />
-          <span className="text-[rgb(241,85,51)]">redefining</span>
-          <span className="text-black"> possibilities.</span>
+          <span className="text-black"> and</span>
+          <span className="text-[rgb(241,85,51)]"> redefining</span>
+          <span className="text-black"> possibilities. </span>
           <span className="text-black mt-2 inline-block">Let&apos;s</span>
           <br />
           <span className="text-black mt-2 inline-block">
@@ -243,7 +244,7 @@ const Hero = () => {
           </span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <StatCard
             endValue={250}
             suffix="+"

@@ -51,16 +51,18 @@ export const StatCard = ({
   }, [isInView, endValue]); // `count` is a stable motion value, safe to ignore
 
   return (
+    <div className="text-left font-[inter]">
     <div
       ref={ref}
-      className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all"
+      className="bg-white p-4 rounded-4xl border border-dashed border-gray-400 transition-all"
     >
-      <div className="text-5xl font-bold text-black mb-2">
-        <motion.span>{rounded}</motion.span>
-        <span className="text-[rgb(241,85,51)]">{suffix}</span>
+      <div className="text-6xl  font-semibold text-black font-[inter] inline-flex items-center justify-start w-full">
+        <motion.div className="text-[#0F0F0F] font-[inter] text-[74px] font-normal leading-[74px] tracking-[-6.66px] ">{rounded}</motion.div>
+        <div className="inline-flex text-orange-400">{suffix}</div>
       </div>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <h3 className="text-xl mb-2 text-[#0F0F0F] font-[inter] text-[20px] font-medium leading-[28px] tracking-[-0.6px]">{title}</h3>
+      </div>
+      <p className="text-[#0F0F0F] font-[inter] text-[15px] font-medium leading-[22.5px] tracking-[-0.45px] opacity-80 text-justify">{description}</p>
     </div>
   );
 };
