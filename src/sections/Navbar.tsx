@@ -9,15 +9,15 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-md px-6 md:px-12 py-4 flex justify-between items-center z-50">
+    <nav className="fixed top-0 left-0 w-full bg-white px-6 md:px-12 py-4 flex justify-between items-center z-50">
       {/* Logo */}
       <div className="flex items-center space-x-2">
         <Image src="/logo.png" alt="Logo" width={40} height={40} />
-        <span className="text-lg font-semibold">DigiFrills</span>
+        <span className="font-semibold font-[inter] text-xl">DigiFrills</span>
       </div>
 
       {/* Desktop Navigation */}
-      <div className="hidden md:flex space-x-8 text-sm font-medium">
+      <div className="hidden md:flex space-x-8 text-sm text-[#0F0F0F] font-[inter] text-[15px] font-medium leading-[22.5px] tracking-[-0.45px]">
         {["Services", "Projects", "Process", "Reviews", "Pricing"].map(
           (item) => (
             <Link
@@ -33,7 +33,7 @@ const Navbar = () => {
 
       {/* Call-to-Action Button (Desktop) */}
       <div className="hidden md:block">
-        <button className="bg-black text-white px-6 py-2 rounded-full shadow-lg">
+        <button className="bg-black text-white px-6 py-2 rounded-full shadow-lg font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px]">
           Get Template
         </button>
       </div>
