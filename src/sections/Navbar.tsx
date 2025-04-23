@@ -34,7 +34,7 @@ const Navbar = () => {
       {/* Call-to-Action Button (Desktop) */}
       <div className="hidden md:block">
         <button className="bg-black text-white px-6 py-2 rounded-full shadow-lg font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px]">
-          Get Template
+          Get Started
         </button>
       </div>
 
@@ -69,7 +69,6 @@ const Navbar = () => {
             <button className="bg-black text-white px-6 py-2 rounded-full shadow-lg">
               Get Template
             </button>
-
             {/* Close Button */}
             <button
               className="absolute top-6 right-6 text-black p-2 rounded-lg bg-gray-100 shadow-lg"

@@ -1,177 +1,249 @@
-
-"use client";
-
-import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-
-const servicesData = [
-  {
-    title: "Web Design and Development",
-    description:
-      "Your website is like your digital handshake—it’s the first thing people notice about you online. Our Web Design & Development services are all about making that handshake firm, friendly, and unforgettable.",
-    tags: ["UI/UX", "HTML/CSS", "React", "SEO"],
-  },
-  {
-    title: "Digital Marketing",
-    description:
-      "Let’s face it, the internet is a noisy place. But with our Digital Marketing services, you won’t just stand out—you’ll shine. We’ll help you show up where your customers are hanging out, whether that’s Google, Instagram, or somewhere in between. Think of us as your online hype team, always finding clever ways to boost your visibility and drive those sweet, sweet clicks.",
-    tags: ["SEO", "PPC", "Email", "Content"],
-  },
-  {
-    title: "Branding & Creative Services",
-    description:
-      "Your brand is so much more than a logo—it’s your story, your personality, and your promise to customers. Our Branding & Creative Services bring your identity to life in a way that’s bold, beautiful, and 100% you. We’ll help you stand out, stick in people’s minds, and make your competitors go, “Whoa, that’s cool.”",
-    tags: ["Logo", "Colors", "Typography", "Storytelling"],
-  },
-  {
-    title: "App Design & Development",
-    description:
-      "Got a brilliant app idea? Let’s make it a reality! Whether it’s a mobile game, a productivity tool, or the next big social platform, we’ll build something that’s smooth, sleek, and downright addictive. Our apps are made with love (and a whole lot of coding).",
-    tags: ["iOS", "Android", "React Native", "Flutter"],
-  },
-];
-
+"use client"
+import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
+import { servicesData } from "@/data/services";
 export default function OurServices() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const rightRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const servicesRef = useRef<(HTMLDivElement | null)[]>([])
 
+  // Initialize refs array
+  useEffect(() => {
+    servicesRef.current = servicesRef.current.slice(0, servicesData.length)
+  }, [])
+
+  // Handle scroll and update active index
   useEffect(() => {
     const handleScroll = () => {
-      const cards = rightRef.current?.querySelectorAll(".service-card");
-      if (!cards) return;
+      const scrollPosition = window.scrollY + window.innerHeight / 2
 
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top >= 0 && rect.top <= 250) {
-          setActiveIndex(index);
+      servicesRef.current.forEach((ref, index) => {
+        if (!ref) return
+
+        const offsetTop = ref.getBoundingClientRect().top + window.scrollY
+        const offsetBottom = offsetTop + ref.offsetHeight
+
+        if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+          setActiveIndex(index)
         }
-      });
-    };
+      })
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll() // Initial check
 
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Handle click on sidebar item
+  const handleSidebarClick = (index: number) => {
+    setActiveIndex(index)
+    const targetRef = servicesRef.current[index]
+
+    if (targetRef) {
+      const offsetTop = targetRef.getBoundingClientRect().top + window.scrollY
+      window.scrollTo({
+        top: offsetTop - window.innerHeight / 3,
+        behavior: "smooth",
+      })
+    }
+  }
+
+  const testimonialData = [
+    {
+        profile : 'https://framerusercontent.com/images/69AfOAuHYwAOuoUih5OD0cURM.jpg',
+        testimonial : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },    {
+        profile : 'https://framerusercontent.com/images/XiMyyNx8unIwYIKgfBrWE1AinY.jpg?scale-down-to=512',
+        testimonial : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },    {
+        profile : 'https://framerusercontent.com/images/cnLntcGAx8hue6HcvWIuDTGJERQ.jpg',
+        testimonial : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },    {
+        profile : 'https://framerusercontent.com/images/x12Fv3VOaCuprlQXViBbGALOKA4.jpg',
+        testimonial : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },    {
+        profile : 'https://framerusercontent.com/images/XiMyyNx8unIwYIKgfBrWE1AinY.jpg?scale-down-to=512',
+        testimonial : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },
+  ]
   return (
-    <div className="bg-white px-[40px] py-[100px] w-full max-w-[1200px] mx-auto">
-      {/* Top Icon and Heading */}
-      <div className="flex flex-col items-center space-y-4 w-full sm:max-w-[800px] mx-auto mb-[60px] max-w-full overflow-hidden">
-  <div className="flex justify-center sm:justify-start w-[133.8px] h-[33px] items-center gap-2 mb-2 rounded-[20px] bg-[#f5f7f9]">
-    <div className="w-[29px] h-[29px] bg-gray-900 rounded-full flex items-center justify-center p-[9px]">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="14" height="14" fill="white">
-        <path d="M230.47,67.5a12,12,0,0,0-19.26-4.32L172.43,99l-12.68-2.72L157,83.57l35.79-38.78a12,12,0,0,0-4.32-19.26A76.07,76.07,0,0,0,88.41,121.64L30.92,174.18a4.68,4.68,0,0,0-.39.38,36,36,0,0,0,50.91,50.91l.38-.39,52.54-57.49A76.05,76.05,0,0,0,230.47,67.5ZM160,148a51.5,51.5,0,0,1-23.35-5.52,12,12,0,0,0-14.26,2.62L64.31,208.66a12,12,0,0,1-17-17l63.55-58.07a12,12,0,0,0,2.62-14.26A51.5,51.5,0,0,1,108,96a52.06,52.06,0,0,1,52-52h.89L135.17,71.87a12,12,0,0,0-2.91,10.65l5.66,26.35a12,12,0,0,0,9.21,9.21l26.35,5.66a12,12,0,0,0,10.65-2.91L212,95.12c0,.3,0,.59,0,.89A52.06,52.06,0,0,1,160,148Z" />
-      </svg>
-    </div>
-    <span className="text-[#0F0F0F] text-[15px] font-inter font-semibold">Our Services</span>
-  </div>
-  <h2 className="text-[#0f0f0f] font-semibold text-center leading-tight w-full sm:max-w-[760px] h-auto text-[45px] xs:text-[30px]">
-    Services designed to help your brand shine brighter.
-  </h2>
-</div>
-
-
-      {/* Main Content */}
-      <div className="flex flex-col lg:flex-row lg:items-start gap-[40px] w-full">
-
-
-        {/* Left Sticky Column (Visible only on lg and above) */}
-        <div className="w-full lg:w-[350px] sticky top-[100px] space-y-6 h-fit hidden lg:block">
-
-          {servicesData.map((service, index) => (
-            <div
-              key={index}
-              className={`flex items-center px-[5px] py-[4px] gap-2 transition-all duration-300 ${
-                activeIndex === index
-                  ? "text-orange-500 font-semibold"
-                  : "text-[#0f0f0f]"
-              }`}
-            >
-              <motion.svg
-                width={18}
-                height={18}
-                className="text-orange-500"
-                initial={{ opacity: 0, x: -10 }}
-                animate={
-                  activeIndex === index
-                    ? { opacity: 1, x: 0 }
-                    : { opacity: 0, x: -10 }
-                }
-                transition={{ duration: 0.3 }}
-                viewBox="0 0 256 256"
-                fill="currentColor"
-              >
-                <path d="M181.66,133.66l-80,80A8,8,0,0,1,88,208V48a8,8,0,0,1,13.66-5.66l80,80A8,8,0,0,1,181.66,133.66Z" />
-              </motion.svg>
-              <span className="text-[18px] font-[inter]">{service.title}</span>
+    <section id="services" ref={sectionRef} className="bg-white py-24 px-6 md:px-10 lg:px-20">
+      <div className="max-w-[1200px] mx-auto">
+        {/* Top Icon and Heading */}
+        <div className="flex flex-col items-center space-y-4 mb-16 text-center">
+          <div className="flex items-center gap-2 pr-4 py-1 rounded-full bg-[#f5f7f9]">
+            <div className="size-[32px] bg-gray-900 rounded-full flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="12" height="12" fill="white">
+                <path d="M230.47,67.5a12,12,0,0,0-19.26-4.32L172.43,99l-12.68-2.72L157,83.57l35.79-38.78a12,12,0,0,0-4.32-19.26A76.07,76.07,0,0,0,88.41,121.64L30.92,174.18a4.68,4.68,0,0,0-.39.38,36,36,0,0,0,50.91,50.91l.38-.39,52.54-57.49A76.05,76.05,0,0,0,230.47,67.5ZM160,148a51.5,51.5,0,0,1-23.35-5.52,12,12,0,0,0-14.26,2.62L64.31,208.66a12,12,0,0,1-17-17l63.55-58.07a12,12,0,0,0,2.62-14.26A51.5,51.5,0,0,1,108,96a52.06,52.06,0,0,1,52-52h.89L135.17,71.87a12,12,0,0,0-2.91,10.65l5.66,26.35a12,12,0,0,0,9.21,9.21l26.35,5.66a12,12,0,0,0,10.65-2.91L212,95.12c0,.3,0,.59,0,.89A52.06,52.06,0,0,1,160,148Z" />
+              </svg>
             </div>
-          ))}
+            <span className="text-sm font-medium">Our services</span>
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-gray-900 max-w-2xl"
+          >
+            Services designed to help
+            <br />
+            your brand shine brighter.
+          </motion.h2>
         </div>
 
-        {/* Right Scrollable Cards */}
-        <div ref={rightRef} className="w-full lg:w-[820px] space-y-[40px] min-w-0">
-
-          {servicesData.map((service, index) => (
-            <div
-              key={index}
-              className="service-card w-full h-[388.5px] bg-[#f5f7f9] p-[10px] rounded-[20px]"
-            >
-              {/* Upper Section */}
-              <div className="bg-transparent w-full h-[256.5px] p-[20px] space-y-[20px]">
-                <div className="space-y-[12px] w-full">
-                  <h2 className="text-[26px] font-semibold text-[#0f0f0f]">
-                    <b>{service.title}</b>
-                  </h2>
-                  <p className="text-[15px] text-[#0f0f0f]">
-                    {service.description}
+        {/* Main Content */}
+        <div className="flex md:flex-row flex-col gap-10 lg:gap-20">
+          {/* Left Sidebar */}
+          <div className="w-[400px] hidden lg:flex  flex-start flex-col sticky top-32 self-start  h-fit">
+            {servicesData.map((service, index) => (
+              <motion.button
+                key={index}
+                onClick={() => handleSidebarClick(index)}
+                className={`flex items-center justify-start text-nowrap  py-1 transition-all duration-300  ${
+                  activeIndex !== index
+                    ? "services-sidebar-default"
+                    : "services-sidebar-active"
+                }`}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
+              >
+                { activeIndex === index
+                    && (
+                        <motion.svg
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
+                        xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+  <path d="M12.773 9.55759L7.14797 15.1826C7.0693 15.2613 6.96903 15.315 6.85986 15.3367C6.75069 15.3585 6.63752 15.3473 6.53468 15.3047C6.43184 15.2621 6.34396 15.1899 6.28216 15.0974C6.22036 15.0048 6.18741 14.8959 6.1875 14.7846V3.53462C6.18741 3.42331 6.22036 3.31447 6.28216 3.22188C6.34396 3.1293 6.43184 3.05713 6.53468 3.01452C6.63752 2.97191 6.75069 2.96077 6.85986 2.98251C6.96903 3.00425 7.0693 3.0579 7.14797 3.13665L12.773 8.76165C12.8253 8.81389 12.8668 8.87593 12.8951 8.94422C12.9234 9.01251 12.9379 9.0857 12.9379 9.15962C12.9379 9.23354 12.9234 9.30674 12.8951 9.37503C12.8668 9.44331 12.8253 9.50535 12.773 9.55759Z" fill="#F15533"/>
+</motion.svg>
+                    )
+                }
+                {service.title}
+              </motion.button>
+            ))}
+          </div>
+          {/* Right Content */}
+          <div className="w-full  space-y-12">
+            {servicesData.map((service, index) => (
+              <motion.div
+                key={index}
+                ref={(el) => (servicesRef.current[index] = el)}
+                className="bg-[#F5F7F9]   p-2 rounded-[34px]  w-full"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                <div className="p-6 md:p-8 space-y-6">
+                  <h3 className="services-heading">{service.title}</h3>
+                  <p className="services-desc">{service.description}</p>
+                  <div className="flex flex-wrap gap-2 pt-4"    >
+                    {service.tags.map((tag, i) => (
+                      <motion.span
+                        key={i}
+                        className="inline-flex items-center px-3 py-1 rounded-full services-tag border-[1.5px] border-gray-200"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: i * 0.04 }}
+                        viewport={{ once: true }}
+                      >
+                        {service.icon[i] && (
+                          <img
+                            src={service.icon[i]}
+                            alt="Icon"
+                            className="w-4 h-4 mr-2"
+                          />
+                        )}
+                        {tag}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+                <motion.div
+                  className={`
+                    p-6 flex rounded-4xl items-center justify-between  group cursor-pointer transition-all duration-300
+                    ${expandedIndex === index ? "sticky top-20 z-20 shadow-xl" : ""}
+                  `}
+                  style={{
+                    backgroundColor: expandedIndex === index ? "#000" : "#fff",
+                  }}
+                  onClick={() =>
+                    setExpandedIndex(expandedIndex === index ? null : index)
+                  }
+                  transition={{ backgroundColor: { duration: 0.3 } }}
+                >
+                  <p className={`services-details transition-all duration-300 ${expandedIndex === index ? "text-[#0260EB]/80" : "text-black"}`}>
+                    View Details
                   </p>
-                </div>
-
-                <div className="flex flex-wrap gap-[12px]">
-  {service.tags.map((tag, i) => (
-    <div
-      key={i}
-      className="flex items-center gap-[8px] px-[8px] py-[2px] border border-[#00000033] rounded-full"
-      style={{ width: "126.23px", height: "26.5px" }}
-    >
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 256 256"
-        fill="currentColor"
-      >
-        <path d="M181.66,133.66l-80,80A8,8,0,0,1,88,208V48a8,8,0,0,1,13.66-5.66l80,80A8,8,0,0,1,181.66,133.66Z" />
-      </svg>
-      <span className="text-[15px] text-[#0f0f0f]">{tag}</span>
-    </div>
-  ))}
-</div>
-
-              </div>
-
-              {/* Lower Section */}
-              <div className="bg-white w-full h-[82px] flex items-center justify-between px-[20px] rounded-[30px] group">
-                <span className="text-[20px] text-[#0f0f0f]">View Details</span>
-                <div className="w-[42px] h-[42px] flex items-center justify-center bg-transparent rounded-[13px] transition-all duration-300 group-hover:bg-orange-500">
-                  <svg
-                    width="22.63"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="black"
-                    className="transition-all duration-300 group-hover:fill-white group-hover:stroke-white"
+                  <div
+                    className={`
+                      size-10 flex items-center justify-center rounded-xl transition-all duration-300
+                      ${expandedIndex === index ? "bg-black" : "group-hover:bg-[#0260EB]"}
+                    `}
                   >
-                    <path
-                      d="M12 5v14m-7-7h14"
-                      stroke="black"
-                      strokeWidth="2"
-                      strokeLinecap="round"
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={`size-8 transition-all duration-300 ${expandedIndex === index ? "rotate-45 text-[#0260EB]" : ""}`}
+                      width="24"
+                      height="23"
+                      viewBox="0 0 24 23"
+                      fill="none"
+                    >
+                      <path d="M5.63245 12.0003C5.56675 12.0003 5.5017 11.9873 5.441 11.9622C5.3803 11.9371 5.32515 11.9002 5.2787 11.8538C5.23224 11.8073 5.19539 11.7521 5.17025 11.6914C5.14511 11.6308 5.13217 11.5657 5.13217 11.5C5.13217 11.4343 5.14511 11.3692 5.17025 11.3086C5.19539 11.2479 5.23224 11.1927 5.2787 11.1462C5.32515 11.0998 5.3803 11.0629 5.441 11.0378C5.5017 11.0127 5.56675 10.9997 5.63245 10.9997L11.4966 11.0002L11.4961 5.13604C11.4961 5.00336 11.5488 4.87611 11.6427 4.78229C11.7365 4.68847 11.8637 4.63576 11.9964 4.63576C12.1291 4.63576 12.2563 4.68847 12.3502 4.78229C12.444 4.87611 12.4967 5.00336 12.4967 5.13604L12.4962 11.0002L18.3604 10.9997C18.4931 10.9997 18.6203 11.0524 18.7141 11.1463C18.8079 11.2401 18.8606 11.3673 18.8606 11.5C18.8606 11.6327 18.8079 11.7599 18.7141 11.8537C18.6203 11.9476 18.4931 12.0003 18.3604 12.0003L12.4962 11.9998L12.4967 17.864C12.4967 17.9966 12.444 18.1239 12.3502 18.2177C12.2563 18.3115 12.1291 18.3642 11.9964 18.3642C11.8637 18.3642 11.7365 18.3115 11.6427 18.2177C11.5488 18.1239 11.4961 17.9966 11.4961 17.864L11.4966 11.9998L5.63245 12.0003Z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                </motion.div>
+                {expandedIndex === index && (
+                  <div className="p-6 pt-0 space-y-4">
+                    <img src={service.image} alt="service image" className="rounded-4xl mt-5" />
+                    <div
+                      className="flex flex-wrap gap-2"
+                      dangerouslySetInnerHTML={{ __html: service.usecase }}
                     />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          ))}
+                  </div>
+                )}
+
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
+
+      {/* implement the ticker */}
+      <div className="relative w-full mt-20 mb-10 overflow-hidden">
+        {/* Left Gradient */}
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10"
+             style={{background: "linear-gradient(to right, #fff 10%, transparent)"}} />
+        {/* Right Gradient */}
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-10"
+             style={{background: "linear-gradient(to left, #fff 10%, transparent)"}} />
+
+        <motion.div
+          className="flex items-center gap-8 min-w-max"
+          style={{ width: "fit-content" }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 30,
+            ease: "linear"
+          }}
+        >
+          {[...testimonialData, ...testimonialData].map((testimonial, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-2 pr-4 py-1 rounded-2xl bg-[#f5f7f9] min-w-max"
+            >
+              <img src={testimonial.profile} alt="Profile" className="size-16 rounded-2xl " />
+              <p className="testimonial-text">{testimonial.testimonial}</p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
 }

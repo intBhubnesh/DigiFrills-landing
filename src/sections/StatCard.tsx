@@ -58,7 +58,7 @@ export const StatCard = ({
     >
       <div className="text-6xl  font-semibold text-black font-[inter] inline-flex items-center justify-start w-full">
         <motion.div className="text-[#0F0F0F] font-[inter] text-[74px] font-normal leading-[74px] tracking-[-6.66px] ">{rounded}</motion.div>
-        <div className="inline-flex text-orange-400">{suffix}</div>
+        <div className="inline-flex text-[#0260EB]">{suffix}</div>
       </div>
       <h3 className="text-xl mb-2 text-[#0F0F0F] font-[inter] text-[20px] font-medium leading-[28px] tracking-[-0.6px]">{title}</h3>
       </div>

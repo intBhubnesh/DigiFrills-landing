@@ -30,15 +30,15 @@ export default function GrowTogetherSection() {
         initial={{ opacity: 0, filter: "blur(8px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: 0.8 }}
-        className="text-4xl md:text-5xl font-semibold max-w-3xl"
+        className="hero-message max-w-3xl"
       >
-        We don’t just work together—
-        <span className="text-black">we </span>
-        <span className="text-orange-500">grow</span>
-        <span className="text-black"> together.</span>
+        We don’t just work <br /> together—
+        <span className="">we </span>
+        <span className="text-[#0260EB]">grow</span>
+        <span className=""> together.</span>
       </motion.h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mt-12">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 mt-12">
         {logos.map((logo, i) => (
           <motion.div
             key={i}
@@ -46,13 +46,13 @@ export default function GrowTogetherSection() {
             initial="hidden"
             animate="visible"
             variants={fadeInVariants}
-            className="bg-gray-100 p-6 rounded-xl shadow-md flex items-center justify-center h-24 w-24 mx-auto"
+            className="bg-gray-100 p-6 rounded-3xl  flex items-center justify-center size-32 mx-auto"
           >
             <Image
               src={logo}
               alt={`Logo ${i + 1}`}
-              width={64} // Customize based on actual logo size
-              height={64}
+              width={80} // Customize based on actual logo size
+              height={80}
               className="object-contain h-full w-full"
             />
           </motion.div>

@@ -258,10 +258,8 @@ const PortfolioSection = () => {
         {/* Header */}
         <div className="max-w-[800px] w-full flex flex-col items-center justify-center px-[20px] gap-[5px]">
           <div className="w-[132.79px] h-[33px] rounded-[25px] bg-[#f5f7f9] flex justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
-            <div className="w-[29px] h-[29px] bg-black rounded-full p-[9px] flex items-center justify-center">
-              <div className="w-[11px] h-[11px] relative">
-                <div className="absolute left-[1.56%] top-[7.81%] right-[7.81%] bottom-[10.94%] bg-black w-[9.9px] h-[8.97px]" />
-              </div>
+            <div className="size-[32px] bg-black rounded-full p-[9px] flex items-center justify-center">
+            <img src="/portfolio-icon.svg"   alt="section icon" />
             </div>
             <div className="text-[15.1px] font-medium leading-[22.5px] tracking-[-0.45px] text-black whitespace-nowrap">
               Our Portfolio

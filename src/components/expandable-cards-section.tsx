@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { useMediaQuery } from "@/hooks/use-media-query";
-
 type CardData = {
   number: string;
   title: string;

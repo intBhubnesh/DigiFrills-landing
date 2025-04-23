@@ -9,6 +9,7 @@ import Footer from "@/sections/Footer";
 import GrowTogetherSection from "@/sections/GrowTogether";
 import Comparison from "@/sections/Comparison";
 import ServiceSection from "@/sections/ServiceSection";
+import PortfolioSection from "@/sections/PortfolioSection";
 import Faq from "@/sections/Faq";
 
 const faqItems = [
@@ -56,12 +57,13 @@ const faqItems = [
 
 export default function Home() {
   return (
-    <div className="w-full  overflow-hidden">
+    <div className="w-full  ">
       <Navbar />
       <Hero />
       <BenefitsCarousel />
-      <ServiceSection />
       <GrowTogetherSection />
+      <ServiceSection />
+      <PortfolioSection />
       <Work />
       <Comparison />
       <Testimonial />

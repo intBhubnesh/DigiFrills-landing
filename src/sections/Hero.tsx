@@ -60,7 +60,7 @@ const Hero = () => {
       ref={heroTextRef}
       className="relative w-full flex flex-col items-center text-center px-6 lg:px-12 py-16 md:py-20 lg:py-24 xl:py-28 overflow-hidden"
     >
-      <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-left relative pt-12 lg:pt-0">
+      <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-left relative pt-12 lg:pt-0 gap-2 flex-col flex  ">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -69,28 +69,27 @@ const Hero = () => {
         >
           Big ideas, smart strategies, <br />
           and endless creativity to <br />
-          supercharge<span className="text-yellow-500">⚡</span>your brand!
+          supercharge<span className="text-yellow-500  inline-block">⚡</span>your business !
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          className="hero-text text-lg md:text-xl mt-6 max-w-[530px] text-[#0f0f0f] font-[inter] font-normal leading-[25.2px] tracking-[-0.18px] opacity-80"
+          className="hero-text text-lg md:text-xl mt-6 max-w-[640px] text-[#0f0f0f] font-[inter] font-normal leading-[25.2px] tracking-[-0.18px] opacity-80"
         >
-          Your go-to agency for designs that inspire and strategies that
-          deliver. We turn ideas into lasting impressions.
+          Your go-to IT partner for scalable systems, AI integration, and machine learning solutions that future-proof your operations. We don’t just solve problems — we build intelligent experiences.
         </motion.p>
 
         <motion.button
-          initial={{ opacity: 0, y: 20 }}
+          initial={{  y: 20 }}
           whileHover={{
-            scale: 1.05,
-            boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)",
+            color: "#F15533",
           }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="hero-text bg-black text-white px-6 py-2 rounded-full shadow-lg mt-6 font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px]"
+          style={{
+            boxShadow: "0px 1.344px 0.537px -0.625px rgba(0, 0, 0, 0.09), 0px 3.185px 1.274px -1.25px rgba(0, 0, 0, 0.09), 0px 5.809px 2.324px -1.875px rgba(0, 0, 0, 0.08), 0px 9.658px 3.863px -2.5px rgba(0, 0, 0, 0.08), 0px 15.597px 6.239px -3.125px rgba(0, 0, 0, 0.07), 0px 25.531px 10.212px -3.75px rgba(0, 0, 0, 0.06), 0px 43.962px 17.585px -4.375px rgba(0, 0, 0, 0.04)",
+          }}
+          className="hero-text inline-flex w-fit bg-black text-white px-8 py-3 rounded-full shadow-lg mt-6 font-inter text-lg font-medium leading-[22.5px] tracking-[-0.45px]"
         >
-          Get Template
+          Get Started
         </motion.button>
 
         <motion.div
@@ -213,7 +212,7 @@ const Hero = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-6xl mx-auto mt-24 px-6 lg:px-16"
+        className="w-full mt-60 px-6 lg:px-16"
       >
         <motion.h2
           ref={headingRef}
@@ -227,29 +226,29 @@ const Hero = () => {
                 }
               : {}
           }
-          className="text-3xl md:text-4xl font-semibold text-center mb-12 text-[#0F0F0F] font-[inter] lg:text-[52px] leading-[52px] tracking-[-2.08px]"
+          className="hero-message "
         >
-          <span className="text-[rgb(241,85,51)]">Building</span>
-          <span className="text-black"> brands, </span>
-          <span className="text-[rgb(241,85,51)]">boosting</span>
-          <span className="text-black"> businesses,</span>
+          <span className="text-[#0260EB]">Building</span>
+          <span className=""> brands, </span>
+          <span className="text-[#0260EB]">boosting</span>
+          <span className=""> businesses,</span>
           <br />
-          <span className="text-black"> and</span>
-          <span className="text-[rgb(241,85,51)]"> redefining</span>
-          <span className="text-black"> possibilities. </span>
-          <span className="text-black mt-2 inline-block">Let&apos;s</span>
+          <span className=""> and</span>
+          <span className="text-[#0260EB]"> redefining</span>
+          <span className=""> possibilities. </span>
+          <span className="text-black  inline-block">Let&apos;s</span>
           <br />
-          <span className="text-black mt-2 inline-block">
+          <span className="">
             grow your brand together.
           </span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid mt-12 grid-cols-1 md:grid-cols-3 w-full gap-4">
           <StatCard
-            endValue={250}
+            endValue={25}
             suffix="+"
             title="Projects Delivered"
-            description="We've successfully completed over 250 projects—and we're just getting started!"
+            description="We've successfully completed over 25 projects—and we're just getting started!"
           />
           <StatCard
             endValue={70}
@@ -258,10 +257,10 @@ const Hero = () => {
             description="Our strategies have helped clients achieve up to 70% revenue growth in just one year!"
           />
           <StatCard
-            endValue={500}
+            endValue={50}
             suffix="+"
             title="Happy Clients"
-            description="More than 500 satisfied clients trust us to bring their ideas to life."
+            description="More than 50 satisfied clients trust us to bring their ideas to life."
           />
         </div>
       </motion.div>
