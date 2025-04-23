@@ -11,6 +11,8 @@ import Comparison from "@/sections/Comparison";
 import ServiceSection from "@/sections/ServiceSection";
 import PortfolioSection from "@/sections/PortfolioSection";
 import Faq from "@/sections/Faq";
+import PortfolioSection from "@/sections/PortfolioSection";
+
 
 const faqItems = [
   {
@@ -61,6 +63,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <BenefitsCarousel />
+      <ServiceSection />
+      <PortfolioSection />
       <GrowTogetherSection />
       <ServiceSection />
       <PortfolioSection />
