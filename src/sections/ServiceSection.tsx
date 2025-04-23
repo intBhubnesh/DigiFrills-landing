@@ -1,12 +1,13 @@
 "use client"
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { servicesData } from "@/data/services";
+
 export default function OurServices() {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState<number>(0)
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const servicesRef = useRef<(HTMLDivElement | null)[]>([])
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const servicesRef = useRef<Array<HTMLDivElement | null>>([])
 
   // Initialize refs array
   useEffect(() => {
