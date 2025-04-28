@@ -72,7 +72,7 @@ const Faq = ({ faqs }: FaqProps) => {
                 </h3>
                 <motion.span
                   animate={{ rotate: activeIndex === index ? 45 : 0 }}
-                  className="text-2xl text-gray-500 hover:text-white hover:bg-[rgb(241,85,51)] rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+                  className="text-2xl text-gray-500 hover:text-white hover:bg-[#0260EB] rounded-full w-8 h-8 flex items-center justify-center transition-colors"
                 >
                   +
                 </motion.span>

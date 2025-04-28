@@ -11,8 +11,6 @@ import Comparison from "@/sections/Comparison";
 import ServiceSection from "@/sections/ServiceSection";
 import PortfolioSection from "@/sections/PortfolioSection";
 import Faq from "@/sections/Faq";
-import PortfolioSection from "@/sections/PortfolioSection";
-
 
 const faqItems = [
   {
@@ -59,19 +57,39 @@ const faqItems = [
 
 export default function Home() {
   return (
-    <div className="w-full  ">
+    <div className="w-full">
       <Navbar />
       <Hero />
+
       <BenefitsCarousel />
-      <ServiceSection />
-      <PortfolioSection />
       <GrowTogetherSection />
-      <ServiceSection />
-      <PortfolioSection />
-      <Work />
-      <Comparison />
-      <Testimonial />
-      <Faq faqs={faqItems} />
+
+      {/* Services Section */}
+      <section id="services" className="scroll-mt-20">
+        <ServiceSection />
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="scroll-mt-20">
+        <PortfolioSection />
+      </section>
+
+      {/* Process Section */}
+      <section id="process" className="scroll-mt-20">
+        <Work />
+        <Comparison />
+      </section>
+
+      {/* Reviews Section */}
+      <section id="reviews" className="scroll-mt-20">
+        <Testimonial />
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="scroll-mt-20">
+        <Faq faqs={faqItems} />
+      </section>
+
       <QuoteSection />
       <Footer />
     </div>

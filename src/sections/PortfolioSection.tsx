@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 interface PortfolioItem {
   id: number;
@@ -154,7 +155,13 @@ const PortfolioSection = () => {
       setCarouselImages3(getClonedImages(portfolioItems[2].carouselImages));
       setCarouselIndex3(1);
     }
-  }, []);
+  }, [
+    getClonedImages,
+    setCarouselImages,
+    setCarouselIndex,
+    setCarouselImages3,
+    setCarouselIndex3,
+  ]);
 
   // Autoplay for first card
   useEffect(() => {
@@ -259,7 +266,7 @@ const PortfolioSection = () => {
         <div className="max-w-[800px] w-full flex flex-col items-center justify-center px-[20px] gap-[5px]">
           <div className="w-[132.79px] h-[33px] rounded-[25px] bg-[#f5f7f9] flex justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
             <div className="size-[32px] bg-black rounded-full p-[9px] flex items-center justify-center">
-            <img src="/portfolio-icon.svg"   alt="section icon" />
+              <Image src="/portfolio-icon.svg" alt="section icon" />
             </div>
             <div className="text-[15.1px] font-medium leading-[22.5px] tracking-[-0.45px] text-black whitespace-nowrap">
               Our Portfolio
@@ -284,7 +291,7 @@ const PortfolioSection = () => {
             {item.logo && (
               <div className="absolute top-[499px] left-[25px] w-[109px] px-[14px] py-[7px] rounded-[14px] bg-[#f5f7f9] flex items-center justify-center">
                 <div className="w-[81px] h-[27px] flex items-center justify-center">
-                  <img
+                  <Image
                     className="w-[81px] h-[14.73px] object-fit"
                     src={item.logo}
                     alt={`${item.title} logo`}
@@ -295,7 +302,7 @@ const PortfolioSection = () => {
 
             {/* Card Image */}
             <div className="max-w-[700px] w-full h-[528px] ">
-              <img
+              <Image
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover rounded-t-2xl rounded-b-2xl md:rounded-t-[30px] md:rounded-b-[30px]"
@@ -435,7 +442,7 @@ const PortfolioSection = () => {
                               exit={{ opacity: 0 }}
                               transition={{ duration: 0.5 }}
                             >
-                              <img
+                              <Image
                                 src={image}
                                 className="w-full h-full object-cover"
                                 alt={`Carousel item ${index + 1}`}
@@ -449,7 +456,7 @@ const PortfolioSection = () => {
                           onClick={prevSlide}
                           className="absolute left-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
                         >
-                          <img
+                          <Image
                             width="40"
                             height="40"
                             src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
@@ -461,7 +468,7 @@ const PortfolioSection = () => {
                           onClick={nextSlide}
                           className="absolute right-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
                         >
-                          <img
+                          <Image
                             width="40"
                             height="40"
                             src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
@@ -506,7 +513,7 @@ const PortfolioSection = () => {
                               exit={{ opacity: 0 }}
                               transition={{ duration: 0.5 }}
                             >
-                              <img
+                              <Image
                                 src={image}
                                 className="w-full h-full object-cover"
                                 alt={`Carousel item ${index + 1}`}
@@ -520,7 +527,7 @@ const PortfolioSection = () => {
                           onClick={prevSlide3}
                           className="absolute left-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
                         >
-                          <img
+                          <Image
                             width="40"
                             height="40"
                             src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
@@ -532,7 +539,7 @@ const PortfolioSection = () => {
                           onClick={nextSlide3}
                           className="absolute right-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
                         >
-                          <img
+                          <Image
                             width="40"
                             height="40"
                             src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
