@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-12">
         {/* Logo and Text */}
         <div>
-          <h1 className="text-7xl font-extrabold text-orange-500 leading-tight">
+          <h1 className="text-7xl font-extrabold text-[#0260EB] leading-tight">
             DigiFrills
           </h1>
           <p className="mt-6 text-lg leading-relaxed">
@@ -31,7 +31,7 @@ const Footer = () => {
             {["Home", "Benefits", "Porfolio", "Reviews", "About"].map(
               (item) => (
                 <Link href="#" key={item}>
-                  <span className="group flex items-center gap-2 hover:text-orange-500 cursor-pointer transition-all duration-300">
+                  <span className="group flex items-center gap-2 hover:text-[#0260EB] cursor-pointer transition-all duration-300">
                     <FaAngleRight
                       size={10}
                       className="invisible group-hover:visible group-hover:translate-x-0 -translate-x-1 transition-all duration-300 text-orange-400"
@@ -48,10 +48,10 @@ const Footer = () => {
             {["Linkedin", "Facebook", "Twitter", "Instagram", "Youtube"].map(
               (item) => (
                 <Link href="#" key={item}>
-                  <span className="group flex items-center gap-2 hover:text-orange-500 cursor-pointer transition-all duration-300">
+                  <span className="group flex items-center gap-2 hover:text-[#0260EB] cursor-pointer transition-all duration-300">
                     <FaAngleRight
                       size={10}
-                      className="opacity-0 group-hover:opacity-100 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-300 text-orange-400"
+                      className="opacity-0 group-hover:opacity-100 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-300 text-[#0260EB]"
                     />
                     {item}
                   </span>
@@ -68,21 +68,21 @@ const Footer = () => {
       {/* Contact Details */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
         <div>
-          <div className="flex items-center gap-2 text-orange-500 font-semibold uppercase">
+          <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
             <FaPhoneAlt size={14} /> Phone
           </div>
           <p className="mt-2">(217) 555-0134</p>
         </div>
 
         <div>
-          <div className="flex items-center gap-2 text-orange-500 font-semibold uppercase">
+          <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
             <FaEnvelope size={14} /> Email
           </div>
           <p className="mt-2">agencie@email.com</p>
         </div>
 
         <div>
-          <div className="flex items-center gap-2 text-orange-500 font-semibold uppercase">
+          <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
             <FaMapMarkerAlt size={14} /> Address
           </div>
           <p className="mt-2 leading-relaxed">
@@ -93,7 +93,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <div className="flex items-center gap-2 text-orange-500 font-semibold uppercase">
+          <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
             <FaClock size={14} /> Opening Hours
           </div>
           <p className="mt-2 leading-relaxed">

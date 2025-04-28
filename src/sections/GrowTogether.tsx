@@ -1,5 +1,8 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image"; // ✅ import next/image
+import Image from "next/image";
 
 const logos = [
   "https://framerusercontent.com/images/6QEz8kJbwqWFzbNDcgcMwaBk7Jk.svg",
@@ -24,38 +27,86 @@ const fadeInVariants = {
 };
 
 export default function GrowTogetherSection() {
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const getRows = () => {
+    if (windowWidth < 750) {
+      // Mobile: 4 + 4 + 2 (all centered)
+      return [logos.slice(0, 4), logos.slice(4, 8), logos.slice(8, 10)];
+    } else if (windowWidth < 1025) {
+      // Tablet (750px-1023px): 8 + 2 (both centered)
+      return [logos.slice(0, 8), logos.slice(8, 10)];
+    } else {
+      // Desktop (1024px+): 5 + 5 (both centered)
+      return [logos.slice(0, 5), logos.slice(5, 10)];
+    }
+  };
+
+  const rows = getRows();
+
   return (
-    <section className="flex flex-col items-center justify-center py-16 px-4 text-center">
+    <section className="flex flex-col items-center justify-center py-16 px-4 text-center overflow-hidden">
       <motion.h2
         initial={{ opacity: 0, filter: "blur(8px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: 0.8 }}
-        className="hero-message max-w-3xl"
+        className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-3xl"
       >
-        We don’t just work <br /> together—
-        <span className="">we </span>
-        <span className="text-[#0260EB]">grow</span>
-        <span className=""> together.</span>
+        We don&apos;t just work together—we{" "}
+        <span className="text-[#0260EB]">grow</span> together.
       </motion.h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 mt-12">
-        {logos.map((logo, i) => (
-          <motion.div
-            key={i}
-            custom={i}
-            initial="hidden"
-            animate="visible"
-            variants={fadeInVariants}
-            className="bg-gray-100 p-6 rounded-3xl  flex items-center justify-center size-32 mx-auto"
+      <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+        Service designed to help your brand shine brighter.
+      </p>
+
+      <div className="mt-12 w-full max-w-6xl mx-auto space-y-8">
+        {rows.map((row, rowIndex) => (
+          <div
+            key={rowIndex}
+            className={`flex flex-wrap justify-center gap-4 ${
+              windowWidth >= 750 && windowWidth < 1024 ? "gap-4" : "md:gap-6"
+            }`}
           >
-            <Image
-              src={logo}
-              alt={`Logo ${i + 1}`}
-              width={80} // Customize based on actual logo size
-              height={80}
-              className="object-contain h-full w-full"
-            />
-          </motion.div>
+            {row.map((logo, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                initial="hidden"
+                animate="visible"
+                variants={fadeInVariants}
+                className={`
+                  bg-gray-100 rounded-2xl md:rounded-3xl flex items-center justify-center
+                  ${
+                    windowWidth < 750
+                      ? "w-16 h-16 p-4"
+                      : windowWidth < 1024
+                      ? "w-18 h-18 p-4"
+                      : "w-24 h-24 p-6"
+                  }
+                `}
+              >
+                <Image
+                  src={logo}
+                  alt={`Logo ${i + 1}`}
+                  width={80}
+                  height={80}
+                  className="object-contain w-full h-full"
+                  priority={i < 3}
+                />
+              </motion.div>
+            ))}
+          </div>
         ))}
       </div>
     </section>
