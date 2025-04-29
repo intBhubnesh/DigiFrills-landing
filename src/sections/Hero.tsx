@@ -1,66 +1,32 @@
 "use client";
 
-import { motion, stagger, animate } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { Star } from "@mui/icons-material";
 import { StatCard } from "./StatCard";
+import CustomCursor from "./CustomCursor";
 
 const Hero = () => {
   const heroTextRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const { ref: mediaRef, inView: mediaInView } = useInView({
-    threshold: 0.8,
+    threshold: 0.5,
     triggerOnce: false,
   });
-
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [hover, setHover] = useState(false);
-  const [headingRef, headingInView] = useInView({
+  const { ref: headingRef, inView: headingInView } = useInView({
     threshold: 0.5,
     triggerOnce: true,
   });
-
-  // Animate hero text on load
-  useEffect(() => {
-    if (heroTextRef.current) {
-      animate(
-        heroTextRef.current.querySelectorAll(".hero-text"),
-        { opacity: 1, y: 0 },
-        { delay: stagger(0.1), duration: 0.8 }
-      );
-    }
-  }, []);
-
-  // Track mouse globally and detect hover over video
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const bounds = videoWrapperRef.current?.getBoundingClientRect();
-      if (bounds) {
-        const isInside =
-          e.clientX >= bounds.left &&
-          e.clientX <= bounds.right &&
-          e.clientY >= bounds.top &&
-          e.clientY <= bounds.bottom;
-
-        setHover(isInside);
-        if (isInside) {
-          setCursorPosition({ x: e.clientX, y: e.clientY });
-        }
-      }
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    return () => document.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   return (
     <section
       ref={heroTextRef}
       className="relative w-full flex flex-col items-center text-center px-6 lg:px-12 py-16 md:py-20 lg:py-24 xl:py-28 overflow-hidden"
     >
-      <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-left relative pt-12 lg:pt-0 gap-2 flex-col flex  ">
+      <CustomCursor videoRef={videoWrapperRef} />
+      <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-left relative pt-12 lg:pt-0 gap-2 flex-col flex">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -69,23 +35,31 @@ const Hero = () => {
         >
           Big ideas, smart strategies, <br />
           and endless creativity to <br />
-          supercharge<span className="text-yellow-500  inline-block">⚡</span>your business !
+          supercharge<span className="text-yellow-500 inline-block">⚡</span>
+          your business !
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="hero-text text-lg md:text-xl mt-6 max-w-[640px] text-[#0f0f0f] font-[inter] font-normal leading-[25.2px] tracking-[-0.18px] opacity-80"
         >
-          Your go-to IT partner for scalable systems, AI integration, and machine learning solutions that future-proof your operations. We don’t just solve problems — we build intelligent experiences.
+          Your go-to IT partner for scalable systems, AI integration, and
+          machine learning solutions that future-proof your operations. We
+          don&apos;t just solve problems — we build intelligent experiences.
         </motion.p>
 
         <motion.button
-          initial={{  y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           whileHover={{
             color: "#F15533",
           }}
           style={{
-            boxShadow: "0px 1.344px 0.537px -0.625px rgba(0, 0, 0, 0.09), 0px 3.185px 1.274px -1.25px rgba(0, 0, 0, 0.09), 0px 5.809px 2.324px -1.875px rgba(0, 0, 0, 0.08), 0px 9.658px 3.863px -2.5px rgba(0, 0, 0, 0.08), 0px 15.597px 6.239px -3.125px rgba(0, 0, 0, 0.07), 0px 25.531px 10.212px -3.75px rgba(0, 0, 0, 0.06), 0px 43.962px 17.585px -4.375px rgba(0, 0, 0, 0.04)",
+            boxShadow:
+              "0px 1.344px 0.537px -0.625px rgba(0, 0, 0, 0.09), 0px 3.185px 1.274px -1.25px rgba(0, 0, 0, 0.09), 0px 5.809px 2.324px -1.875px rgba(0, 0, 0, 0.08), 0px 9.658px 3.863px -2.5px rgba(0, 0, 0, 0.08), 0px 15.597px 6.239px -3.125px rgba(0, 0, 0, 0.07), 0px 25.531px 10.212px -3.75px rgba(0, 0, 0, 0.06), 0px 43.962px 17.585px -4.375px rgba(0, 0, 0, 0.04)",
           }}
           className="hero-text inline-flex w-fit bg-black text-white px-8 py-3 rounded-full shadow-lg mt-6 font-inter text-lg font-medium leading-[22.5px] tracking-[-0.45px]"
         >
@@ -94,6 +68,8 @@ const Hero = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="hero-text flex items-center space-x-2 mt-6 text-gray-700"
         >
           <div className="flex space-x-1 text-yellow-500">
@@ -141,7 +117,6 @@ const Hero = () => {
             />
           </motion.div>
 
-          {/* Center Video with hover tracking */}
           <motion.div
             ref={videoWrapperRef}
             initial={{ width: "100%" }}
@@ -179,33 +154,6 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Custom Cursor */}
-      {hover && (
-        <motion.div
-          className="fixed z-50 pointer-events-none flex items-center justify-center"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          exit={{ scale: 0 }}
-          style={{
-            top: `${cursorPosition.y}px`,
-            left: `${cursorPosition.x}px`,
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <div className="w-16 h-16 rounded-full bg-black/90 backdrop-blur-sm shadow-xl flex items-center justify-center relative">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-              className="absolute inset-0 border-2 border-orange-500 rounded-full border-t-transparent"
-            />
-            <div className="w-0 h-0 border-t-[8px] border-b-[8px] border-l-[12px] border-t-transparent border-b-transparent border-l-orange-500" />
-            <span className="absolute -right-28 text-black font-semibold text-sm whitespace-nowrap">
-              PLAY SHOWREEL
-            </span>
-          </div>
-        </motion.div>
-      )}
-
       {/* Stats Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -226,21 +174,19 @@ const Hero = () => {
                 }
               : {}
           }
-          className="hero-message "
+          className="hero-message text-4xl md:text-5xl lg:text-6xl font-[inter] font-medium leading-tight tracking-tight"
         >
           <span className="text-[#0260EB]">Building</span>
-          <span className=""> brands, </span>
+          <span> brands, </span>
           <span className="text-[#0260EB]">boosting</span>
-          <span className=""> businesses,</span>
+          <span> businesses,</span>
           <br />
-          <span className=""> and</span>
+          <span> and</span>
           <span className="text-[#0260EB]"> redefining</span>
-          <span className=""> possibilities. </span>
-          <span className="text-black  inline-block">Let&apos;s</span>
+          <span> possibilities. </span>
+          <span className="text-black inline-block">Let&apos;s</span>
           <br />
-          <span className="">
-            grow your brand together.
-          </span>
+          <span>grow your brand together.</span>
         </motion.h2>
 
         <div className="grid mt-12 grid-cols-1 md:grid-cols-3 w-full gap-4">

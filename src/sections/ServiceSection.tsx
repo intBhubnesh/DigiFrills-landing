@@ -196,6 +196,8 @@ export default function OurServices() {
                           <Image
                             src={service.icon[i]}
                             alt="Icon"
+                            width={16}
+                            height={16}
                             className="w-4 h-4 mr-2"
                           />
                         )}
@@ -264,8 +266,11 @@ export default function OurServices() {
                     <Image
                       src={service.image}
                       alt="service image"
+                      width={200}
+                      height={200}
                       className="rounded-4xl mt-5"
                     />
+
                     <div
                       className="flex flex-wrap gap-2"
                       dangerouslySetInnerHTML={{ __html: service.usecase }}
@@ -315,8 +320,11 @@ export default function OurServices() {
                 <Image
                   src={testimonial.profile}
                   alt="Profile"
-                  className="size-16 rounded-2xl "
+                  width={64} // or another value matching your "size-16"
+                  height={64}
+                  className="size-16 rounded-2xl"
                 />
+
                 <p className="testimonial-text">{testimonial.testimonial}</p>
               </div>
             )

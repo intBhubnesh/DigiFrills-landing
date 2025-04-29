@@ -1,9 +1,12 @@
-
 import type { NextConfig } from "next";
 
 module.exports = {
   images: {
-    domains: ['framerusercontent.com', 'cdn-icons-png.flaticon.com'],
+    domains: [
+      "framerusercontent.com",
+      "cdn-icons-png.flaticon.com",
+      "img.youtube.com",
+    ],
   },
 };
 

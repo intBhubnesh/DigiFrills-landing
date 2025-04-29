@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -43,10 +43,10 @@ const portfolioItems: PortfolioItem[] = [
       challenge:
         "Frostify had the magic of handcrafted, mouthwatering ice creams but lacked a strong visual identity to stand out in the crowded freezer aisle...",
       features: [
-        "Brand Identity Design: We created a fresh and playful identity for Frostify that screams “premium yet fun.” From a vibrant color palette inspired by their delicious flavors to a quirky ice-cream-cone mascot, the brand feels instantly lovable and unforgettable",
-        "Packaging Design:Designed packaging that pops on the shelves. Frostify’s new tubs became Instagrammable stars, with pastel tones, cheeky taglines like “Scoop Dreams,” and a design that tells a story with every bite",
-        "Social Media Strategy:Launched a campaign titled “Chill Responsibly”, focusing on Frostify’s creamy indulgence. This included playful Reels, flavor reveals, and interactive polls, which skyrocketed engagement by 75% in just three months.",
-        "Storefront & Digital Presence: Revamped Frostify’s website and introduced a seamless online ordering system. Added a “Flavor Finder” quiz to recommend the perfect flavor based on mood (because, why not?)",
+        "Brand Identity Design: We created a fresh and playful identity for Frostify that screams 'premium yet fun.' From a vibrant color palette inspired by their delicious flavors to a quirky ice-cream-cone mascot, the brand feels instantly lovable and unforgettable",
+        "Packaging Design:Designed packaging that pops on the shelves. Frostify's new tubs became Instagrammable stars, with pastel tones, cheeky taglines like 'Scoop Dreams,' and a design that tells a story with every bite",
+        "Social Media Strategy:Launched a campaign titled 'Chill Responsibly', focusing on Frostify's creamy indulgence. This included playful Reels, flavor reveals, and interactive polls, which skyrocketed engagement by 75% in just three months.",
+        "Storefront & Digital Presence: Revamped Frostify's website and introduced a seamless online ordering system. Added a 'Flavor Finder' quiz to recommend the perfect flavor based on mood (because, why not?)",
       ],
       achievements: [
         "300% increase in in-store sales",
@@ -95,11 +95,10 @@ const portfolioItems: PortfolioItem[] = [
       "SEO & Performance",
     ],
     title:
-      "How we revamped an Agency’s digital presence to drive 40% more client engagement",
+      "How we revamped an Agency's digital presence to drive 40% more client engagement",
     siteUrl: "#",
     hasCarousel: true,
     carouselImages: [
-      // Using same image 4 times for demo; replace with distinct images if needed
       "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
       "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
       "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
@@ -140,13 +139,15 @@ const PortfolioSection = () => {
   const [isPlaying3, setIsPlaying3] = useState(true);
 
   // Helper: clone first and last images for infinite loop effect
-  const getClonedImages = (images: string[]) => {
-    if (images.length === 0) return [];
-    return [images[images.length - 1], ...images, images[0]];
-  };
-
   // Initialize cloned images once on mount
   useEffect(() => {
+    const getClonedImages = (images: string[]): string[] => {
+      if (!images || images.length === 0) return [];
+      const lastItem = images[images.length - 1];
+      const firstItem = images[0];
+      return [lastItem, ...images, firstItem];
+    };
+
     if (portfolioItems[0].carouselImages) {
       setCarouselImages(getClonedImages(portfolioItems[0].carouselImages));
       setCarouselIndex(1);
@@ -155,15 +156,34 @@ const PortfolioSection = () => {
       setCarouselImages3(getClonedImages(portfolioItems[2].carouselImages));
       setCarouselIndex3(1);
     }
-  }, [
-    getClonedImages,
-    setCarouselImages,
-    setCarouselIndex,
-    setCarouselImages3,
-    setCarouselIndex3,
-  ]);
+  }, []); // Empty dependency array (runs once on mount)
 
-  // Autoplay for first card
+  // --- Corrected Slide Functions ---
+  const nextSlide = useCallback(() => {
+    if (carouselIndex >= carouselImages.length - 1) return;
+    setIsTransitioning(true);
+    setCarouselIndex((prev) => prev + 1);
+  }, [carouselIndex, carouselImages.length]);
+
+  const prevSlide = useCallback(() => {
+    if (carouselIndex <= 0) return;
+    setIsTransitioning(true);
+    setCarouselIndex((prev) => prev - 1);
+  }, [carouselIndex]);
+
+  const nextSlide3 = useCallback(() => {
+    if (carouselIndex3 >= carouselImages3.length - 1) return;
+    setIsTransitioning3(true);
+    setCarouselIndex3((prev) => prev + 1);
+  }, [carouselIndex3, carouselImages3.length]);
+
+  const prevSlide3 = useCallback(() => {
+    if (carouselIndex3 <= 0) return;
+    setIsTransitioning3(true);
+    setCarouselIndex3((prev) => prev - 1);
+  }, [carouselIndex3]);
+
+  // Autoplay effects
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (isPlaying && expandedCard === 1) {
@@ -172,9 +192,8 @@ const PortfolioSection = () => {
       }, 3000);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, expandedCard, carouselIndex]);
+  }, [isPlaying, expandedCard, nextSlide]);
 
-  // Autoplay for third card
   useEffect(() => {
     let interval3: NodeJS.Timeout;
     if (isPlaying3 && expandedCard === 3) {
@@ -183,7 +202,7 @@ const PortfolioSection = () => {
       }, 3000);
     }
     return () => clearInterval(interval3);
-  }, [isPlaying3, expandedCard, carouselIndex3]);
+  }, [isPlaying3, expandedCard, nextSlide3]);
 
   // Toggle expand/collapse details
   const toggleExpand = (index: number) => {
@@ -194,32 +213,6 @@ const PortfolioSection = () => {
       setCarouselIndex(1);
       setCarouselIndex3(1);
     }
-  };
-
-  // Carousel navigation for first card
-  const nextSlide = () => {
-    if (carouselIndex >= carouselImages.length - 1) return;
-    setIsTransitioning(true);
-    setCarouselIndex((prev) => prev + 1);
-  };
-
-  const prevSlide = () => {
-    if (carouselIndex <= 0) return;
-    setIsTransitioning(true);
-    setCarouselIndex((prev) => prev - 1);
-  };
-
-  // Carousel navigation for third card
-  const nextSlide3 = () => {
-    if (carouselIndex3 >= carouselImages3.length - 1) return;
-    setIsTransitioning3(true);
-    setCarouselIndex3((prev) => prev + 1);
-  };
-
-  const prevSlide3 = () => {
-    if (carouselIndex3 <= 0) return;
-    setIsTransitioning3(true);
-    setCarouselIndex3((prev) => prev - 1);
   };
 
   // Handle transition end for first card carousel (jump instantly if on clone)
@@ -266,7 +259,12 @@ const PortfolioSection = () => {
         <div className="max-w-[800px] w-full flex flex-col items-center justify-center px-[20px] gap-[5px]">
           <div className="w-[132.79px] h-[33px] rounded-[25px] bg-[#f5f7f9] flex justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
             <div className="size-[32px] bg-black rounded-full p-[9px] flex items-center justify-center">
-              <Image src="/portfolio-icon.svg" alt="section icon" />
+              <Image
+                src="/portfolio-icon.svg"
+                alt="section icon"
+                width={64}
+                height={64}
+              />
             </div>
             <div className="text-[15.1px] font-medium leading-[22.5px] tracking-[-0.45px] text-black whitespace-nowrap">
               Our Portfolio
@@ -292,20 +290,24 @@ const PortfolioSection = () => {
               <div className="absolute top-[499px] left-[25px] w-[109px] px-[14px] py-[7px] rounded-[14px] bg-[#f5f7f9] flex items-center justify-center">
                 <div className="w-[81px] h-[27px] flex items-center justify-center">
                   <Image
-                    className="w-[81px] h-[14.73px] object-fit"
+                    className="object-fit"
                     src={item.logo}
                     alt={`${item.title} logo`}
+                    width={81}
+                    height={14.73}
                   />
                 </div>
               </div>
             )}
 
             {/* Card Image */}
-            <div className="max-w-[700px] w-full h-[528px] ">
+            <div className="max-w-[700px] w-full h-[528px]">
               <Image
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-cover rounded-t-2xl rounded-b-2xl md:rounded-t-[30px] md:rounded-b-[30px]"
+                className="object-cover rounded-t-2xl rounded-b-2xl md:rounded-t-[30px] md:rounded-b-[30px]"
+                width={700}
+                height={528}
               />
             </div>
 
@@ -444,8 +446,10 @@ const PortfolioSection = () => {
                             >
                               <Image
                                 src={image}
-                                className="w-full h-full object-cover"
                                 alt={`Carousel item ${index + 1}`}
+                                width={400}
+                                height={300}
+                                className="w-full h-full object-cover"
                               />
                             </motion.div>
                           ))}
@@ -517,6 +521,8 @@ const PortfolioSection = () => {
                                 src={image}
                                 className="w-full h-full object-cover"
                                 alt={`Carousel item ${index + 1}`}
+                                width={400}
+                                height={300}
                               />
                             </motion.div>
                           ))}
