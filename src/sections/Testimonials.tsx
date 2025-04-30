@@ -190,8 +190,11 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
             <Image
               src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
               alt={`${name} video thumbnail`}
-              className="absolute inset-0 w-full h-full object-cover "
+              className="absolute inset-0 w-full h-full object-cover"
+              width={1280} // Set width for the image
+              height={720} // Set height for the image
             />
+
             <div className="absolute inset-0 flex items-center justify-center">
               <div
                 className={`w-19 h-14 rounded-2xl flex items-center justify-center ${
@@ -416,6 +419,8 @@ const Testimonial: React.FC = () => {
                           src={src}
                           alt={`Client ${index + 1}`}
                           className="h-full w-full object-cover"
+                          width={48} // Set the width based on the size of the parent container (for example: 48px = 6 * 8)
+                          height={48} // Set the height based on the size of the parent container (for example: 48px = 6 * 8)
                         />
                       </div>
                     ))}
@@ -440,6 +445,8 @@ const Testimonial: React.FC = () => {
                           src={src}
                           alt={`Client ${index + 1}`}
                           className="h-full w-full object-cover"
+                          width={32} // Width is set to match h-6 and w-6 (6 * 8 = 48px, you can adjust based on your design)
+                          height={32} // Height is set to match h-6 and w-6 (same as width)
                         />
                       </div>
                     ))}

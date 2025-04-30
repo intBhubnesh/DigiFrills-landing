@@ -53,7 +53,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-6 text-sm font-medium z-40"
+            className="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-6 text-sm font-medium z-50"
           >
             {["Services", "Projects", "Process", "Pricing", "Reviews"].map(
               (item) => (
@@ -61,6 +61,7 @@ const Navbar = () => {
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   onClick={() => setIsOpen(false)}
+                  className="hover:text-gray-600"
                 >
                   {item}
                 </Link>

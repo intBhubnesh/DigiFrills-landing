@@ -52,17 +52,23 @@ export const StatCard = ({
 
   return (
     <div className="text-left font-[inter]">
-    <div
-      ref={ref}
-      className="bg-white p-4 rounded-4xl border border-dashed border-gray-400 transition-all"
-    >
-      <div className="text-6xl  font-semibold text-black font-[inter] inline-flex items-center justify-start w-full">
-        <motion.div className="text-[#0F0F0F] font-[inter] text-[74px] font-normal leading-[74px] tracking-[-6.66px] ">{rounded}</motion.div>
-        <div className="inline-flex text-[#0260EB]">{suffix}</div>
+      <div
+        ref={ref}
+        className="bg-white p-4 rounded-4xl border border-dashed border-gray-400 transition-all"
+      >
+        <div className="text-6xl  font-semibold text-black font-[inter] inline-flex items-center justify-start w-full">
+          <motion.div className="text-[#0F0F0F] font-[inter] text-[74px] font-normal leading-[74px] tracking-[-6.66px] ">
+            {rounded}
+          </motion.div>
+          <div className="inline-flex text-[#0260EB]">{suffix}</div>
+        </div>
+        <h3 className="text-xl mb-2 text-[#0F0F0F] font-[inter] text-[20px] font-medium leading-[28px] tracking-[-0.6px]">
+          {title}
+        </h3>
       </div>
-      <h3 className="text-xl mb-2 text-[#0F0F0F] font-[inter] text-[20px] font-medium leading-[28px] tracking-[-0.6px]">{title}</h3>
-      </div>
-      <p className="text-[#0F0F0F] font-[inter] text-[15px] font-medium leading-[22.5px] tracking-[-0.45px] opacity-80 text-justify">{description}</p>
+      <p className="text-[#0F0F0F] font-[inter] text-[15px] font-medium leading-[22.5px] tracking-[-0.45px] opacity-80 text-justify">
+        {description}
+      </p>
     </div>
   );
 };
