@@ -86,12 +86,12 @@ const Comparison = () => {
 
           {/* Agent-G Column */}
           <div className="bg-black text-white p-6 space-y-4">
-            <h3 className="text-xl font-bold text-center mb-4 text-red-500">
+            <h3 className="text-xl font-bold text-center mb-4 text-[#0260EB]">
               Agent-G
             </h3>
             {agentG.map(({ text, icon: Icon }, idx) => (
               <div key={idx} className="flex items-center space-x-3">
-                <Icon className="text-red-500" />
+                <Icon className="text-[#0260EB]" />
                 <span>{text}</span>
               </div>
             ))}
