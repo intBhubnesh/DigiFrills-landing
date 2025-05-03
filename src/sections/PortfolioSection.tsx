@@ -335,7 +335,7 @@ const PortfolioSection = () => {
                 // Card 2: Only View Site button
                 <a
                   href={item.siteUrl}
-                  className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#f15533] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                  className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#0260EB] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
                 >
                   <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
                     View Site
@@ -355,7 +355,7 @@ const PortfolioSection = () => {
                 <div className="flex flex-col gap-2">
                   <a
                     href={item.siteUrl}
-                    className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#f15533] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                    className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#0260EB] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
                   >
                     <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
                       View Site
@@ -372,7 +372,7 @@ const PortfolioSection = () => {
                   </a>
                   <div
                     onClick={() => toggleExpand(item.id)}
-                    className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#f15533] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                    className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#0260EB] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
                   >
                     <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
                       {expandedCard === item.id
@@ -394,7 +394,7 @@ const PortfolioSection = () => {
                 // Other cards: Only Expand Details button
                 <div
                   onClick={() => toggleExpand(item.id)}
-                  className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#f15533] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                  className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#0260EB] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
                 >
                   <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
                     {expandedCard === item.id

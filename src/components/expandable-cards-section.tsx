@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { useMediaQuery } from "@/hooks/use-media-query";
+
 type CardData = {
   number: string;
   title: string;
@@ -39,129 +40,176 @@ const cardData: CardData[] = [
 export default function ExpandableCardsSection() {
   const [activeCard, setActiveCard] = useState<number | null>(0);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const contentRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const numberRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const isTablet = useMediaQuery("(min-width: 769px) and (max-width: 1024px)");
 
   const handleCardClick = (index: number) => {
-    setActiveCard(activeCard === index ? null : index);
+    if (activeCard === index) return;
+    setActiveCard(index);
+  };
+
+  const handleHoverEnter = (index: number) => {
+    if (isMobile || activeCard === index) return;
+    gsap.to(numberRefs.current[index], {
+      x: "-15%",
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  };
+
+  const handleHoverLeave = (index: number) => {
+    if (isMobile || activeCard === index) return;
+    gsap.to(numberRefs.current[index], {
+      x: "35%",
+      opacity: 0.8,
+      duration: 0.5,
+      ease: "power2.out",
+    });
   };
 
   useEffect(() => {
-    // Reset all cards to their default state
-    cardRefs.current.forEach((card, index) => {
-      if (!card) return;
+    if (isMobile) {
+      cardRefs.current.forEach((card, index) => {
+        if (!card) return;
+        const isActive = activeCard === index;
+        const baseSpacing = 60;
 
-      gsap.to(card, {
-        backgroundColor: activeCard === index ? "#000" : "#f7f7f7",
-        color: activeCard === index ? "#fff" : "#000",
-        duration: 0.4,
-        ease: "power2.out",
-      });
-    });
-
-    // Animate content visibility
-    contentRefs.current.forEach((content, index) => {
-      if (!content) return;
-
-      if (activeCard === index) {
-        gsap.fromTo(
-          content,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.5, delay: 0.2, ease: "power2.out" }
-        );
-      } else {
-        gsap.to(content, {
-          opacity: 0,
-          y: 20,
-          duration: 0.3,
-          ease: "power2.in",
+        gsap.to(card, {
+          top: `${index * baseSpacing}px`,
+          height: isActive ? "auto" : "60px",
+          width: "100%",
+          zIndex: isActive ? 50 : 40 - Math.abs(index - (activeCard || 0)),
+          backgroundColor: isActive ? "#000" : "#f7f7f7",
+          duration: 0.4,
+          ease: "power2.out",
         });
-      }
-    });
+      });
+    } else {
+      const totalWidth = 100;
+      const cardWidth = 8;
+      const activeCardWidth = 92;
+      const totalWidthNeeded =
+        (cardData.length - 1) * cardWidth + activeCardWidth;
+      const scaleFactor = totalWidth / totalWidthNeeded;
 
-    // Adjust layout based on active card
-    if (!isMobile) {
-      const timeline = gsap.timeline();
+      let position = 0;
 
       cardRefs.current.forEach((card, index) => {
         if (!card) return;
+        const isActive = activeCard === index;
+        const width = isActive
+          ? activeCardWidth * scaleFactor
+          : cardWidth * scaleFactor;
 
-        if (activeCard === index) {
-          timeline.to(
-            card,
-            {
-              flex: isTablet ? 2 : 3,
-              duration: 0.5,
-              ease: "power2.inOut",
-            },
-            0
-          );
-        } else {
-          timeline.to(
-            card,
-            {
-              flex: 1,
-              duration: 0.5,
-              ease: "power2.inOut",
-            },
-            0
-          );
+        gsap.to(card, {
+          left: `${position}%`,
+          width: `${width}%`,
+          height: "500px",
+          backgroundColor: isActive ? "#000" : "#f7f7f7",
+          zIndex: isActive ? 50 : 40,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+
+        position += width;
+
+        if (!isActive) {
+          gsap.set(numberRefs.current[index], {
+            x: "35%",
+            opacity: 0.8,
+          });
         }
       });
     }
-  }, [activeCard, isMobile, isTablet]);
+  }, [activeCard, isMobile]);
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-16 overflow-hidden">
-      <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full transition-all duration-500 ease-in-out">
-        {cardData.map((card, index) => (
-          <div
-            key={index}
-            ref={(el) => {
-              cardRefs.current[index] = el;
-            }}
-            onClick={() => handleCardClick(index)}
-            className={`relative rounded-2xl p-6 md:p-8 cursor-pointer transition-all
-                       flex flex-col
-                       min-h-[200px] md:min-h-[400px]
-                       ${
-                         activeCard === index
-                           ? "bg-black text-white"
-                           : "bg-[#f7f7f7] text-black"
-                       }
-                       overflow-hidden`}
-            style={{
-              flex: isMobile
-                ? "1 1 auto"
-                : activeCard === index
-                ? isTablet
-                  ? 2
-                  : 3
-                : 1,
-            }}
-          >
-            <span className="text-6xl md:text-8xl font-bold opacity-80">
-              {card.number}
-            </span>
+    <section className="w-full min-h-screen mx-auto px-4 py-16 bg-gray-50 overflow-hidden relative z-10">
+      <div className="relative mx-auto h-[600px] max-w-6xl">
+        {cardData.map((card, index) => {
+          const isActive = activeCard === index;
 
-            <h3 className="text-xl md:text-2xl font-bold mt-4">{card.title}</h3>
-
+          return (
             <div
+              key={index}
               ref={(el) => {
-                contentRefs.current[index] = el;
+                cardRefs.current[index] = el;
               }}
-              className={`mt-4 text-base md:text-lg
-                         ${
-                           activeCard === index
-                             ? "block"
-                             : "hidden md:block md:opacity-0"
-                         }`}
+              onClick={() => handleCardClick(index)}
+              onMouseEnter={() => handleHoverEnter(index)}
+              onMouseLeave={() => handleHoverLeave(index)}
+              className={`absolute rounded-2xl cursor-pointer overflow-hidden shadow-lg transition-all duration-400 ${
+                isActive ? "bg-black text-white" : "bg-[#f7f7f7] text-black"
+              }`}
+              style={{
+                height: isMobile ? (isActive ? "auto" : "60px") : "500px",
+                top: isMobile ? `${index * 60}px` : "50%",
+                transform: isMobile ? "" : "translateY(-50%)",
+                minHeight: isMobile && isActive ? "200px" : "",
+                maxHeight: isMobile && isActive ? "70vh" : "",
+                padding: "20px 24px",
+              }}
             >
-              <p>{card.description}</p>
+              {!isMobile && (
+                <div className="flex flex-col h-full">
+                  <div
+                    className={`${
+                      isActive ? "flex items-start" : ""
+                    } overflow-visible`}
+                  >
+                    <span
+                      ref={(el) => {
+                        numberRefs.current[index] = el;
+                      }}
+                      className={`text-8xl font-bold leading-none ${
+                        isActive ? "text-white" : "text-[#0260EB]"
+                      }`}
+                      style={{
+                        position: "relative",
+                        display: "inline-block",
+                        left: "-8px",
+                      }}
+                    >
+                      {card.number}
+                    </span>
+                    {isActive && (
+                      <h3 className="ml-6 text-2xl font-bold mt-4">
+                        {card.title}
+                      </h3>
+                    )}
+                  </div>
+                  {isActive && (
+                    <div className="mt-auto mb-4">
+                      <p className="text-lg">{card.description}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {isMobile && (
+                <div className="flex flex-col">
+                  <span
+                    className={`text-5xl font-bold ${
+                      !isActive ? "text-[#0260EB]" : "text-white"
+                    }`}
+                  >
+                    {card.number}
+                  </span>
+                  {isActive && (
+                    <>
+                      <h3 className="mt-2 text-xl font-bold">{card.title}</h3>
+                      <p className="mt-4 text-base">{card.description}</p>
+                    </>
+                  )}
+                  {!isActive && index > activeCard! && (
+                    <h3 className="mt-2 text-xl font-bold">{card.title}</h3>
+                  )}
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 "use client";
+
 import Navbar from "../sections/Navbar";
 import Hero from "../sections/Hero";
 import Work from "../sections/Work";
@@ -11,6 +12,7 @@ import Comparison from "@/sections/Comparison";
 import ServiceSection from "@/sections/ServiceSection";
 import PortfolioSection from "@/sections/PortfolioSection";
 import Faq from "@/sections/Faq";
+import { Element } from "react-scroll";
 
 const faqItems = [
   {
@@ -60,35 +62,34 @@ export default function Home() {
     <div className="w-full">
       <Navbar />
       <Hero />
-
       <BenefitsCarousel />
       <GrowTogetherSection />
 
       {/* Services Section */}
-      <section id="services" className="scroll-mt-20">
+      <Element name="services" className="scroll-mt-24">
         <ServiceSection />
-      </section>
+      </Element>
 
       {/* Projects Section */}
-      <section id="projects" className="scroll-mt-20">
+      <Element name="projects" className="scroll-mt-24">
         <PortfolioSection />
-      </section>
+      </Element>
 
       {/* Process Section */}
-      <section id="process" className="scroll-mt-20">
+      <Element name="process" className="scroll-mt-24">
         <Work />
         <Comparison />
-      </section>
+      </Element>
 
       {/* Reviews Section */}
-      <section id="reviews" className="scroll-mt-20">
+      <Element name="reviews" className="scroll-mt-24">
         <Testimonial />
-      </section>
+      </Element>
 
       {/* Pricing Section */}
-      <section id="pricing" className="scroll-mt-20">
+      <Element name="pricing" className="scroll-mt-24">
         <Faq faqs={faqItems} />
-      </section>
+      </Element>
 
       <QuoteSection />
       <Footer />
