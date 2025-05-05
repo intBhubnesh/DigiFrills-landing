@@ -32,26 +32,28 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const node = cardRef.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Capture observer in callback scope
+          const currentObserver = observer;
           setTimeout(() => {
             setIsVisible(true);
+            currentObserver.unobserve(node);
           }, rowDelay);
-          observer.unobserve(entry.target);
         }
       },
       { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
+    observer.observe(node);
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
-      }
+      observer.unobserve(node);
+      observer.disconnect();
     };
   }, [rowDelay]);
 
@@ -137,13 +139,15 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
   const videoId = getYoutubeId(videoUrl);
 
   useEffect(() => {
+    const node = videoRef.current; // Capture current value in variable
+    if (!node) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             setIsVisible(true);
           }, rowDelay);
-          observer.unobserve(entry.target);
+          observer.unobserve(node);
         }
       },
       { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
@@ -154,9 +158,7 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
     }
 
     return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
-      }
+      observer.unobserve(node); // Use captured node in cleanup
     };
   }, [rowDelay]);
 
@@ -249,11 +251,13 @@ const Testimonial: React.FC = () => {
   const animationDuration = 600;
 
   useEffect(() => {
+    const node = headerRef.current; // Capture current value in variable
+    if (!node) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsHeaderVisible(true);
-          observer.unobserve(entry.target);
+          observer.unobserve(node);
         }
       },
       { threshold: 0.1 }
@@ -268,9 +272,7 @@ const Testimonial: React.FC = () => {
     }
 
     return () => {
-      if (headerRef.current) {
-        observer.unobserve(headerRef.current);
-      }
+      observer.unobserve(node); // Use captured node in cleanup
     };
   }, [hasAnimated]);
 

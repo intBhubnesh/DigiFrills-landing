@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import LoadingScreen from "@/sections/LoadingScreen";
 
 const InterSans = Inter({
   variable: "--font-Inter-sans",
@@ -19,7 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${InterSans.variable}  antialiased`}>{children}</body>
+      <body className={`${InterSans.variable}  antialiased`}>
+        <LoadingScreen />
+        {children}
+      </body>
     </html>
   );
 }

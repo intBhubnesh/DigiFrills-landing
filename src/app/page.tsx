@@ -13,6 +13,8 @@ import ServiceSection from "@/sections/ServiceSection";
 import PortfolioSection from "@/sections/PortfolioSection";
 import Faq from "@/sections/Faq";
 import { Element } from "react-scroll";
+import LoadingScreen from "@/sections/LoadingScreen";
+import { Suspense } from "react";
 
 const faqItems = [
   {
@@ -60,6 +62,10 @@ const faqItems = [
 export default function Home() {
   return (
     <div className="w-full">
+      <Suspense fallback={<div>Loading...</div>}>
+        <LoadingScreen />
+      </Suspense>
+
       <Navbar />
       <Hero />
       <BenefitsCarousel />
