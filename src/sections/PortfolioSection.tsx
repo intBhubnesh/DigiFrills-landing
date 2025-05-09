@@ -266,13 +266,13 @@ const PortfolioSection = () => {
                 height={64}
               />
             </div>
-            <div className="text-[15.1px] font-medium leading-[22.5px] tracking-[-0.45px] text-black whitespace-nowrap">
+            <div className="section-tag">
               Our Portfolio
             </div>
           </div>
 
           <div className="max-w-[760px] w-full">
-            <h2 className="text-[32px] md:text-[47.8px] md:leading-[53px] leading-[40px] tracking-[-2.4px] font-semibold text-black font-inter text-center text-balance">
+            <h2 className="section-heading">
               Explore the projects where we played, experimented, and built
               something amazing.
             </h2>

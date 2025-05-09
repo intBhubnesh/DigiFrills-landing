@@ -62,8 +62,10 @@ export default function GrowTogetherSection() {
         transition={{ duration: 0.8 }}
         className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-3xl"
       >
-        We don&apos;t just work together—we{" "}
-        <span className="text-[#0260EB]">grow</span> together.
+        We don’t just work <br /> together—
+        <span className="">we </span>
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">grow</span>
+        <span className=""> together.</span>
       </motion.h2>
 
       <p className="mt-4 text-gray-600 max-w-2xl mx-auto">

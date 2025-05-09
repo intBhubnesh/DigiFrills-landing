@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 import Image from "next/image";
-import { Star } from "@mui/icons-material";
 import { StatCard } from "./StatCard";
 import CustomCursor from "./CustomCursor";
 
@@ -74,11 +73,7 @@ const Hero = () => {
         >
           <div className="flex space-x-1 text-yellow-500">
             {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                fontSize="small"
-                className={i === 4 ? "opacity-75" : ""}
-              />
+                <Image src="/star.svg" alt="Star" key={i} width={25} height={24} />
             ))}
           </div>
           <p className="text-[#0F0F0F] font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px] opacity-60">
@@ -176,17 +171,18 @@ const Hero = () => {
           }
           className="hero-message text-4xl md:text-5xl lg:text-6xl font-[inter] font-medium leading-tight tracking-tight"
         >
-          <span className="text-[#0260EB]">Building</span>
-          <span> brands, </span>
-          <span className="text-[#0260EB]">boosting</span>
-          <span> businesses,</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">Helping</span>
+          <span className=""> Early-Stage </span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">Startups</span>
+          <span className=""> & SaaS Founders</span>
+
+          <span className=""> build</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]"> MVPs </span>
+          <span className="text-black inline-block">Quickly</span>
           <br />
-          <span> and</span>
-          <span className="text-[#0260EB]"> redefining</span>
-          <span> possibilities. </span>
-          <span className="text-black inline-block">Let&apos;s</span>
-          <br />
-          <span>grow your brand together.</span>
+          <span className="">
+             in 2 Weeks or Less.
+          </span>
         </motion.h2>
 
         <div className="grid mt-12 grid-cols-1 md:grid-cols-3 w-full gap-4">

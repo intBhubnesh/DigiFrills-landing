@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { servicesData } from "@/data/services";
 import Image from "next/image";
-
 export default function OurServices() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -194,12 +193,15 @@ export default function OurServices() {
                       >
                         {service.icon[i] && (
                           <Image
+                          width={24}
+                          height={24}
                             src={service.icon[i]}
                             alt="Icon"
                             width={16}
                             height={16}
                             className="w-4 h-4 mr-2"
                           />
+
                         )}
                         {tag}
                       </motion.span>
@@ -223,32 +225,18 @@ export default function OurServices() {
                   }
                   transition={{ backgroundColor: { duration: 0.3 } }}
                 >
-                  <p
-                    className={`services-details transition-all duration-300 ${
-                      expandedIndex === index
-                        ? "text-[#0260EB]/80"
-                        : "text-black"
-                    }`}
-                  >
+                  <p className={`services-details transition-all duration-300 ${expandedIndex === index ? "bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]" : "text-black"}`}>
                     View Details
                   </p>
                   <div
                     className={`
                       size-10 flex items-center justify-center rounded-xl transition-all duration-300
-                      ${
-                        expandedIndex === index
-                          ? "bg-black"
-                          : "group-hover:bg-[#0260EB]"
-                      }
+                      ${expandedIndex === index ? "bg-black" : "group-hover:bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]"}
                     `}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className={`size-8 transition-all duration-300 ${
-                        expandedIndex === index
-                          ? "rotate-45 text-[#0260EB]"
-                          : ""
-                      }`}
+                      className={`size-8 transition-all duration-300 ${expandedIndex === index ? "rotate-45 text-[#7988E7]" : ""}`}
                       width="24"
                       height="23"
                       viewBox="0 0 24 23"

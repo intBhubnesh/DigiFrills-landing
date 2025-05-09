@@ -122,7 +122,7 @@ export default function Services() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handlePrev}
-              className="w-[45px] h-[45px] bg-[#0260EB] text-white rounded-[15px] flex items-center justify-center shadow-md"
+              className="w-[45px] h-[45px] bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white rounded-[15px] flex items-center justify-center shadow-md"
             >
               <ChevronLeft className="w-6 h-6" />
             </motion.button>
@@ -130,7 +130,7 @@ export default function Services() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleNext}
-              className="w-[45px] h-[45px] bg-[#0260EB] text-white rounded-[15px] flex items-center justify-center shadow-md"
+              className="w-[45px] h-[45px] bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white rounded-[15px] flex items-center justify-center shadow-md"
             >
               <ChevronRight className="w-6 h-6" />
             </motion.button>
