@@ -22,7 +22,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-white px-6 md:px-12 py-4 flex justify-between items-center z-20 shadow-sm">
       {/* Logo */}
       <div className="flex items-center space-x-2">
-        <Image src="/logo.png" alt="Logo" width={40} height={40} />
+        <Image src="/logo.svg" alt="Logo" width={40} height={40} />
         <span className="font-semibold font-[inter] text-xl">DigiFrills</span>
       </div>
 

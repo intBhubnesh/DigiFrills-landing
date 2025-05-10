@@ -3,6 +3,14 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 
+// Image URL configuration
+const imageConfig = {
+  cloudinary: "https://res.cloudinary.com/dkfjhjdh6/image/upload/",
+  framerusercontent: "https://framerusercontent.com/images/",
+  local: "/images/",
+  youtube: "https://img.youtube.com/vi/",
+};
+
 const InterSans = Inter({
   subsets: ["latin"],
 });
@@ -75,7 +83,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         </p>
       </div>
       <div className="flex flex-col p-6 py-1">
-        <div className="flex items-center flex-row">
+        <div className="flex items-center justify-between flex-row">
           <div className="w-16 h-16 mr-4 relative">
             <Image
               src={avatarSrc || "/api/placeholder/60/60"}
@@ -85,11 +93,11 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             />
           </div>
           {logoSrc && (
-            <div className="w-16 h-8 mr-4 relative">
+            <div className="w-32 h-12  relative">
               <Image
                 src={logoSrc}
                 alt={`${company} logo`}
-                className="rounded-full object-scale-down p-1"
+                className=" object-scale-down p-1"
                 fill
               />
             </div>
@@ -111,7 +119,6 @@ interface VideoTestimonialProps {
   name: string;
   position: string;
   company: string;
-  videoUrl: string;
   rowDelay?: number;
   animationDuration?: number;
 }
@@ -120,23 +127,11 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
   name,
   position,
   company,
-  videoUrl,
   rowDelay = 0,
   animationDuration = 1000,
 }) => {
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [playVideo, setPlayVideo] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
-
-  const getYoutubeId = (url: string): string => {
-    const regExp =
-      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    return match && match[2].length === 11 ? match[2] : "";
-  };
-
-  const videoId = getYoutubeId(videoUrl);
 
   useEffect(() => {
     const node = videoRef.current; // Capture current value in variable
@@ -174,49 +169,24 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
       }}
     >
       <div
-        className="relative w-full h-95 rounded-4xl overflow-hidden  "
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={() => setPlayVideo(true)}
+        className="relative w-full h-[300px] rounded-4xl overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #444 -31.5%, #000 100%)" }}
       >
-        {playVideo ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-            title={`${name} video testimonial`}
-            className="absolute inset-0 w-full h-full  object-cover sm:object-cover md:object-cover lg:object-cover"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        ) : (
-          <>
-            <Image
-              src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-              alt={`${name} video thumbnail`}
-              className="absolute inset-0 w-full h-full object-cover"
-              width={1280} // Set width for the image
-              height={720} // Set height for the image
-            />
-
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div
-                className={`w-19 h-14 rounded-2xl flex items-center justify-center ${
-                  isHovered ? "bg-red-600" : "bg-black opacity-65"
-                } transition-colors duration-300`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  className="w-9 h-9"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
-          </>
-        )}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+          <div className="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <h3 className="text-2xl font-bold mb-2">Coming Soon</h3>
+          <p className="text-gray-300 text-center max-w-xs px-4">
+            Video testimonials from our clients are being prepared and will be available shortly.
+          </p>
+        </div>
       </div>
-      <div className=" text-center py-3">
+      <div className="text-center py-3">
         <h3 className="text-black text-xl font-medium text-[17px]">{name}</h3>
         <p className="className=text-black/65 font-semibold uppercase text-sm text-[11px] tracking-wide">
           {position}, {company}
@@ -239,7 +209,6 @@ interface VideoTestimonialData {
   name: string;
   position: string;
   company: string;
-  videoUrl: string;
 }
 
 const Testimonial: React.FC = () => {
@@ -279,67 +248,57 @@ const Testimonial: React.FC = () => {
   const testimonials: Testimonial[] = [
     {
       quote:
-        "Working with this team felt like having a secret weapon. They took our scattered ideas and turned them into a website that screams 'wow!' Our customers can't stop raving about it!",
-      clientName: "Tobias Green",
+        "Felt like they read our minds—turned our rough ideas into a stunning website our users love. Can’t imagine a better tech partner.",
+      clientName: "Rohit Chopra",
       position: "FOUNDER",
-      company: "GREENSPARK INNOVATIONS",
-      logoSrc:
-        "https://framerusercontent.com/images/3Y1x3Iz9CnzoCeLjfRflZMOiF0.svg",
-      avatarSrc:
-        "https://framerusercontent.com/images/UsPZoUaacWnpNKo5ow2OkPMrpw0.jpg",
+      company: "ZIFCARE",
+      logoSrc: `${imageConfig.cloudinary}v1746849674/logo2active_yqvf7o.png`,
+      avatarSrc: `${imageConfig.cloudinary}v1746911698/1723801405260_o8pgc0.jpg`,
     },
     {
       quote:
-        "Finally, an agency that speaks our language! They understood our vision better than we did and brought it to life in a way that exceeded expectations. 10/10 would recommend!",
-      clientName: "Silas Leighton",
-      position: "MANAGING DIRECTOR",
-      company: "VENTUREVISTA",
-      logoSrc:
-        "https://framerusercontent.com/images/6QEz8kJbwqWFzbNDcgcMwaBk7Jk.svg",
-      avatarSrc:
-        "https://framerusercontent.com/images/ItbAaHsEW3CUnztIn91H9TiuKHc.jpg",
+        "They understood our vision better than we did and brought it to life in a way that exceeded expectations. 10/10 would recommend!",
+      clientName: "Kiran Kumar Yerriboina",
+      position: "Founder & CEO",
+      company: "Upskillink",
+      logoSrc: `https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746911983/Frame_1321315076_cyvt2z.png`,
+      avatarSrc: `https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746911836/1737181719368_zztdhm.jpg`,
     },
     {
       quote:
         "I came in with high hopes, and they absolutely blew me away. From strategy to execution, every detail was on point. I'm telling everyone I know-hire them!",
-      clientName: "Orion Vance",
+      clientName: "Stavya Bhatia",
       position: "CEO",
-      company: "LUNAR LUX CO.",
-      logoSrc: "",
-      avatarSrc:
-        "https://framerusercontent.com/images/2Zm0QnC5KdYbFQFAK2RQ8DRekU.jpg",
+      company: "Roombae",
+      logoSrc: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746912463/roombae_logo_sivd1g.png",
+      avatarSrc: `https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746912344/1517021278290_zm1bk8.jpg`,
     },
     {
       quote:
         "Our brand went from a whisper to a roar. The team's creativity and expertise made all the difference. We're getting noticed like never before!",
-      clientName: "Callum Yates",
-      position: "CO-FOUNDER",
-      company: "DRIFTWOOD MEDIA",
-      logoSrc:
-        "https://framerusercontent.com/images/mGAxAGDBjt0JHg8MI0F9P9FkW0g.svg",
-      avatarSrc:
-        "https://framerusercontent.com/images/ciqeScb6bZagxmIXqN70lJt6x10.jpg?scale-down-to=512",
-    },
-    {
-      quote:
-        "Our online presence went from zero to hero in no time. The team made the process so seamless, I almost forgot I was working on a big project!",
-      clientName: "Jasper Lowell",
-      position: "CEO",
-      company: "COPPERLEAF ENTERPRISES",
-      logoSrc: "",
-      avatarSrc:
-        "https://framerusercontent.com/images/NE0HbZCpk08RqUBmljkId4i3oEw.jpg?scale-down-to=512",
-    },
+      clientName: "Chennapa Naidu Darapaneni",
+      position: "FOUNDER",
+      company: "Planica",
+      logoSrc: `https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746849481/logo1active_zlpqgm.png`,
+      avatarSrc: `https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746912615/1516269349989_tasdep.jpg`},
     {
       quote:
         "They made us feel like their most important client. The attention to detail, quick responses, and innovative ideas were top-notch. We'll definitely be back for more!",
-      clientName: "Jasper Lowell",
-      position: "BRAND MANAGER",
-      company: "STELLAR BLOOM STUDIO",
-      logoSrc:
-        "https://framerusercontent.com/images/RsaJCL4Sj4fVM9spQ7bKyrgyngo.svg",
-      avatarSrc:
-        "https://framerusercontent.com/images/Zm4yodZZxdIXJhenN7bdKUq5KM.jpg",
+      clientName: "Chethan Naidu",
+      position: "Founder & CEO",
+      company: "Sheshgayan",
+      logoSrc: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746912978/logo_1_cmay4q.svg",
+      avatarSrc: `https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746913149/Rectangle_4312_ivfohg.png`,
+    },
+    {
+
+              quote:
+        "Our online presence went from zero to hero in no time. The team made the process so seamless, I almost forgot I was working on a big project!",
+      clientName: "Bhavy Parmar",
+      position: "Founder",
+      company: "MedLinkPro",
+      logoSrc: `https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746913451/Frame_1321315496_iwg58y.png`,
+      avatarSrc: `https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746913650/1733584220094_dgvvaq.jpg`,
     },
   ];
 
@@ -348,13 +307,11 @@ const Testimonial: React.FC = () => {
       name: "Magnus Hawthorne",
       position: "OWNER",
       company: "BAYLEAF",
-      videoUrl: "https://youtu.be/Ly1auHs_ofo",
     },
     {
       name: "Thaddeus Montgomery",
       position: "OWNER",
       company: "GOLDGARDEN",
-      videoUrl: "https://youtu.be/ay2e0VXtmfI",
     },
   ];
 
@@ -365,53 +322,44 @@ const Testimonial: React.FC = () => {
   return (
     <>
       <div
-        className={`${InterSans.className} bg-white py-16 px-2 items-center text-Inter overflow-hidden`}
+        className={`${InterSans.className} bg-white  py-40 px-2 items-center text-Inter overflow-hidden`}
       >
         <div className="max-w-7xl mx-auto">
           <div
             ref={headerRef}
-            className={`transform transition-all ease-out ${
+            className={`transform transition-all ease-out mx-auto max-w-[800px] w-full flex flex-col items-center justify-center px-[20px] gap-[5px]  ${
               isHeaderVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
             }`}
             style={{ transitionDuration: `${animationDuration}ms` }}
           >
-            <div className="flex justify-center mb-2">
-              <div className="inline-flex items-center bg-gray-100  py-1 rounded-full">
-                <div className="bg-black text-white rounded-full p-2 mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3"
-                    viewBox="0 0 256 256"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M172,108a12,12,0,0,1-12,12H96a12,12,0,0,1,0-24h64A12,12,0,0,1,172,108Zm-12,28H96a12,12,0,0,0,0,24h64a12,12,0,0,0,0-24Zm76-8A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <p className="text-black font-medium text-[14px] pr-2">
-                  Client Stories
-                </p>
-                <p className="text-black font-medium text-[14px] pr-2">
-                  Client Stories
-                </p>
-              </div>
+        {/* Section Heading */}
+          <div className=" h-[33px] gap-1 rounded-[25px] mx-auto bg-[#f5f7f9] inline-flex  justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
+           <div className="size-[32px]   rounded-full flex items-center justify-center "
+            style={{
+                background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
+            }}
+            >
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 12 12" fill="none">
+  <path d="M11.0874 5.70191L9.71244 2.26441C9.66695 2.15101 9.58268 2.05743 9.47463 2.00038C9.36658 1.94332 9.24178 1.9265 9.12248 1.95289L6.65564 2.49902V1.76855C6.65564 1.6318 6.60131 1.50065 6.50462 1.40395C6.40792 1.30725 6.27677 1.25293 6.14001 1.25293C6.00326 1.25293 5.87211 1.30725 5.77541 1.40395C5.67871 1.50065 5.62439 1.6318 5.62439 1.76855V2.72977L2.93455 3.32789C2.85265 3.34605 2.77643 3.38392 2.71249 3.4382C2.64854 3.49249 2.59881 3.56156 2.56759 3.63941L1.19259 7.07348C1.16775 7.13549 1.1552 7.20175 1.15564 7.26855C1.15564 7.78977 1.42205 8.23234 1.90544 8.51465C2.25417 8.70974 2.64668 8.81323 3.04626 8.81543C3.44585 8.81323 3.83836 8.70974 4.18708 8.51465C4.67048 8.23234 4.93689 7.78977 4.93689 7.26855C4.93688 7.2029 4.92434 7.13786 4.89994 7.07691L3.75009 4.20273L5.62439 3.78809V8.81543H5.10876C4.97201 8.81543 4.84086 8.86975 4.74416 8.96645C4.64746 9.06315 4.59314 9.1943 4.59314 9.33105C4.59314 9.46781 4.64746 9.59896 4.74416 9.69566C4.84086 9.79235 4.97201 9.84668 5.10876 9.84668H7.17126C7.30802 9.84668 7.43917 9.79235 7.53587 9.69566C7.63256 9.59896 7.68689 9.46781 7.68689 9.33105C7.68689 9.1943 7.63256 9.06315 7.53587 8.96645C7.43917 8.86975 7.30802 8.81543 7.17126 8.81543H6.65564V3.55734L8.39244 3.17062L7.38009 5.70148C7.35563 5.76256 7.34309 5.82776 7.34314 5.89355C7.34314 6.41477 7.60955 6.85734 8.09294 7.13965C8.44074 7.33709 8.83383 7.44088 9.23376 7.44088C9.6337 7.44088 10.0268 7.33709 10.3746 7.13965C10.858 6.85734 11.1244 6.41477 11.1244 5.89355C11.1244 5.8279 11.1118 5.76286 11.0874 5.70191ZM3.04626 7.78418C2.88685 7.78418 2.27283 7.70383 2.19505 7.34676L3.04626 5.21937L3.89748 7.34676C3.8197 7.70383 3.20568 7.78418 3.04626 7.78418ZM9.23376 6.40918C9.07435 6.40918 8.46033 6.32883 8.38255 5.97176L9.23376 3.84437L10.085 5.97176C10.0072 6.32883 9.39318 6.40918 9.23376 6.40918Z" fill="white"/>
+</svg>
             </div>
+            <div className="section-tag text-nowrap">
+            Client Stories
+            </div>
+          </div>
             <div className="flex justify-center mb-10">
               <div className="text-center">
                 <h2 className="hidden md:block text-3xl md:text-3xl lg:text-5xl lg:w-[64rem] font-bold font-inter text-black leading-snug">
                   Hear stories
                   <span className="inline-flex items-center mx-2 -space-x-2 align-middle">
                     {[
-                      "https://framerusercontent.com/images/MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512",
-                      "https://framerusercontent.com/images/5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512",
-                      "https://framerusercontent.com/images/6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512",
-                      "https://framerusercontent.com/images/6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512",
-                      "https://framerusercontent.com/images/XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512",
+                      `${imageConfig.framerusercontent}MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512`,
+                      `${imageConfig.framerusercontent}5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512`,
+                      `${imageConfig.framerusercontent}6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512`,
+                      `${imageConfig.framerusercontent}6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512`,
+                      `${imageConfig.framerusercontent}XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512`,
                     ].map((src, index) => (
                       <div
                         key={index}
@@ -433,11 +381,11 @@ const Testimonial: React.FC = () => {
                   Hear stories straight from the people
                   <span className="inline-flex items-center mx-2 -space-x-2 align-middle">
                     {[
-                      "https://framerusercontent.com/images/MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512",
-                      "https://framerusercontent.com/images/5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512",
-                      "https://framerusercontent.com/images/6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512",
-                      "https://framerusercontent.com/images/6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512",
-                      "https://framerusercontent.com/images/XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512",
+                      `${imageConfig.framerusercontent}MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512`,
+                      `${imageConfig.framerusercontent}5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512`,
+                      `${imageConfig.framerusercontent}6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512`,
+                      `${imageConfig.framerusercontent}6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512`,
+                      `${imageConfig.framerusercontent}XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512`,
                     ].map((src, index) => (
                       <div
                         key={index}
@@ -492,7 +440,6 @@ const Testimonial: React.FC = () => {
                 name={testimonial.name}
                 position={testimonial.position}
                 company={testimonial.company}
-                videoUrl={testimonial.videoUrl}
                 rowDelay={testimonialRows.length * rowDelayInterval + 50}
                 animationDuration={animationDuration}
               />

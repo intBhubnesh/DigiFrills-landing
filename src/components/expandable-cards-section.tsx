@@ -110,7 +110,7 @@ export default function ExpandableCardsSection() {
           left: `${position}%`,
           width: `${width}%`,
           height: "500px",
-          backgroundColor: isActive ? "#000" : "#f7f7f7",
+          background: isActive ? "linear-gradient(135deg, #444 -31.5%, #000 100%)" : "#f7f7f7",
           zIndex: isActive ? 50 : 40,
           duration: 0.6,
           ease: "power3.inOut",
@@ -145,7 +145,7 @@ export default function ExpandableCardsSection() {
               onMouseEnter={() => handleHoverEnter(index)}
               onMouseLeave={() => handleHoverLeave(index)}
               className={`absolute rounded-2xl cursor-pointer overflow-hidden shadow-lg transition-all duration-700 ease-in-out ${
-                isActive ? "bg-black text-white" : "bg-[#f7f7f7] text-black"
+                isActive ? "text-white" : "bg-[#f7f7f7] text-black"
               }`}
               style={{
                 height: isMobile ? (isActive ? "auto" : "60px") : "500px",
@@ -154,6 +154,7 @@ export default function ExpandableCardsSection() {
                 minHeight: isMobile && isActive ? "200px" : "",
                 maxHeight: isMobile && isActive ? "70vh" : "",
                 padding: "20px 24px",
+                background: isActive ? "linear-gradient(135deg, #444 -31.5%, #000 100%)" : "",
               }}
             >
               {!isMobile && (

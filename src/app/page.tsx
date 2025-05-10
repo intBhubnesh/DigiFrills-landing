@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import Navbar from "../sections/Navbar";
 import Hero from "../sections/Hero";
@@ -61,7 +61,7 @@ const faqItems = [
 
 export default function Home() {
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <Suspense fallback={<div>Loading...</div>}>
         <LoadingScreen />
       </Suspense>

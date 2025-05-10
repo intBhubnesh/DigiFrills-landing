@@ -1,4 +1,4 @@
-
+import Image from "next/image";
 import ExpandableCardsSection from "../components/expandable-cards-section";
 
 export default function Work() {
@@ -8,8 +8,8 @@ export default function Work() {
       {/* Work Process Section */}
       <section className="text-center flex my-12 items-center justify-center">
       <div className="max-w-[800px] w-full flex flex-col items-center justify-center px-[20px] gap-[5px]">
-          <div className=" h-[33px] gap-1 rounded-[25px] bg-[#f5f7f9] flex justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
-          <div className="size-[32px]   rounded-full flex items-center justify-center "
+          <div className=" h-[33px] gap-1 rounded-[25px] bg-[#f5f7f9] inline-flex justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
+          <div className="size-[32px]   rounded-full inline-flex items-center justify-center "
             style={{
                 background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
             }}
@@ -25,7 +25,9 @@ export default function Work() {
 
           <div className="max-w-[760px] w-full">
             <h2 className="section-heading mt-2 text-center">
-                Uncover the Stories Behind Our Most Innovative and Game-Changing Projects.
+              From idea to impact—
+our process makes it
+exciting and effective!
             </h2>
           </div>
         </div>

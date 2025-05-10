@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-300 px-6 md:px-20 py-16 rounded-t-3xl font-sans">
+    <footer className="text-gray-300 px-6 md:px-20 py-16 rounded-t-[40px] font-sans" style={{ background: "linear-gradient(135deg, #444 -31.5%, #000 100%)" }}>
       {/* Top Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-12">
         {/* Logo and Text */}
