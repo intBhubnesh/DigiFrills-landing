@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ExpandableCardsSection from "../components/expandable-cards-section";
 
 export default function Work() {

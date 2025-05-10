@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser'; // Uncomment when implementing email functionality
 
 // Note: For production, you'll need to initialize EmailJS with your public key
 // and uncomment the production code in the handleSubmit function
