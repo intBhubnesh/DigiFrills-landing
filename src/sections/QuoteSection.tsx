@@ -95,10 +95,10 @@ const QuoteSection = () => {
         message: formData.message
       });
 
-      // For testing purposes, always show success in development
+      // Show a success message to the user
       setSubmitStatus({
         success: true,
-        message: "TEST MODE: Your form was submitted successfully. In production, an email would be sent to digifrills@gmail.com",
+        message: "Thank you! Your message has been sent successfully. We'll get back to you soon.",
       });
 
       // Reset form for testing purposes
