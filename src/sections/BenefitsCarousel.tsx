@@ -13,35 +13,27 @@ export default function Services() {
 
   const services = [
     {
-      title:
-        "We take care of generating leads while you focus on doing what you love—running your business!",
-      image:
-        "https://framerusercontent.com/images/hCD6D5Rkj2t7yJ5phygJnWiNA.png?scale-down-to=512",
+      title: "We build modern AI & ML-ready apps that scale effortlessly.",
+      image: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746812754/undefined_stljfe.png",
     },
     {
-      title:
-        "Every solution is tailored to fit your unique business needs—no cookie-cutter strategies here!",
-      image:
-        "https://framerusercontent.com/images/vPt7rITwSUuNbMNluhQlsMgHw.png?scale-down-to=512",
+      title: "Fast deployment: launch your app in 2 weeks or less.",
+      image: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746813396/launch_start_up_rocket_transportation_man_wja2gl.png",
     },
     {
-      title:
-        "Your brand stays visible 24/7 with our automated marketing strategies.",
-      image:
-        "https://framerusercontent.com/images/UGvdxe7Aj1RKhNfIBNhu2TxP3Q.png?scale-down-to=512",
+      title: "Ensure 24/7 uptime with reliable and secure architectures.",
+      image: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746813464/undefined_4_stm9gn.png",
     },
     {
-      title: "Get big agency results without breaking the bank.",
-      image:
-        "https://framerusercontent.com/images/v0uSaGJ87hQIe1F8McNjkWHEMP4.png?scale-down-to=512",
+      title: "Cut costs with clean, efficient, and reduced code solutions.",
+      image: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746813605/undefined_5_demx2d.png",
     },
     {
-      title:
-        "Our team comes up with out-of-the-box ideas to make your brand stand out.",
-      image:
-        "https://framerusercontent.com/images/cTOirpmfY27Ikje3mCZb98lyXs.png?scale-down-to=512",
+      title: "Creative, tailored solutions to solve your unique challenges.",
+      image: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746813683/customize_paint_brush_art_woman_xpwyfx.png",
     },
   ];
+
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -93,19 +85,14 @@ export default function Services() {
         {/* --- Title Section --- */}
         <div className=" text-center lg:text-left">
           <div className="flex justify-center bg-[#F5F7F9] rounded-full w-fit pr-4 lg:justify-start items-center gap-2 mb-2">
-            <div className="size-[32px]  bg-gray-900 rounded-full flex items-center justify-center p-[9px]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="11"
-                height="10"
-                viewBox="0 0 11 10"
-                fill="none"
-              >
-                <path
-                  d="M10.4414 3.91001C10.3881 3.74557 10.2872 3.60064 10.1516 3.49355C10.0159 3.38647 9.85146 3.32205 9.67914 3.30845L7.24754 3.11208L6.3091 0.8429C6.24315 0.682523 6.13102 0.545364 5.98696 0.448839C5.8429 0.352315 5.67341 0.300781 5.5 0.300781C5.32659 0.300781 5.15709 0.352315 5.01303 0.448839C4.86897 0.545364 4.75685 0.682523 4.6909 0.8429L3.75332 3.11251L1.32172 3.30845C1.14908 3.32268 0.984498 3.38763 0.84866 3.49512C0.712822 3.60262 0.611786 3.74786 0.558248 3.91261C0.504711 4.07735 0.501061 4.25425 0.547757 4.42106C0.594453 4.58787 0.689412 4.73716 0.820701 4.85017L2.67609 6.45032L2.1089 8.84368C2.06754 9.01242 2.07732 9.18966 2.13702 9.35282C2.19671 9.51598 2.30361 9.65769 2.44411 9.75989C2.58461 9.8621 2.75234 9.92018 2.92596 9.92674C3.09957 9.9333 3.27121 9.88804 3.41902 9.79673L5.5 8.51583L7.58097 9.79673C7.72874 9.88743 7.9001 9.93224 8.07335 9.9255C8.2466 9.91877 8.41396 9.86077 8.55424 9.75887C8.69451 9.65696 8.8014 9.51573 8.86136 9.35304C8.92133 9.19036 8.93167 9.01354 8.89109 8.84497L8.3239 6.45161L10.1793 4.85145C10.3114 4.73817 10.4068 4.5882 10.4535 4.42058C10.5001 4.25295 10.4959 4.07524 10.4414 3.91001ZM7.4134 5.87368C7.34185 5.93536 7.28863 6.01551 7.25953 6.10538C7.23043 6.19525 7.22658 6.29138 7.2484 6.38329L7.80226 8.72251L5.77027 7.47298C5.689 7.42295 5.59543 7.39647 5.5 7.39647C5.40456 7.39647 5.311 7.42295 5.22972 7.47298L3.19773 8.72251L3.7516 6.38501C3.77341 6.2931 3.76956 6.19697 3.74047 6.1071C3.71137 6.01723 3.65814 5.93708 3.5866 5.8754L1.77031 4.30704L4.15078 4.11497C4.24551 4.10736 4.33629 4.07372 4.4131 4.01776C4.48992 3.9618 4.54977 3.8857 4.58605 3.79786L5.5 1.58497L6.41394 3.79786C6.45023 3.8857 6.51008 3.9618 6.58689 4.01776C6.6637 4.07372 6.75449 4.10736 6.84922 4.11497L9.22968 4.30704L7.4134 5.87368Z"
-                  fill="white"
-                />
-              </svg>
+            <div className="size-[32px]   rounded-full flex items-center justify-center p-[9px]"
+            style={{
+                background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
+            }}
+            >
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M13.73 3.51001L15.49 7.03001C15.73 7.52002 16.37 7.99001 16.91 8.08001L20.1 8.61001C22.14 8.95001 22.62 10.43 21.15 11.89L18.67 14.37C18.25 14.79 18.02 15.6 18.15 16.18L18.86 19.25C19.42 21.68 18.13 22.62 15.98 21.35L12.99 19.58C12.45 19.26 11.56 19.26 11.01 19.58L8.02003 21.35C5.88003 22.62 4.58003 21.67 5.14003 19.25L5.85003 16.18C5.98003 15.6 5.75003 14.79 5.33003 14.37L2.85003 11.89C1.39003 10.43 1.86003 8.95001 3.90003 8.61001L7.09003 8.08001C7.62003 7.99001 8.26003 7.52002 8.50003 7.03001L10.26 3.51001C11.22 1.60001 12.78 1.60001 13.73 3.51001Z" fill="white"/>
+</svg>
             </div>
             <span className="section-tag">Benefits</span>
           </div>
@@ -122,7 +109,10 @@ export default function Services() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handlePrev}
-              className="w-[45px] h-[45px] bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white rounded-[15px] flex items-center justify-center shadow-md"
+              className="w-[45px] h-[45px] text-white rounded-[15px] flex items-center justify-center shadow-md"
+              style={{
+                background: "linear-gradient(135deg, #444 11.5%, #000 100%)"
+                              }}
             >
               <ChevronLeft className="w-6 h-6" />
             </motion.button>
@@ -130,9 +120,12 @@ export default function Services() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleNext}
-              className="w-[45px] h-[45px] bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white rounded-[15px] flex items-center justify-center shadow-md"
+              className="w-[45px] h-[45px] text-white rounded-[15px] flex items-center justify-center shadow-md"
+              style={{
+                background: "linear-gradient(135deg, #444 11.5%, #000 100%)"
+                              }}
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="ml-1 w-6 h-6" />
             </motion.button>
           </div>
 
@@ -144,47 +137,52 @@ export default function Services() {
                 mode="popLayout"
                 custom={direction}
               >
-                {visibleServices.map((service, index) => (
+                       {visibleServices.map((service, index) => (
                   <motion.div
-                    key={`${currentServiceIndex}-${index}`}
-                    custom={direction}
-                    variants={slideVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{
-                      x: { type: "spring", stiffness: 300, damping: 30 },
-                      opacity: { duration: 0.2 },
-                    }}
+                  key={`${currentServiceIndex}-${index}`}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
                     className="
                       w-full
                       min-w-0
-                      min-h-[480px]
+                      min-h-[420px]
                       bg-[#F5F7F9]
                       rounded-2xl
                       pt-[40px]
                       px-[40px]
-                      hover:shadow-lg
-                      transition-shadow
+                      transition-all
+                      duration-300
                       sm:min-w-[calc(50%-10px)]
                       lg:min-w-[335.775px]
                       lg:max-w-[335.775px]
                       flex flex-col
+                      relative
+                      group
                     "
                   >
                     <div className="mb-4 min-h-[96px] flex items-start">
-                      <h3 className="text-[#0F0F0F] text-[20px] font-semibold font-inter">
+                      <h3 className=" benifit-text">
                         {service.title}
                       </h3>
                     </div>
-                    <div className="flex-1 flex items-center justify-center">
+                    <div className="absolute -bottom-[80px] bg-white rounded-3xl flex items-center justify-center transition-all duration-300 ease-in-out group-hover:-translate-y-8 overflow-hidden">
                       <Image
                         src={service.image}
                         alt={service.title}
                         width={255.71}
                         height={274}
-                        className="object-contain mix-blend-multiply"
+                        className="object-contain mix-blend-multiply rounded-3xl"
                       />
+                    </div>
+                    <div
+                      className="absolute -bottom-[80px] w-[255.71px] h-[274px] -rotate-12 right-14 -z-10 rounded-3xl flex items-center justify-center transition-all duration-300 ease-in-out group-hover:-translate-y-8 group-hover:-rotate-6 overflow-hidden"
+                      style={{
+                        background: "linear-gradient(135deg, #444 -31.5%, #000 100%)"
+                      }}
+                    >
                     </div>
                   </motion.div>
                 ))}

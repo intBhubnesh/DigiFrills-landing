@@ -1,17 +1,16 @@
 import type { NextConfig } from "next";
 
-module.exports = {
+const nextConfig: NextConfig = {
   images: {
     domains: [
       "framerusercontent.com",
       "cdn-icons-png.flaticon.com",
       "img.youtube.com",
+      "res.cloudinary.com",
+      "getillustrations.b-cdn.net",
     ],
   },
-};
-
-const nextConfig: NextConfig = {
-  /* config options here */
+  /* Add any other config options here */
 };
 
 export default nextConfig;

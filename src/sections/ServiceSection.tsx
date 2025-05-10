@@ -87,19 +87,19 @@ export default function OurServices() {
       <div className="max-w-[1200px] mx-auto">
         {/* Top Icon and Heading */}
         <div className="flex flex-col items-center space-y-4 mb-16 text-center">
-          <div className="flex items-center gap-2 pr-4 py-1 rounded-full bg-[#f5f7f9]">
-            <div className="size-[32px] bg-gray-900 rounded-full flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 256 256"
-                width="12"
-                height="12"
-                fill="white"
-              >
-                <path d="M230.47,67.5a12,12,0,0,0-19.26-4.32L172.43,99l-12.68-2.72L157,83.57l35.79-38.78a12,12,0,0,0-4.32-19.26A76.07,76.07,0,0,0,88.41,121.64L30.92,174.18a4.68,4.68,0,0,0-.39.38,36,36,0,0,0,50.91,50.91l.38-.39,52.54-57.49A76.05,76.05,0,0,0,230.47,67.5ZM160,148a51.5,51.5,0,0,1-23.35-5.52,12,12,0,0,0-14.26,2.62L64.31,208.66a12,12,0,0,1-17-17l63.55-58.07a12,12,0,0,0,2.62-14.26A51.5,51.5,0,0,1,108,96a52.06,52.06,0,0,1,52-52h.89L135.17,71.87a12,12,0,0,0-2.91,10.65l5.66,26.35a12,12,0,0,0,9.21,9.21l26.35,5.66a12,12,0,0,0,10.65-2.91L212,95.12c0,.3,0,.59,0,.89A52.06,52.06,0,0,1,160,148Z" />
-              </svg>
+        <div className="flex justify-center bg-[#F5F7F9] rounded-full w-fit pr-4 lg:justify-start items-center gap-2 mb-2">
+            <div className="size-[32px]   rounded-full flex items-center justify-center p-[9px]"
+            style={{
+                background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
+            }}
+            >
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M20.2112 7.81994L12.5112 12.2799C12.2012 12.4599 11.8112 12.4599 11.4912 12.2799L3.79119 7.81994C3.24119 7.49994 3.10119 6.74994 3.52119 6.27994C3.81119 5.94994 4.14119 5.67994 4.49119 5.48994L9.91119 2.48994C11.0712 1.83994 12.9512 1.83994 14.1112 2.48994L19.5312 5.48994C19.8812 5.67994 20.2112 5.95994 20.5012 6.27994C20.9012 6.74994 20.7612 7.49994 20.2112 7.81994Z" fill="white"/>
+  <path d="M11.431 14.14V20.96C11.431 21.72 10.661 22.22 9.98096 21.89C7.92096 20.88 4.45096 18.99 4.45096 18.99C3.23096 18.3 2.23096 16.56 2.23096 15.13V9.97C2.23096 9.18 3.06096 8.68 3.74096 9.07L10.931 13.24C11.231 13.43 11.431 13.77 11.431 14.14Z" fill="white"/>
+  <path d="M12.5708 14.14V20.96C12.5708 21.72 13.3408 22.22 14.0208 21.89C16.0808 20.88 19.5508 18.99 19.5508 18.99C20.7708 18.3 21.7708 16.56 21.7708 15.13V9.97C21.7708 9.18 20.9408 8.68 20.2608 9.07L13.0708 13.24C12.7708 13.43 12.5708 13.77 12.5708 14.14Z" fill="white"/>
+</svg>
             </div>
-            <span className="text-sm font-medium">Our services</span>
+            <span className="section-tag">Services</span>
           </div>
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
@@ -110,9 +110,11 @@ export default function OurServices() {
           >
             Services designed to help
             <br />
-            your brand shine brighter.
+            your proudct shine brighter
           </motion.h2>
         </div>
+
+
 
         {/* Main Content */}
         <div className="flex md:flex-row flex-col gap-10 lg:gap-20">
@@ -152,7 +154,7 @@ export default function OurServices() {
                   >
                     <path
                       d="M12.773 9.55759L7.14797 15.1826C7.0693 15.2613 6.96903 15.315 6.85986 15.3367C6.75069 15.3585 6.63752 15.3473 6.53468 15.3047C6.43184 15.2621 6.34396 15.1899 6.28216 15.0974C6.22036 15.0048 6.18741 14.8959 6.1875 14.7846V3.53462C6.18741 3.42331 6.22036 3.31447 6.28216 3.22188C6.34396 3.1293 6.43184 3.05713 6.53468 3.01452C6.63752 2.97191 6.75069 2.96077 6.85986 2.98251C6.96903 3.00425 7.0693 3.0579 7.14797 3.13665L12.773 8.76165C12.8253 8.81389 12.8668 8.87593 12.8951 8.94422C12.9234 9.01251 12.9379 9.0857 12.9379 9.15962C12.9379 9.23354 12.9234 9.30674 12.8951 9.37503C12.8668 9.44331 12.8253 9.50535 12.773 9.55759Z"
-                      fill="#F15533"
+                      fill="#667DE7"
                     />
                   </motion.svg>
                 )}
@@ -197,8 +199,6 @@ export default function OurServices() {
                           height={24}
                             src={service.icon[i]}
                             alt="Icon"
-                            width={16}
-                            height={16}
                             className="w-4 h-4 mr-2"
                           />
 
@@ -256,7 +256,7 @@ export default function OurServices() {
                       alt="service image"
                       width={200}
                       height={200}
-                      className="rounded-4xl mt-5"
+                      className="rounded-4xl mt-5 w-full"
                     />
 
                     <div

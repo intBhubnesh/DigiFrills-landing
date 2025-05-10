@@ -23,103 +23,108 @@ interface PortfolioItem {
 
 // Portfolio data defined outside component to avoid recreation on every render
 const portfolioItems: PortfolioItem[] = [
-  {
-    id: 1,
-    type: "default",
-    image:
-      "https://framerusercontent.com/images/g8k4INKeyIieB7Th2DTYOefwDy4.png?scale-down-to=1024",
-    logo: "https://framerusercontent.com/images/Ia3ikiLVEBJUr08Ep5M8UXgfaA.svg?scale-down-to=1024",
-    tags: ["BRANDING", "STRATEGY", "PACKAGING", "DIGITAL PRESENCE"],
-    title: "Frostify — Redefining Ice Cream Cool",
-    hasCarousel: true,
-    carouselImages: [
-      "https://framerusercontent.com/images/g8k4INKeyIieB7Th2DTYOefwDy4.png?scale-down-to=1024",
-      "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
-      "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
-      "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
-    ],
-    youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    details: {
-      challenge:
-        "Frostify had the magic of handcrafted, mouthwatering ice creams but lacked a strong visual identity to stand out in the crowded freezer aisle...",
-      features: [
-        "Brand Identity Design: We created a fresh and playful identity for Frostify that screams 'premium yet fun.' From a vibrant color palette inspired by their delicious flavors to a quirky ice-cream-cone mascot, the brand feels instantly lovable and unforgettable",
-        "Packaging Design:Designed packaging that pops on the shelves. Frostify's new tubs became Instagrammable stars, with pastel tones, cheeky taglines like 'Scoop Dreams,' and a design that tells a story with every bite",
-        "Social Media Strategy:Launched a campaign titled 'Chill Responsibly', focusing on Frostify's creamy indulgence. This included playful Reels, flavor reveals, and interactive polls, which skyrocketed engagement by 75% in just three months.",
-        "Storefront & Digital Presence: Revamped Frostify's website and introduced a seamless online ordering system. Added a 'Flavor Finder' quiz to recommend the perfect flavor based on mood (because, why not?)",
-      ],
-      achievements: [
-        "300% increase in in-store sales",
-        "50% growth in online sales",
-        "10K new Instagram followers",
-        "40% customer retention via 'Scoop Squad' program",
-      ],
-    },
-  },
-  {
-    id: 2,
-    type: "special",
-    image:
-      "https://framerusercontent.com/images/chvWbQPAfXTanooWyhT8zamduq0.jpg?scale-down-to=2048",
-    logo: "https://framerusercontent.com/images/mGAxAGDBjt0JHg8MI0F9P9FkW0g.svg?scale-down-to=1024",
-    tags: [
-      "DISCOVER & RESEARCH",
-      "WEB DESIGN",
-      "CONTENT STRATEGY",
-      "SEO & MARKETING INTEGRATION",
-      "RE-BRANDING",
-    ],
-    title: "CritterShield-Pest Solutions Re-branding",
-    siteUrl: "#",
-    details: {
-      challenge:
-        "PixelPlay needed to transform mundane productivity tasks into engaging gaming experiences while maintaining core functionality...",
-      features: [
-        "Gamified task completion system",
-        "Customizable avatar progression",
-        "Real-time collaboration features",
-        "Cross-platform synchronization",
-      ],
-    },
-  },
-  {
+    {
+        id: 1,
+        type: "default",
+        image:
+          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746848564/Frame_1321315911_xqv8qj.png",
+        logo: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746849481/logo1active_zlpqgm.png",
+        tags: ["AGENCY", "PRODUCT DEVELOPMENT", "COLLABORATION", "STRATEGY"],
+        title: "Planica - Reduced Time-to-Market by 40% to Accelerate Product Success",
+        hasCarousel: true,
+        carouselImages: [
+          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854632/User_Details_mdb0t8.png",
+          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854630/channel_view_default_equwij.png",
+          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854632/Dashboard_Progress_euj0sy.png"
+        ],
+        youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        details: {
+          challenge:
+            "Planica approached us with a vision to revolutionize event planning and team coordination but needed expert guidance to transform their ideas from documentation into a polished, market-ready product quickly and efficiently.",
+          features: [
+            "Strategic Product Consulting: We collaborated closely with Planica’s team to clarify their vision, define priorities, and establish a clear roadmap that aligned business goals with user needs.",
+            "Rapid Design & Prototyping: Our design experts translated complex workflows into intuitive user interfaces, creating interactive prototypes that accelerated stakeholder feedback and iteration cycles.",
+            "Agile Development & Task Management: Implemented streamlined task scheduling and team collaboration processes to ensure seamless communication and faster delivery without compromising quality.",
+            "End-to-End Support & Launch Assistance: Guided Planica through testing, refinement, and deployment phases, ensuring a smooth transition from design to a fully functional live product."
+          ],
+          achievements: [
+            "Reduced time-to-market by 40%, enabling faster user acquisition",
+            "Improved cross-team collaboration, boosting productivity by 60%",
+            "Delivered a scalable platform that supports dynamic event and task management",
+            "Helped Planica launch with confidence, backed by robust design and development practices"
+          ]
+        }
+      }
+,
+
+      {
+        id: 2,
+        type: "special",
+        image:
+          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746848768/123_xyvdse.png",
+        logo: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746849674/logo2active_yqvf7o.png",
+        tags: [
+          "DISCOVERY & RESEARCH",
+          "NO-CODE DEVELOPMENT",
+          "UX/UI DESIGN",
+          "PRODUCT STRATEGY",
+          "LAUNCH SUPPORT"
+        ],
+        title: "Zif Care - Accelerated HR Recruitment SaaS Launch by 50% Using Bubble",
+        siteUrl: "#",
+        details: {
+          challenge:
+            "Zif Care sought to build a comprehensive HR recruitment SaaS platform that streamlines hiring workflows, candidate management, and team collaboration. They needed a fast, scalable solution with a seamless user experience, built on Bubble’s no-code platform to accelerate time-to-market.",
+          features: [
+            "Thorough discovery and research phase to align product features with HR industry needs and user expectations.",
+            "Leveraged Bubble’s no-code capabilities to rapidly develop and iterate on complex recruitment workflows without sacrificing scalability or customization.",
+            "Designed an intuitive UX/UI that simplifies applicant tracking, interview scheduling, and communication between recruiters and candidates.",
+            "Implemented strategic product planning to prioritize core functionalities such as resume parsing, automated candidate communication, and onboarding integrations.",
+            "Provided end-to-end support from prototype to launch, ensuring smooth deployment and post-launch optimizations for performance and user engagement."
+          ]
+        }
+      }
+
+,
+{
     id: 3,
     type: "special",
     image:
-      "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
-    logo: "https://framerusercontent.com/images/3Y1x3Iz9CnzoCeLjfRflZMOiF0.svg?scale-down-to=1024",
+      "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746848767/Frame_1321314991_ck4occ.png",
+    logo: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746850195/logo3active_tj5bmu.png",
     tags: [
       "UI Design",
       "Framer Development",
       "Content Strategy",
-      "SEO & Performance",
+      "SEO & Performance"
     ],
     title:
-      "How we revamped an Agency's digital presence to drive 40% more client engagement",
+      "How we helped fuel station owners cut fuel losses by 45% with app and real-time AI analytics",
     siteUrl: "#",
     hasCarousel: true,
     carouselImages: [
       "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
       "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
       "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
-      "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
+      "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024"
     ],
     details: {
       challenge:
-        "GreenTech's platform needed to communicate complex environmental data in an accessible way while maintaining visual appeal...",
+        "Fuel station owners struggled with manual monitoring and lacked real-time insights to optimize fuel management and reduce losses.",
       features: [
-        "Interactive carbon footprint calculator",
-        "Real-time sustainability metrics dashboard",
-        "Educational resource library",
-        "Community engagement features",
+        "AI-powered analytics delivering real-time fuel consumption and inventory data",
+        "Camera integration for automated monitoring and fraud detection",
+        "User-friendly dashboard designed with Framer for seamless data visualization",
+        "Optimized SEO and performance to maximize platform reach and reliability"
       ],
       achievements: [
-        "Increased user engagement by 65%",
-        "Reduced bounce rate by 40%",
-        "Won 2023 Green Web Award",
-      ],
-    },
-  },
+        "Cut fuel losses by over 45%, saving thousands monthly",
+        "Boosted operational efficiency by 40% with instant data insights",
+        "Accelerated platform response time by 50%, enhancing user satisfaction"
+      ]
+    }
+  }
+
 ];
 
 const PortfolioSection = () => {
@@ -258,13 +263,16 @@ const PortfolioSection = () => {
         {/* Header */}
         <div className="max-w-[800px] w-full flex flex-col items-center justify-center px-[20px] gap-[5px]">
           <div className="w-[132.79px] h-[33px] rounded-[25px] bg-[#f5f7f9] flex justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
-            <div className="size-[32px] bg-black rounded-full p-[9px] flex items-center justify-center">
-              <Image
-                src="/portfolio-icon.svg"
-                alt="section icon"
-                width={64}
-                height={64}
-              />
+          <div className="size-[32px]   rounded-full flex items-center justify-center p-[9px]"
+            style={{
+                background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
+            }}
+            >
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M20.2112 7.81994L12.5112 12.2799C12.2012 12.4599 11.8112 12.4599 11.4912 12.2799L3.79119 7.81994C3.24119 7.49994 3.10119 6.74994 3.52119 6.27994C3.81119 5.94994 4.14119 5.67994 4.49119 5.48994L9.91119 2.48994C11.0712 1.83994 12.9512 1.83994 14.1112 2.48994L19.5312 5.48994C19.8812 5.67994 20.2112 5.95994 20.5012 6.27994C20.9012 6.74994 20.7612 7.49994 20.2112 7.81994Z" fill="white"/>
+  <path d="M11.431 14.14V20.96C11.431 21.72 10.661 22.22 9.98096 21.89C7.92096 20.88 4.45096 18.99 4.45096 18.99C3.23096 18.3 2.23096 16.56 2.23096 15.13V9.97C2.23096 9.18 3.06096 8.68 3.74096 9.07L10.931 13.24C11.231 13.43 11.431 13.77 11.431 14.14Z" fill="white"/>
+  <path d="M12.5708 14.14V20.96C12.5708 21.72 13.3408 22.22 14.0208 21.89C16.0808 20.88 19.5508 18.99 19.5508 18.99C20.7708 18.3 21.7708 16.56 21.7708 15.13V9.97C21.7708 9.18 20.9408 8.68 20.2608 9.07L13.0708 13.24C12.7708 13.43 12.5708 13.77 12.5708 14.14Z" fill="white"/>
+</svg>
             </div>
             <div className="section-tag">
               Our Portfolio
@@ -272,9 +280,8 @@ const PortfolioSection = () => {
           </div>
 
           <div className="max-w-[760px] w-full">
-            <h2 className="section-heading">
-              Explore the projects where we played, experimented, and built
-              something amazing.
+            <h2 className="section-heading mt-2 text-center">
+                Uncover the Stories Behind Our Most Innovative and Game-Changing Projects.
             </h2>
           </div>
         </div>
@@ -335,7 +342,10 @@ const PortfolioSection = () => {
                 // Card 2: Only View Site button
                 <a
                   href={item.siteUrl}
-                  className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#0260EB] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                  className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                  style={{
+                    background: "linear-gradient(135deg, #444 -31.5%, #000 100%)"
+                  }}
                 >
                   <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
                     View Site
@@ -347,7 +357,7 @@ const PortfolioSection = () => {
                     height="24"
                     fill="white"
                   >
-                    <path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Z" />
+                    <path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z" />
                   </svg>
                 </a>
               ) : item.id === 3 ? (
@@ -355,7 +365,10 @@ const PortfolioSection = () => {
                 <div className="flex flex-col gap-2">
                   <a
                     href={item.siteUrl}
-                    className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#0260EB] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                    className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                    style={{
+                      background: "linear-gradient(135deg, #444 -31.5%, #000 100%)"
+                    }}
                   >
                     <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
                       View Site
@@ -367,12 +380,15 @@ const PortfolioSection = () => {
                       height="24"
                       fill="white"
                     >
-                      <path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Z" />
+                      <path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z" />
                     </svg>
                   </a>
                   <div
                     onClick={() => toggleExpand(item.id)}
-                    className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#0260EB] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                    className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                    style={{
+                      background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
+                    }}
                   >
                     <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
                       {expandedCard === item.id
@@ -394,7 +410,10 @@ const PortfolioSection = () => {
                 // Other cards: Only Expand Details button
                 <div
                   onClick={() => toggleExpand(item.id)}
-                  className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center bg-[#0260EB] rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                  className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
+                  style={{
+                    background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
+                  }}
                 >
                   <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
                     {expandedCard === item.id
@@ -426,19 +445,20 @@ const PortfolioSection = () => {
                     {/* Carousel for First Card */}
                     {item.hasCarousel && item.id === 1 && (
                       <div
-                        className="relative w-full h-[480px] bg-gray-200 rounded-xl overflow-hidden"
+                        className="relative w-full h-fit bg-gray-200 rounded-xl overflow-hidden"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
+                        style={{ maxWidth: "100%" }}
                       >
                         <div
-                          className="flex h-full"
+                          className="flex h-fit"
                           style={carouselStyle}
                           onTransitionEnd={handleTransitionEnd}
                         >
                           {carouselImages.map((image, index) => (
                             <motion.div
                               key={index}
-                              className="min-w-full h-full relative"
+                              className="min-w-full h-fit relative flex items-center justify-center"
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
@@ -447,9 +467,10 @@ const PortfolioSection = () => {
                               <Image
                                 src={image}
                                 alt={`Carousel item ${index + 1}`}
-                                width={400}
-                                height={300}
-                                className="w-full h-full object-cover"
+                                width={700}
+                                height={320}
+                                className="w-full h-fit object-contain"
+                                style={{ objectFit: "contain" }}
                               />
                             </motion.div>
                           ))}
@@ -483,7 +504,7 @@ const PortfolioSection = () => {
                     )}
 
                     {/* YouTube Video (only for first card) */}
-                    {item.youtubeUrl && item.id === 1 && (
+                    {/* {item.youtubeUrl && item.id === 1 && (
                       <div className="w-full h-[360px] rounded-xl overflow-hidden">
                         <iframe
                           className="w-full h-[360px] rounded-xl"
@@ -494,24 +515,25 @@ const PortfolioSection = () => {
                           allowFullScreen
                         />
                       </div>
-                    )}
+                    )} */}
 
                     {/* Carousel for Third Card */}
                     {item.hasCarousel && item.id === 3 && (
                       <div
-                        className="relative w-full h-[480px] bg-gray-200 rounded-xl overflow-hidden"
+                        className="relative w-full h-fit bg-gray-200 rounded-xl overflow-hidden"
                         onMouseEnter={handleMouseEnter3}
                         onMouseLeave={handleMouseLeave3}
+                        style={{ maxWidth: "100%" }}
                       >
                         <div
-                          className="flex h-full"
+                          className="flex h-fit"
                           style={carouselStyle3}
                           onTransitionEnd={handleTransitionEnd3}
                         >
                           {carouselImages3.map((image, index) => (
                             <motion.div
                               key={index}
-                              className="min-w-full h-full relative"
+                              className="min-w-full h-fit relative flex items-center justify-center"
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
@@ -519,10 +541,11 @@ const PortfolioSection = () => {
                             >
                               <Image
                                 src={image}
-                                className="w-full h-full object-cover"
                                 alt={`Carousel item ${index + 1}`}
-                                width={400}
-                                height={300}
+                                width={700}
+                                height={320}
+                                className="w-full h-full object-contain"
+                                style={{ objectFit: "contain" }}
                               />
                             </motion.div>
                           ))}

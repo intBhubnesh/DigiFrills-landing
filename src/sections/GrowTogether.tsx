@@ -5,11 +5,23 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const logos = [
-  "https://framerusercontent.com/images/6QEz8kJbwqWFzbNDcgcMwaBk7Jk.svg",
-  "https://framerusercontent.com/images/3Y1x3Iz9CnzoCeLjfRflZMOiF0.svg",
-  "https://framerusercontent.com/images/duZwjP73YzY6931zuqasWWfWDZY.svg",
-  "https://framerusercontent.com/images/6o730eaCLvIkG9j6FFRCYHSzNzc.svg",
-  "https://framerusercontent.com/images/oeigtHFhM0qf1CThkR9gRSymB0.svg",
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746845552/logo_1_clm9cs.svg",
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746845553/logo_3_j1nx7c.svg",
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746845553/logo_2_zuh3y0.svg",
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846350/logo_5_brppds.svg",
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746845553/logo_4_fbsntg.svg",
+  "https://framerusercontent.com/images/g4yFX4nEgsyfKUkcJSsYZdlgCJM.svg",
+  "https://framerusercontent.com/images/mGAxAGDBjt0JHg8MI0F9P9FkW0g.svg",
+  "https://framerusercontent.com/images/vEfUDWPkZSWQLY8lC44HeDu6Ic.svg",
+  "https://framerusercontent.com/images/uTkuLOi3ZjuJHBQNS9i0C4T7A.svg",
+  "https://framerusercontent.com/images/8LtSXMmNjpVaruiiqMNkdJXfkg.svg",
+];
+const logosActive = [
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846559/logo_5_active_pckpdx.svg",
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846558/logo_2_active_set4kx.svg",
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846557/logo_1_active_zgze7z.svg",
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846560/logo_3_active_vj90wt.svg",
+  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846559/logo_4_active_fuasad.svg",
   "https://framerusercontent.com/images/g4yFX4nEgsyfKUkcJSsYZdlgCJM.svg",
   "https://framerusercontent.com/images/mGAxAGDBjt0JHg8MI0F9P9FkW0g.svg",
   "https://framerusercontent.com/images/vEfUDWPkZSWQLY8lC44HeDu6Ic.svg",
@@ -28,6 +40,7 @@ const fadeInVariants = {
 
 export default function GrowTogetherSection() {
   const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [activeLogoIndex, setActiveLogoIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,6 +63,11 @@ export default function GrowTogetherSection() {
       // Desktop (1024px+): 5 + 5 (both centered)
       return [logos.slice(0, 5), logos.slice(5, 10)];
     }
+  };
+
+  // Helper function to get the active logo URL
+  const getActiveLogoUrl = (index: number) => {
+    return logosActive[index] || logos[index];
   };
 
   const rows = getRows();
@@ -89,6 +107,10 @@ export default function GrowTogetherSection() {
                 variants={fadeInVariants}
                 className={`
                   bg-gray-100 rounded-2xl md:rounded-3xl flex items-center justify-center
+                  transition-all duration-500 ease-in-out
+                  ${activeLogoIndex === (rowIndex * row.length + i) ? 'shadow-lg transform -translate-y-1' : 'hover:shadow-md hover:transform hover:-translate-y-1'}
+                  ${activeLogoIndex === (rowIndex * row.length + i) ? 'bg-gray-50' : 'hover:bg-gray-50'}
+                  cursor-pointer
                   ${
                     windowWidth < 750
                       ? "w-16 h-16 p-4"
@@ -97,15 +119,47 @@ export default function GrowTogetherSection() {
                       : "w-24 h-24 p-6"
                   }
                 `}
+                onMouseEnter={() => setActiveLogoIndex(rowIndex * row.length + i)}
+                onMouseLeave={() => setActiveLogoIndex(null)}
+                onClick={() => {
+                  // Toggle active state on click
+                  setActiveLogoIndex(
+                    activeLogoIndex === (rowIndex * row.length + i)
+                      ? null
+                      : (rowIndex * row.length + i)
+                  );
+                }}
               >
-                <Image
-                  src={logo}
-                  alt={`Logo ${i + 1}`}
-                  width={80}
-                  height={80}
-                  className="object-contain w-full h-full"
-                  priority={i < 3}
-                />
+                <div className="relative w-full h-full group">
+                  {/* Regular logo (shown when not active/hovered) */}
+                  <Image
+                    src={logo}
+                    alt={`Logo ${i + 1}`}
+                    width={80}
+                    height={80}
+                    className={`
+                      object-contain w-full h-full
+                      transition-all duration-500 ease-in-out
+                      ${activeLogoIndex === (rowIndex * row.length + i) ? 'opacity-0 transform scale-95' : 'group-hover:opacity-0 group-hover:transform group-hover:scale-95'}
+                      absolute inset-0
+                    `}
+                    priority={i < 3}
+                  />
+
+                  {/* Active logo (shown when active/hovered) */}
+                  <Image
+                    src={getActiveLogoUrl(logos.indexOf(logo))}
+                    alt={`Logo ${i + 1} Active`}
+                    width={80}
+                    height={80}
+                    className={`
+                      object-contain w-full h-full
+                      transition-all duration-500 ease-in-out
+                      ${activeLogoIndex === (rowIndex * row.length + i) ? 'opacity-100 transform scale-105' : 'opacity-0 transform scale-95 group-hover:opacity-100 group-hover:scale-105'}
+                    `}
+                    priority={i < 3}
+                  />
+                </div>
               </motion.div>
             ))}
           </div>

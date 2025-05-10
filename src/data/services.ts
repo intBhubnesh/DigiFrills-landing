@@ -150,5 +150,40 @@ letter-spacing: -1.04px;  margin-bottom: 1rem;">What’s Included:</h2>
       </ul>
     </div>
   </section>`
-    }
+    },
+    {
+        title: "Bubble Design & Development",
+        icon: [
+            "/ui-ux-icon.svg",
+            "/CWS-icon.svg",
+            "/e-com-icon.svg",
+            "/WMS-icon.svg",
+            "/SEO-icon.svg",
+            "/ui-ux-opt-icon.svg",
+          ],
+          description:
+            "Build powerful no-code applications with Bubble that help early-stage startups and SaaS founders launch MVPs and AI SaaS solutions quickly and securely in 2 weeks or less. Our Bubble expertise turns your ideas into reality without writing a single line of code.",
+          tags: [
+            "No-Code Development",
+            "MVP Development",
+            "AI SaaS Solutions",
+            "Bubble App Development",
+            "Rapid Prototyping",
+            "Custom Workflows",
+          ],
+        image: "https://framerusercontent.com/images/4PHCom6qXgaFbyPjGp0uduO2peM.png?scale-down-to=1024",
+        usecase: `<section style="background-color: #f5f5f5; padding: 2rem;">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <h2 style="font-size: 1.75rem; margin-bottom: 1rem;">What’s Included:</h2>
+        <ul style="list-style-type: disc; padding-left: 1.5rem; line-height: 1.8;">
+          <li><strong>MVP Development:</strong> Launch your minimum viable product in 2 weeks or less.</li>
+          <li><strong>No-Code Solutions:</strong> Build powerful applications without writing code.</li>
+          <li><strong>AI Integration:</strong> Incorporate AI capabilities into your Bubble app.</li>
+          <li><strong>Custom Workflows:</strong> Automate processes and create efficient user journeys.</li>
+          <li><strong>Database Design:</strong> Structure your data for optimal performance and scalability.</li>
+          <li><strong>Third-Party Integrations:</strong> Connect with APIs and services to extend functionality.</li>
+        </ul>
+      </div>
+    </section>`
+      }
   ];
