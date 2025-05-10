@@ -259,38 +259,38 @@ const PortfolioSection = () => {
 
   return (
     <section className="w-full flex flex-col items-center mx-auto py-[100px] px-[40px]">
-      <div className="max-w-[1200px] w-full flex flex-col gap-[50px] items-center mx-auto">
+      <div className="max-w-[1200px] w-full flex flex-col gap-[16px] my-8 items-center mx-auto">
         {/* Header */}
-        <div className="max-w-[800px] w-full flex flex-col items-center justify-center px-[20px] gap-[5px]">
+        <div className="max-w-[800px]   w-full flex flex-col items-center justify-center px-[20px] ">
           <div className="w-[132.79px] h-[33px] rounded-[25px] bg-[#f5f7f9] flex justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
-          <div className="size-[32px]   rounded-full flex items-center justify-center p-[9px]"
+          <div className="size-[32px]   rounded-full flex items-center justify-center "
             style={{
                 background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
             }}
             >
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path d="M20.2112 7.81994L12.5112 12.2799C12.2012 12.4599 11.8112 12.4599 11.4912 12.2799L3.79119 7.81994C3.24119 7.49994 3.10119 6.74994 3.52119 6.27994C3.81119 5.94994 4.14119 5.67994 4.49119 5.48994L9.91119 2.48994C11.0712 1.83994 12.9512 1.83994 14.1112 2.48994L19.5312 5.48994C19.8812 5.67994 20.2112 5.95994 20.5012 6.27994C20.9012 6.74994 20.7612 7.49994 20.2112 7.81994Z" fill="white"/>
-  <path d="M11.431 14.14V20.96C11.431 21.72 10.661 22.22 9.98096 21.89C7.92096 20.88 4.45096 18.99 4.45096 18.99C3.23096 18.3 2.23096 16.56 2.23096 15.13V9.97C2.23096 9.18 3.06096 8.68 3.74096 9.07L10.931 13.24C11.231 13.43 11.431 13.77 11.431 14.14Z" fill="white"/>
-  <path d="M12.5708 14.14V20.96C12.5708 21.72 13.3408 22.22 14.0208 21.89C16.0808 20.88 19.5508 18.99 19.5508 18.99C20.7708 18.3 21.7708 16.56 21.7708 15.13V9.97C21.7708 9.18 20.9408 8.68 20.2608 9.07L13.0708 13.24C12.7708 13.43 12.5708 13.77 12.5708 14.14Z" fill="white"/>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 12 12" fill="none">
+  <path d="M10.7306 1.93506C10.7306 1.79831 10.6763 1.66716 10.5796 1.57046C10.4829 1.47376 10.3517 1.41943 10.215 1.41943C8.29086 1.41943 6.34781 3.50514 5.23492 4.94287C4.82843 4.83792 4.40331 4.82742 3.99215 4.91219C3.58098 4.99696 3.19467 5.17474 2.86285 5.43191C2.53102 5.68907 2.26247 6.0188 2.07779 6.39581C1.89312 6.77283 1.79721 7.18712 1.79742 7.60693C1.79742 8.12256 1.66421 8.58275 1.40082 8.97162C1.29021 9.14022 1.15276 9.28958 0.993902 9.41377C0.901287 9.47389 0.830663 9.56242 0.792624 9.66608C0.754584 9.76974 0.751182 9.88293 0.782926 9.98869C0.815343 10.0957 0.881466 10.1893 0.971441 10.2557C1.06142 10.3221 1.17043 10.3576 1.28222 10.3569H4.54785C4.96726 10.3564 5.38101 10.26 5.75742 10.075C6.13384 9.89001 6.46296 9.62137 6.7196 9.28964C6.97623 8.9579 7.15359 8.57186 7.2381 8.16105C7.32261 7.75023 7.31204 7.32553 7.20718 6.91943C8.64621 5.80439 10.7306 3.86006 10.7306 1.93506ZM9.59711 2.55338C9.42523 3.10854 9.03207 3.73459 8.44039 4.39717C8.31148 4.54283 8.1757 4.68506 8.03863 4.82213C7.82959 4.55988 7.59177 4.32192 7.32964 4.11271C7.46672 3.97564 7.60851 3.84115 7.75418 3.71096C8.41675 3.11885 9.04238 2.72697 9.59711 2.55338ZM4.54613 9.32568H2.39468C2.6874 8.8006 2.83761 8.20805 2.83039 7.60693C2.83039 7.267 2.93119 6.93469 3.12005 6.65205C3.30891 6.3694 3.57734 6.1491 3.8914 6.01902C4.20546 5.88893 4.55104 5.85489 4.88445 5.92121C5.21785 5.98753 5.52411 6.15122 5.76448 6.39159C6.00485 6.63197 6.16854 6.93822 6.23486 7.27162C6.30118 7.60503 6.26714 7.95061 6.13705 8.26467C6.00697 8.57873 5.78667 8.84716 5.50402 9.03602C5.22138 9.22488 4.88907 9.32568 4.54914 9.32568H4.54613ZM6.18668 5.40178C6.32074 5.23291 6.46812 5.05416 6.62625 4.87111C6.87273 5.05909 7.09284 5.27935 7.28066 5.52596C7.09761 5.68408 6.91886 5.83146 6.75 5.96553C6.59039 5.75143 6.40066 5.56154 6.18668 5.40178Z" fill="white"/>
 </svg>
             </div>
-            <div className="section-tag">
+            <div className="section-tag text-gray-800">
               Our Portfolio
+            </div>
             </div>
           </div>
 
-          <div className="max-w-[760px] w-full">
-            <h2 className="section-heading mt-2 text-center">
+          <div className="max-w-[760px]  w-full">
+            <h2 className="section-heading  text-center">
                 Uncover the Stories Behind Our Most Innovative and Game-Changing Projects.
             </h2>
           </div>
         </div>
-
+<div className="flex flex-col items-center justify-center gap-12">
         {/* Portfolio Cards */}
         {portfolioItems.map((item) => (
           <div
             key={item.id}
-            className="relative max-w-[700px] w-full flex flex-col items-center mx-auto overflow-hidden gap-[5px] rounded-2xl md:rounded-[30px]"
+            className="relative max-w-[700px] w-full flex flex-col items-center mx-auto overflow-hidden rounded-2xl md:rounded-[30px]"
           >
             {/* Logo */}
             {item.logo && (
@@ -625,7 +625,7 @@ const PortfolioSection = () => {
             </div>
           </div>
         ))}
-      </div>
+        </div>
     </section>
   );
 };

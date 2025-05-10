@@ -10,7 +10,7 @@ type CardData = {
   description: string;
 };
 
-const cardData = [
+const cardData: CardData[] = [
     {
       number: "1",
       title: "Discover & Understand",

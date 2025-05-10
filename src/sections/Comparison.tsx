@@ -12,7 +12,7 @@ import {
 import { BsFileEarmarkText } from "react-icons/bs";
 import { IoBulb } from "react-icons/io5";
 import { PiGraph } from "react-icons/pi";
-import Image from "next/image";
+
 
 const Comparison = () => {
   const others = [
@@ -42,24 +42,21 @@ const Comparison = () => {
   ];
 
   return (
-    <div className="w-full px-4 py-12">
-      <div className="max-w-6xl mx-auto space-y-8">
+      <div className="text-center flex my-12 items-center justify-center">
+      <div className="max-w-[1200px] w-full flex flex-col items-center justify-center px-[20px] gap-[5px]">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="relative inline-flex items-center bg-gray-100 px-4 py-1 rounded-full pl-12">
-            {/* Icon positioned absolutely inside and above */}
-            <div className="absolute left-2 top-1/4 transform -translate-y-1/2 w-16 h-16 flex items-center justify-center z-10">
-              <Image
-                src="/Background.svg"
-                alt="Comparison icon"
-                width={64}
-                height={64}
-                className="w-full h-full object-contain"
-              />
+          <div className=" h-[33px] gap-1 rounded-[25px] bg-[#f5f7f9] flex justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
+          <div className="size-[32px]   rounded-full inlie-flex items-center justify-center p-[9px]"
+            style={{
+                background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
+            }}
+            >
+
             </div>
-            <span className="section-tag leading-none">Our differences</span>
+            <div className="section-tag text-nowrap">
+            Our Differences
+            </div>
           </div>
-        </div>
 
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
           While others copy and paste,
