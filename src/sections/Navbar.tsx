@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { Link } from "react-scroll";
 
-const navItems = ["Services", "Projects", "Process", "Reviews", "Pricing"];
+const navItems = ["Services", "Projects", "Process", "Reviews", "FaQ"];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,9 +80,7 @@ const Navbar = () => {
               </Link>
             ))}
 
-            <button className="bg-black text-white px-6 py-2 rounded-full shadow-lg">
-              Get Template
-            </button>
+
 
             {/* Close Button */}
             <button
