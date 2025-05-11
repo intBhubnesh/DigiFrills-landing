@@ -71,14 +71,14 @@ const Footer = () => {
           <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
             <FaPhoneAlt size={14} /> Phone
           </div>
-          <p className="mt-2">(217) 555-0134</p>
+          <p className="mt-2">(91) 9392273514</p>
         </div>
 
         <div>
           <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
             <FaEnvelope size={14} /> Email
           </div>
-          <p className="mt-2">agencie@email.com</p>
+          <p className="mt-2">digifrills@gmail.com</p>
         </div>
 
         <div>
@@ -86,27 +86,18 @@ const Footer = () => {
             <FaMapMarkerAlt size={14} /> Address
           </div>
           <p className="mt-2 leading-relaxed">
-            123 Main Street, Suite 200,
+            gvrmvijayadwada,
             <br />
-            Austin, TX 78701
+            Andhra Pradesh, 521101
           </p>
         </div>
 
-        <div>
-          <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
-            <FaClock size={14} /> Opening Hours
-          </div>
-          <p className="mt-2 leading-relaxed">
-            Mon to Sat: 9.00am - 8.30pm
-            <br />
-            Sun: Closed
-          </p>
-        </div>
+
       </div>
 
       {/* Bottom Strip */}
       <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 mt-12">
-        <p>©Template by Prithvi</p>
+        <p>&copy; 2025 DigiFrills. All rights reserved.</p>
       </div>
     </footer>
   );
