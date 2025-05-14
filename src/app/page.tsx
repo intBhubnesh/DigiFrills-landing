@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import Navbar from "../sections/Navbar";
 import Hero from "../sections/Hero";
@@ -11,6 +11,7 @@ import GrowTogetherSection from "@/sections/GrowTogether";
 import Comparison from "@/sections/Comparison";
 import ServiceSection from "@/sections/ServiceSection";
 import PortfolioSection from "@/sections/PortfolioSection";
+import AboutUs from "@/sections/AboutUs";
 import Faq from "@/sections/Faq";
 import { Element } from "react-scroll";
 import LoadingScreen from "@/sections/LoadingScreen";
@@ -86,6 +87,8 @@ export default function Home() {
         <Work />
         <Comparison />
       </Element>
+
+      <AboutUs />
 
       {/* Reviews Section */}
       <Element name="reviews" className="scroll-mt-24">

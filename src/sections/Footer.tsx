@@ -1,7 +1,6 @@
 import {
   FaPhoneAlt,
   FaMapMarkerAlt,
-  FaClock,
   FaEnvelope,
   FaAngleRight,
 } from "react-icons/fa";
@@ -9,7 +8,10 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="text-gray-300 px-6 md:px-20 py-16 rounded-t-[40px] font-sans" style={{ background: "linear-gradient(135deg, #444 -31.5%, #000 100%)" }}>
+    <footer
+      className="text-gray-300 px-6 md:px-20 py-16 rounded-t-[40px] font-sans"
+      style={{ background: "linear-gradient(135deg, #444 -31.5%, #000 100%)" }}
+    >
       {/* Top Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-12">
         {/* Logo and Text */}
@@ -91,8 +93,6 @@ const Footer = () => {
             Andhra Pradesh, 521101
           </p>
         </div>
-
-
       </div>
 
       {/* Bottom Strip */}
