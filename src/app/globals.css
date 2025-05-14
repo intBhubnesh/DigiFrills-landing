@@ -149,7 +149,7 @@ li::marker {
   letter-spacing: -0.6px;
 }
 
-testimonial-text {
+.testimonial-text {
   color: #0f0f0f;
   font-family: Inter;
   font-size: 20px;

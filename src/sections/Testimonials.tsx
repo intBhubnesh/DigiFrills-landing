@@ -188,7 +188,7 @@ const VideoTestimonial: React.FC<VideoTestimonialProps> = ({
       </div>
       <div className="text-center py-3">
         <h3 className="text-black text-xl font-medium text-[17px]">{name}</h3>
-        <p className="className=text-black/65 font-semibold uppercase text-sm text-[11px] tracking-wide">
+        <p className="text-black/65 font-semibold uppercase text-sm text-[11px] tracking-wide">
           {position}, {company}
         </p>
       </div>
@@ -291,9 +291,7 @@ const Testimonial: React.FC = () => {
       avatarSrc: `https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746913149/Rectangle_4312_ivfohg.png`,
     },
     {
-
-              quote:
-        "Our online presence went from zero to hero in no time. The team made the process so seamless, I almost forgot I was working on a big project!",
+      quote: "Our online presence went from zero to hero in no time. The team made the process so seamless, I almost forgot I was working on a big project!",
       clientName: "Bhavy Parmar",
       position: "Founder",
       company: "MedLinkPro",
@@ -304,14 +302,14 @@ const Testimonial: React.FC = () => {
 
   const videoTestimonials: VideoTestimonialData[] = [
     {
-      name: "Magnus Hawthorne",
+      name: "Rohit Chopra",
       position: "OWNER",
-      company: "BAYLEAF",
+      company: "ZIFCARE",
     },
     {
-      name: "Thaddeus Montgomery",
+      name: "Stavya Bhatia",
       position: "OWNER",
-      company: "GOLDGARDEN",
+      company: "Roombae",
     },
   ];
 
@@ -354,13 +352,7 @@ const Testimonial: React.FC = () => {
                 <h2 className="hidden md:block text-3xl md:text-3xl lg:text-5xl lg:w-[64rem] font-bold font-inter text-black leading-snug">
                   Hear stories
                   <span className="inline-flex items-center mx-2 -space-x-2 align-middle">
-                    {[
-                      `${imageConfig.framerusercontent}MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512`,
-                      `${imageConfig.framerusercontent}5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512`,
-                      `${imageConfig.framerusercontent}6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512`,
-                      `${imageConfig.framerusercontent}6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512`,
-                      `${imageConfig.framerusercontent}XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512`,
-                    ].map((src, index) => (
+                    {testimonials.slice(0, 5).map((testimonial) => testimonial.avatarSrc).map((src, index) => (
                       <div
                         key={index}
                         className="inline-block h-6 w-6 sm:h-8 sm:w-8 md:h-12 md:w-12 rounded-lg sm:rounded-lg md:rounded-2xl lg:rounded-2xl ring-4 ring-white overflow-hidden"
@@ -380,13 +372,7 @@ const Testimonial: React.FC = () => {
                 <h2 className="md:hidden text-3xl font-bold font-inter text-black leading-snug">
                   Hear stories straight from the people
                   <span className="inline-flex items-center mx-2 -space-x-2 align-middle">
-                    {[
-                      `${imageConfig.framerusercontent}MDE7XIBGnAp7GIZqwSV00Vh90.jpg?scale-down-to=512`,
-                      `${imageConfig.framerusercontent}5wZzX30rg0ckdSubOe94bFGvXk.jpg?scale-down-to=512`,
-                      `${imageConfig.framerusercontent}6KKDj9gnqEHDNBTD7GWaqkIug8.jpg?scale-down-to=512`,
-                      `${imageConfig.framerusercontent}6OOWa2zIdujTmN3ZdUxz0qFSaRA.jpg?scale-down-to=512`,
-                      `${imageConfig.framerusercontent}XQBcFnxyK3FSny302gO7Gggkdsw.jpg?scale-down-to=512`,
-                    ].map((src, index) => (
+                    {testimonials.slice(0, 5).map((testimonial) => testimonial.avatarSrc).map((src, index) => (
                       <div
                         key={index}
                         className="inline-block h-6 w-6 sm:h-8 sm:w-8 rounded-lg sm:rounded-lg ring-4 ring-white overflow-hidden"

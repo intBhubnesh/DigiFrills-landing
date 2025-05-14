@@ -26,18 +26,35 @@ const Hero = () => {
     >
       <CustomCursor videoRef={videoWrapperRef} />
       <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-left relative pt-12 lg:pt-0 gap-2 flex-col flex">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="sm:text-left text-center text-4xl md:text-5xl lg:text-[65px] max-w-5xl left-2 text-gray font-[inter] font-medium leading-[65px] tracking-[-4px]"
-        >
-          Big ideas, smart strategies, <br />
-          and endless creativity to <br />
-          supercharge<span className="text-yellow-500 inline-block">⚡</span>
-          your business !
-        </motion.h1>
 
+        <motion.h2
+          ref={headingRef}
+          initial={{ filter: "blur(10px)", opacity: 0 }}
+          animate={
+            headingInView
+              ? {
+                  filter: "blur(0px)",
+                  opacity: 1,
+                  transition: { duration: 0.8, ease: "easeOut" },
+                }
+              : {}
+          }
+          className="hero-message text-4xl md:text-5xl lg:text-6xl font-[inter] font-medium leading-tight tracking-tight"
+        >
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">Helping</span>
+          <span className=""> Early-Stage </span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">Startups</span>
+          <span className=""> & SaaS Founders</span>
+
+          <span className=""> build</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]"> MVPs </span>
+          <span className="text-black inline-block">Quickly</span> &
+          <span className="text-black inline-block">Securly</span>
+
+          <span className="">
+             in 2 Weeks or Less.
+          </span>
+        </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -155,36 +172,20 @@ const Hero = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="w-full mt-60 px-6 lg:px-16"
+        className="w-full  max-w-7xl mx-auto mt-60 px-6 lg:px-16"
       >
-        <motion.h2
-          ref={headingRef}
-          initial={{ filter: "blur(10px)", opacity: 0 }}
-          animate={
-            headingInView
-              ? {
-                  filter: "blur(0px)",
-                  opacity: 1,
-                  transition: { duration: 0.8, ease: "easeOut" },
-                }
-              : {}
-          }
-          className="hero-message text-4xl md:text-5xl lg:text-6xl font-[inter] font-medium leading-tight tracking-tight"
+        {/* paste */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="sm:text-left text-center text-4xl md:text-5xl lg:text-[65px] max-w-5xl left-2 text-gray font-[inter] font-medium leading-[65px] tracking-[-4px]"
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">Helping</span>
-          <span className=""> Early-Stage </span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">Startups</span>
-          <span className=""> & SaaS Founders</span>
-
-          <span className=""> build</span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]"> MVPs </span>
-          <span className="text-black inline-block">Quickly</span>
-          <br />
-          <span className="">
-             in 2 Weeks or Less.
-          </span>
-        </motion.h2>
-
+          Big ideas, smart strategies, <br />
+          and endless creativity to <br />
+          supercharge<span className="text-yellow-500 inline-block">⚡</span>
+          your business !
+        </motion.h1>
         <div className="grid mt-12 grid-cols-1 md:grid-cols-3 w-full gap-4">
           <StatCard
             endValue={25}
@@ -199,7 +200,7 @@ const Hero = () => {
             description="Our strategies have helped clients achieve up to 70% revenue growth in just one year!"
           />
           <StatCard
-            endValue={50}
+            endValue={8}
             suffix="+"
             title="Happy Clients"
             description="More than 50 satisfied clients trust us to bring their ideas to life."

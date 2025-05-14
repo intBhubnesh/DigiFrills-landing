@@ -53,29 +53,28 @@ export default function OurServices() {
 
   const testimonialData = [
     {
-      profile:
-        "https://framerusercontent.com/images/69AfOAuHYwAOuoUih5OD0cURM.jpg",
-      testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      profile: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746911698/1723801405260_o8pgc0.jpg",
+      testimonial: "Turned our rough ideas into a stunning website our users love!",
     },
     {
-      profile:
-        "https://framerusercontent.com/images/XiMyyNx8unIwYIKgfBrWE1AinY.jpg?scale-down-to=512",
-      testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      profile: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746911836/1737181719368_zztdhm.jpg",
+      testimonial: "They understood our vision better than we did. 10/10 would recommend!",
     },
     {
-      profile:
-        "https://framerusercontent.com/images/cnLntcGAx8hue6HcvWIuDTGJERQ.jpg",
-      testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      profile: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746912344/1517021278290_zm1bk8.jpg",
+      testimonial: "From strategy to execution, every detail was on point!",
     },
     {
-      profile:
-        "https://framerusercontent.com/images/x12Fv3VOaCuprlQXViBbGALOKA4.jpg",
-      testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      profile: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746912615/1516269349989_tasdep.jpg",
+      testimonial: "Our brand went from a whisper to a roar. Getting noticed like never before!",
     },
     {
-      profile:
-        "https://framerusercontent.com/images/XiMyyNx8unIwYIKgfBrWE1AinY.jpg?scale-down-to=512",
-      testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      profile: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746913149/Rectangle_4312_ivfohg.png",
+      testimonial: "Attention to detail, quick responses, and innovative ideas were top-notch!",
+    },
+    {
+      profile: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746913650/1733584220094_dgvvaq.jpg",
+      testimonial: "Our online presence went from zero to hero in no time!",
     },
   ];
   return (
@@ -110,7 +109,7 @@ export default function OurServices() {
           >
             Services designed to help
             <br />
-            your proudct shine brighter
+            your product shine brighter
           </motion.h2>
         </div>
 

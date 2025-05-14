@@ -1,7 +1,6 @@
 import {
   FaPhoneAlt,
   FaMapMarkerAlt,
-  FaClock,
   FaEnvelope,
   FaAngleRight,
 } from "react-icons/fa";
@@ -71,14 +70,14 @@ const Footer = () => {
           <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
             <FaPhoneAlt size={14} /> Phone
           </div>
-          <p className="mt-2">(91) 9392273514</p>
+          <p className="mt-2">(91) 911255393</p>
         </div>
 
         <div>
           <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
             <FaEnvelope size={14} /> Email
           </div>
-          <p className="mt-2">digifrills@gmail.com</p>
+          <p className="mt-2">founder@digifrills.in</p>
         </div>
 
         <div>
@@ -86,7 +85,7 @@ const Footer = () => {
             <FaMapMarkerAlt size={14} /> Address
           </div>
           <p className="mt-2 leading-relaxed">
-            gvrmvijayadwada,
+            Vizag,
             <br />
             Andhra Pradesh, 521101
           </p>
