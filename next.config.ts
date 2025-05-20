@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       "img.youtube.com",
       "res.cloudinary.com",
       "getillustrations.b-cdn.net",
+      "www.svgrepo.com",
     ],
   },
   /* Add any other config options here */
