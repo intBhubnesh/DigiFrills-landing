@@ -23,70 +23,69 @@ interface PortfolioItem {
 
 // Portfolio data defined outside component to avoid recreation on every render
 const portfolioItems: PortfolioItem[] = [
-    {
-        id: 1,
-        type: "default",
-        image:
-          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746848564/Frame_1321315911_xqv8qj.png",
-        logo: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746849481/logo1active_zlpqgm.png",
-        tags: ["AGENCY", "PRODUCT DEVELOPMENT", "COLLABORATION", "STRATEGY"],
-        title: "Planica - Reduced Time-to-Market by 40% to Accelerate Product Success",
-        hasCarousel: true,
-        carouselImages: [
-          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854632/User_Details_mdb0t8.png",
-          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854630/channel_view_default_equwij.png",
-          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854632/Dashboard_Progress_euj0sy.png"
-        ],
-        youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        details: {
-          challenge:
-            "Planica approached us with a vision to revolutionize event planning and team coordination but needed expert guidance to transform their ideas from documentation into a polished, market-ready product quickly and efficiently.",
-          features: [
-            "Strategic Product Consulting: We collaborated closely with Planica’s team to clarify their vision, define priorities, and establish a clear roadmap that aligned business goals with user needs.",
-            "Rapid Design & Prototyping: Our design experts translated complex workflows into intuitive user interfaces, creating interactive prototypes that accelerated stakeholder feedback and iteration cycles.",
-            "Agile Development & Task Management: Implemented streamlined task scheduling and team collaboration processes to ensure seamless communication and faster delivery without compromising quality.",
-            "End-to-End Support & Launch Assistance: Guided Planica through testing, refinement, and deployment phases, ensuring a smooth transition from design to a fully functional live product."
-          ],
-          achievements: [
-            "Reduced time-to-market by 40%, enabling faster user acquisition",
-            "Improved cross-team collaboration, boosting productivity by 60%",
-            "Delivered a scalable platform that supports dynamic event and task management",
-            "Helped Planica launch with confidence, backed by robust design and development practices"
-          ]
-        }
-      }
-,
+  {
+    id: 1,
+    type: "default",
+    image:
+      "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746848564/Frame_1321315911_xqv8qj.png",
+    logo: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746849481/logo1active_zlpqgm.png",
+    tags: ["AGENCY", "PRODUCT DEVELOPMENT", "COLLABORATION", "STRATEGY"],
+    title:
+      "Planica - Reduced Time-to-Market by 40% to Accelerate Product Success",
+    hasCarousel: true,
+    carouselImages: [
+      "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854632/User_Details_mdb0t8.png",
+      "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854630/channel_view_default_equwij.png",
+      "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854632/Dashboard_Progress_euj0sy.png",
+    ],
+    youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    details: {
+      challenge:
+        "Planica approached us with a vision to revolutionize event planning and team coordination but needed expert guidance to transform their ideas from documentation into a polished, market-ready product quickly and efficiently.",
+      features: [
+        "Strategic Product Consulting: We collaborated closely with Planica’s team to clarify their vision, define priorities, and establish a clear roadmap that aligned business goals with user needs.",
+        "Rapid Design & Prototyping: Our design experts translated complex workflows into intuitive user interfaces, creating interactive prototypes that accelerated stakeholder feedback and iteration cycles.",
+        "Agile Development & Task Management: Implemented streamlined task scheduling and team collaboration processes to ensure seamless communication and faster delivery without compromising quality.",
+        "End-to-End Support & Launch Assistance: Guided Planica through testing, refinement, and deployment phases, ensuring a smooth transition from design to a fully functional live product.",
+      ],
+      achievements: [
+        "Reduced time-to-market by 40%, enabling faster user acquisition",
+        "Improved cross-team collaboration, boosting productivity by 60%",
+        "Delivered a scalable platform that supports dynamic event and task management",
+        "Helped Planica launch with confidence, backed by robust design and development practices",
+      ],
+    },
+  },
+  {
+    id: 2,
+    type: "special",
+    image:
+      "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746848768/123_xyvdse.png",
+    logo: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746849674/logo2active_yqvf7o.png",
+    tags: [
+      "DISCOVERY & RESEARCH",
+      "NO-CODE DEVELOPMENT",
+      "UX/UI DESIGN",
+      "PRODUCT STRATEGY",
+      "LAUNCH SUPPORT",
+    ],
+    title:
+      "Zif Care - Accelerated HR Recruitment SaaS Launch by 50% Using Bubble",
+    siteUrl: "#",
+    details: {
+      challenge:
+        "Zif Care sought to build a comprehensive HR recruitment SaaS platform that streamlines hiring workflows, candidate management, and team collaboration. They needed a fast, scalable solution with a seamless user experience, built on Bubble’s no-code platform to accelerate time-to-market.",
+      features: [
+        "Thorough discovery and research phase to align product features with HR industry needs and user expectations.",
+        "Leveraged Bubble’s no-code capabilities to rapidly develop and iterate on complex recruitment workflows without sacrificing scalability or customization.",
+        "Designed an intuitive UX/UI that simplifies applicant tracking, interview scheduling, and communication between recruiters and candidates.",
+        "Implemented strategic product planning to prioritize core functionalities such as resume parsing, automated candidate communication, and onboarding integrations.",
+        "Provided end-to-end support from prototype to launch, ensuring smooth deployment and post-launch optimizations for performance and user engagement.",
+      ],
+    },
+  },
 
-      {
-        id: 2,
-        type: "special",
-        image:
-          "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746848768/123_xyvdse.png",
-        logo: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746849674/logo2active_yqvf7o.png",
-        tags: [
-          "DISCOVERY & RESEARCH",
-          "NO-CODE DEVELOPMENT",
-          "UX/UI DESIGN",
-          "PRODUCT STRATEGY",
-          "LAUNCH SUPPORT"
-        ],
-        title: "Zif Care - Accelerated HR Recruitment SaaS Launch by 50% Using Bubble",
-        siteUrl: "#",
-        details: {
-          challenge:
-            "Zif Care sought to build a comprehensive HR recruitment SaaS platform that streamlines hiring workflows, candidate management, and team collaboration. They needed a fast, scalable solution with a seamless user experience, built on Bubble’s no-code platform to accelerate time-to-market.",
-          features: [
-            "Thorough discovery and research phase to align product features with HR industry needs and user expectations.",
-            "Leveraged Bubble’s no-code capabilities to rapidly develop and iterate on complex recruitment workflows without sacrificing scalability or customization.",
-            "Designed an intuitive UX/UI that simplifies applicant tracking, interview scheduling, and communication between recruiters and candidates.",
-            "Implemented strategic product planning to prioritize core functionalities such as resume parsing, automated candidate communication, and onboarding integrations.",
-            "Provided end-to-end support from prototype to launch, ensuring smooth deployment and post-launch optimizations for performance and user engagement."
-          ]
-        }
-      }
-
-,
-{
+  {
     id: 3,
     type: "special",
     image:
@@ -96,7 +95,7 @@ const portfolioItems: PortfolioItem[] = [
       "UI Design",
       "Framer Development",
       "Content Strategy",
-      "SEO & Performance"
+      "SEO & Performance",
     ],
     title:
       "How we helped fuel station owners cut fuel losses by 45% with app and real-time AI analytics",
@@ -106,7 +105,7 @@ const portfolioItems: PortfolioItem[] = [
       "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
       "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
       "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
-      "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024"
+      "https://framerusercontent.com/images/wsGLnkSe3c02jPdVbTqqhf80xZo.png?scale-down-to=1024",
     ],
     details: {
       challenge:
@@ -115,16 +114,15 @@ const portfolioItems: PortfolioItem[] = [
         "AI-powered analytics delivering real-time fuel consumption and inventory data",
         "Camera integration for automated monitoring and fraud detection",
         "User-friendly dashboard designed with Framer for seamless data visualization",
-        "Optimized SEO and performance to maximize platform reach and reliability"
+        "Optimized SEO and performance to maximize platform reach and reliability",
       ],
       achievements: [
         "Cut fuel losses by over 45%, saving thousands monthly",
         "Boosted operational efficiency by 40% with instant data insights",
-        "Accelerated platform response time by 50%, enhancing user satisfaction"
-      ]
-    }
-  }
-
+        "Accelerated platform response time by 50%, enhancing user satisfaction",
+      ],
+    },
+  },
 ];
 
 const PortfolioSection = () => {
@@ -258,34 +256,46 @@ const PortfolioSection = () => {
   const handleMouseLeave3 = () => setIsPlaying3(true);
 
   return (
-    <section className="w-full flex flex-col items-center mx-auto py-[100px] px-[40px]">
+    <section
+      id="portfolio"
+      className="w-full flex flex-col items-center mx-auto py-[100px] px-[40px]"
+    >
       <div className="max-w-[1200px] w-full flex flex-col gap-[16px] my-8 items-center mx-auto">
         {/* Header */}
         <div className="max-w-[800px]   w-full flex flex-col items-center justify-center px-[20px] ">
           <div className="w-[132.79px] h-[33px] rounded-[25px] bg-[#f5f7f9] flex justify-between items-center pt-[2px] pb-[2px] pr-[10px] pl-[2px]">
-          <div className="size-[32px]   rounded-full flex items-center justify-center "
-            style={{
-                background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
-            }}
+            <div
+              className="size-[32px]   rounded-full flex items-center justify-center "
+              style={{
+                background:
+                  "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)",
+              }}
             >
-
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 12 12" fill="none">
-  <path d="M10.7306 1.93506C10.7306 1.79831 10.6763 1.66716 10.5796 1.57046C10.4829 1.47376 10.3517 1.41943 10.215 1.41943C8.29086 1.41943 6.34781 3.50514 5.23492 4.94287C4.82843 4.83792 4.40331 4.82742 3.99215 4.91219C3.58098 4.99696 3.19467 5.17474 2.86285 5.43191C2.53102 5.68907 2.26247 6.0188 2.07779 6.39581C1.89312 6.77283 1.79721 7.18712 1.79742 7.60693C1.79742 8.12256 1.66421 8.58275 1.40082 8.97162C1.29021 9.14022 1.15276 9.28958 0.993902 9.41377C0.901287 9.47389 0.830663 9.56242 0.792624 9.66608C0.754584 9.76974 0.751182 9.88293 0.782926 9.98869C0.815343 10.0957 0.881466 10.1893 0.971441 10.2557C1.06142 10.3221 1.17043 10.3576 1.28222 10.3569H4.54785C4.96726 10.3564 5.38101 10.26 5.75742 10.075C6.13384 9.89001 6.46296 9.62137 6.7196 9.28964C6.97623 8.9579 7.15359 8.57186 7.2381 8.16105C7.32261 7.75023 7.31204 7.32553 7.20718 6.91943C8.64621 5.80439 10.7306 3.86006 10.7306 1.93506ZM9.59711 2.55338C9.42523 3.10854 9.03207 3.73459 8.44039 4.39717C8.31148 4.54283 8.1757 4.68506 8.03863 4.82213C7.82959 4.55988 7.59177 4.32192 7.32964 4.11271C7.46672 3.97564 7.60851 3.84115 7.75418 3.71096C8.41675 3.11885 9.04238 2.72697 9.59711 2.55338ZM4.54613 9.32568H2.39468C2.6874 8.8006 2.83761 8.20805 2.83039 7.60693C2.83039 7.267 2.93119 6.93469 3.12005 6.65205C3.30891 6.3694 3.57734 6.1491 3.8914 6.01902C4.20546 5.88893 4.55104 5.85489 4.88445 5.92121C5.21785 5.98753 5.52411 6.15122 5.76448 6.39159C6.00485 6.63197 6.16854 6.93822 6.23486 7.27162C6.30118 7.60503 6.26714 7.95061 6.13705 8.26467C6.00697 8.57873 5.78667 8.84716 5.50402 9.03602C5.22138 9.22488 4.88907 9.32568 4.54914 9.32568H4.54613ZM6.18668 5.40178C6.32074 5.23291 6.46812 5.05416 6.62625 4.87111C6.87273 5.05909 7.09284 5.27935 7.28066 5.52596C7.09761 5.68408 6.91886 5.83146 6.75 5.96553C6.59039 5.75143 6.40066 5.56154 6.18668 5.40178Z" fill="white"/>
-</svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 12 12"
+                fill="none"
+              >
+                <path
+                  d="M10.7306 1.93506C10.7306 1.79831 10.6763 1.66716 10.5796 1.57046C10.4829 1.47376 10.3517 1.41943 10.215 1.41943C8.29086 1.41943 6.34781 3.50514 5.23492 4.94287C4.82843 4.83792 4.40331 4.82742 3.99215 4.91219C3.58098 4.99696 3.19467 5.17474 2.86285 5.43191C2.53102 5.68907 2.26247 6.0188 2.07779 6.39581C1.89312 6.77283 1.79721 7.18712 1.79742 7.60693C1.79742 8.12256 1.66421 8.58275 1.40082 8.97162C1.29021 9.14022 1.15276 9.28958 0.993902 9.41377C0.901287 9.47389 0.830663 9.56242 0.792624 9.66608C0.754584 9.76974 0.751182 9.88293 0.782926 9.98869C0.815343 10.0957 0.881466 10.1893 0.971441 10.2557C1.06142 10.3221 1.17043 10.3576 1.28222 10.3569H4.54785C4.96726 10.3564 5.38101 10.26 5.75742 10.075C6.13384 9.89001 6.46296 9.62137 6.7196 9.28964C6.97623 8.9579 7.15359 8.57186 7.2381 8.16105C7.32261 7.75023 7.31204 7.32553 7.20718 6.91943C8.64621 5.80439 10.7306 3.86006 10.7306 1.93506ZM9.59711 2.55338C9.42523 3.10854 9.03207 3.73459 8.44039 4.39717C8.31148 4.54283 8.1757 4.68506 8.03863 4.82213C7.82959 4.55988 7.59177 4.32192 7.32964 4.11271C7.46672 3.97564 7.60851 3.84115 7.75418 3.71096C8.41675 3.11885 9.04238 2.72697 9.59711 2.55338ZM4.54613 9.32568H2.39468C2.6874 8.8006 2.83761 8.20805 2.83039 7.60693C2.83039 7.267 2.93119 6.93469 3.12005 6.65205C3.30891 6.3694 3.57734 6.1491 3.8914 6.01902C4.20546 5.88893 4.55104 5.85489 4.88445 5.92121C5.21785 5.98753 5.52411 6.15122 5.76448 6.39159C6.00485 6.63197 6.16854 6.93822 6.23486 7.27162C6.30118 7.60503 6.26714 7.95061 6.13705 8.26467C6.00697 8.57873 5.78667 8.84716 5.50402 9.03602C5.22138 9.22488 4.88907 9.32568 4.54914 9.32568H4.54613ZM6.18668 5.40178C6.32074 5.23291 6.46812 5.05416 6.62625 4.87111C6.87273 5.05909 7.09284 5.27935 7.28066 5.52596C7.09761 5.68408 6.91886 5.83146 6.75 5.96553C6.59039 5.75143 6.40066 5.56154 6.18668 5.40178Z"
+                  fill="white"
+                />
+              </svg>
             </div>
-            <div className="section-tag text-gray-800">
-              Our Portfolio
-            </div>
-            </div>
-          </div>
-
-          <div className="max-w-[760px]  w-full">
-            <h2 className="section-heading  text-center">
-                Uncover the Stories Behind Our Most Innovative and Game-Changing Projects.
-            </h2>
+            <div className="section-tag text-gray-800">Our Portfolio</div>
           </div>
         </div>
-<div className="flex flex-col items-center justify-center gap-12">
+
+        <div className="max-w-[760px]  w-full">
+          <h2 className="section-heading  text-center">
+            Uncover the Stories Behind Our Most Innovative and Game-Changing
+            Projects.
+          </h2>
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center gap-12">
         {/* Portfolio Cards */}
         {portfolioItems.map((item) => (
           <div
@@ -344,7 +354,8 @@ const PortfolioSection = () => {
                   href={item.siteUrl}
                   className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
                   style={{
-                    background: "linear-gradient(135deg, #444 -31.5%, #000 100%)"
+                    background:
+                      "linear-gradient(135deg, #444 -31.5%, #000 100%)",
                   }}
                 >
                   <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
@@ -367,7 +378,8 @@ const PortfolioSection = () => {
                     href={item.siteUrl}
                     className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
                     style={{
-                      background: "linear-gradient(135deg, #444 -31.5%, #000 100%)"
+                      background:
+                        "linear-gradient(135deg, #444 -31.5%, #000 100%)",
                     }}
                   >
                     <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
@@ -387,7 +399,8 @@ const PortfolioSection = () => {
                     onClick={() => toggleExpand(item.id)}
                     className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
                     style={{
-                      background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
+                      background:
+                        "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)",
                     }}
                   >
                     <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
@@ -412,7 +425,8 @@ const PortfolioSection = () => {
                   onClick={() => toggleExpand(item.id)}
                   className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
                   style={{
-                    background: "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)"
+                    background:
+                      "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)",
                   }}
                 >
                   <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
@@ -625,7 +639,7 @@ const PortfolioSection = () => {
             </div>
           </div>
         ))}
-        </div>
+      </div>
     </section>
   );
 };

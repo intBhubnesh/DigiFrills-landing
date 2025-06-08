@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { StatCard } from "./StatCard";
 import CustomCursor from "./CustomCursor";
+import { getCalApi } from "@calcom/embed-react";
 
 const Hero = () => {
   const heroTextRef = useRef<HTMLDivElement>(null);
@@ -19,14 +20,29 @@ const Hero = () => {
     triggerOnce: true,
   });
 
+  // Initialize Cal.com
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "30min" });
+      cal("ui", {
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    })();
+  }, []);
+
+  // Function to open Google Calendar
+  const openGoogleCalendar = () => {
+    window.open("https://calendar.google.com", "_blank");
+  };
+
   return (
     <section
       ref={heroTextRef}
       className="relative w-full flex flex-col items-center text-center px-6 lg:px-12 py-16 md:py-20 lg:py-24 xl:py-28 overflow-hidden"
     >
       <CustomCursor videoRef={videoWrapperRef} />
-      <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-left relative pt-12 lg:pt-0 gap-2 flex-col flex">
-
+      <div className="w-full max-w-6xl mx-auto pl-0 pr-6 lg:pl-0 lg:pr-16 text-center relative pt-12 lg:pt-0 gap-2 flex-col flex items-center">
         <motion.h2
           ref={headingRef}
           initial={{ filter: "blur(10px)", opacity: 0 }}
@@ -41,19 +57,23 @@ const Hero = () => {
           }
           className="hero-message text-4xl md:text-5xl lg:text-6xl font-[inter] font-medium leading-tight tracking-tight"
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">Helping</span>
-          <span className=""> Early-Stage </span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">Startups</span>
-          <span className=""> & SaaS Founders</span>
-
-          <span className=""> build</span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]"> MVPs </span>
-          <span className="text-black inline-block">Quickly</span> &
-          <span className="text-black inline-block">Securly</span>
-
-          <span className="">
-             in 2 Weeks or Less.
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">
+            Helping
           </span>
+          <span className=""> Early-Stage </span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">
+            Startups
+          </span>
+          <span className=""> & SaaS Founders</span>
+          <span className=""> build</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">
+            {" "}
+            MVPs{" "}
+          </span>
+          <span className="text-black inline-block">Quickly</span>
+          <span className=""> & </span>
+          <span className="text-black inline-block">Securely</span>
+          <span className=""> in 2 Weeks or Less.</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -66,31 +86,82 @@ const Hero = () => {
           don&apos;t just solve problems — we build intelligent experiences.
         </motion.p>
 
-        <motion.button
+        {/* Updated Button Container with Both Buttons */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          whileHover={{
-            color: "#F15533",
-          }}
-          style={{
-            boxShadow:
-              "0px 1.344px 0.537px -0.625px rgba(0, 0, 0, 0.09), 0px 3.185px 1.274px -1.25px rgba(0, 0, 0, 0.09), 0px 5.809px 2.324px -1.875px rgba(0, 0, 0, 0.08), 0px 9.658px 3.863px -2.5px rgba(0, 0, 0, 0.08), 0px 15.597px 6.239px -3.125px rgba(0, 0, 0, 0.07), 0px 25.531px 10.212px -3.75px rgba(0, 0, 0, 0.06), 0px 43.962px 17.585px -4.375px rgba(0, 0, 0, 0.04)",
-          }}
-          className="hero-text inline-flex w-fit bg-black text-white px-8 py-3 rounded-full shadow-lg mt-6 font-inter text-lg font-medium leading-[22.5px] tracking-[-0.45px]"
+          className="flex flex-col sm:flex-row gap-4 mt-6 justify-center"
         >
-          Get Started
-        </motion.button>
+          {/* Book a Call Button */}
+          <motion.button
+            whileHover={{
+              backgroundColor: "#7988E7",
+              scale: 1.05,
+            }}
+            style={{
+              boxShadow:
+                "0px 1.344px 0.537px -0.625px rgba(0, 0, 0, 0.09), 0px 3.185px 1.274px -1.25px rgba(0, 0, 0, 0.09), 0px 5.809px 2.324px -1.875px rgba(0, 0, 0, 0.08), 0px 9.658px 3.863px -2.5px rgba(0, 0, 0, 0.08), 0px 15.597px 6.239px -3.125px rgba(0, 0, 0, 0.07), 0px 25.531px 10.212px -3.75px rgba(0, 0, 0, 0.06), 0px 43.962px 17.585px -4.375px rgba(0, 0, 0, 0.04)",
+            }}
+            data-cal-link="prithviraj-panda-qtbcvw/30min"
+            className="hero-text inline-flex w-fit bg-black text-white px-8 py-3 rounded-full shadow-lg font-inter text-lg font-medium leading-[22.5px] tracking-[-0.45px]"
+          >
+            Book a Call
+          </motion.button>
+
+          {/* Calendar Button */}
+          <motion.button
+            whileHover={{
+              backgroundColor: "#7988E7",
+              scale: 1.05,
+            }}
+            style={{
+              boxShadow:
+                "0px 1.344px 0.537px -0.625px rgba(0, 0, 0, 0.09), 0px 3.185px 1.274px -1.25px rgba(0, 0, 0, 0.09), 0px 5.809px 2.324px -1.875px rgba(0, 0, 0, 0.08), 0px 9.658px 3.863px -2.5px rgba(0, 0, 0, 0.08), 0px 15.597px 6.239px -3.125px rgba(0, 0, 0, 0.07), 0px 25.531px 10.212px -3.75px rgba(0, 0, 0, 0.06), 0px 43.962px 17.585px -4.375px rgba(0, 0, 0, 0.04)",
+            }}
+            onClick={openGoogleCalendar}
+            className="hero-text inline-flex w-fit bg-black text-white px-8 py-3 rounded-full shadow-lg font-inter text-lg font-medium leading-[22.5px] tracking-[-0.45px]"
+          >
+            Calendar
+          </motion.button>
+
+          {/* Portfolio Button */}
+          <motion.button
+            whileHover={{
+              backgroundColor: "#7988E7",
+              scale: 1.05,
+            }}
+            style={{
+              boxShadow:
+                "0px 1.344px 0.537px -0.625px rgba(0, 0, 0, 0.09), 0px 3.185px 1.274px -1.25px rgba(0, 0, 0, 0.09), 0px 5.809px 2.324px -1.875px rgba(0, 0, 0, 0.08), 0px 9.658px 3.863px -2.5px rgba(0, 0, 0, 0.08), 0px 15.597px 6.239px -3.125px rgba(0, 0, 0, 0.07), 0px 25.531px 10.212px -3.75px rgba(0, 0, 0, 0.06), 0px 43.962px 17.585px -4.375px rgba(0, 0, 0, 0.04)",
+            }}
+            onClick={() => {
+              const portfolioSection = document.getElementById("portfolio");
+              if (portfolioSection) {
+                portfolioSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="hero-text inline-flex w-fit bg-black text-white px-8 py-3 rounded-full shadow-lg font-inter text-lg font-medium leading-[22.5px] tracking-[-0.45px]"
+          >
+            Projects
+          </motion.button>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="hero-text flex items-center space-x-2 mt-6 text-gray-700"
+          className="hero-text flex items-center justify-center space-x-2 mt-6 text-gray-700"
         >
           <div className="flex space-x-1 text-yellow-500">
             {[...Array(5)].map((_, i) => (
-                <Image src="/star.svg" alt="Star" key={i} width={25} height={24} />
+              <Image
+                src="/star.svg"
+                alt="Star"
+                key={i}
+                width={25}
+                height={24}
+              />
             ))}
           </div>
           <p className="text-[#0F0F0F] font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px] opacity-60">
@@ -179,7 +250,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="sm:text-left text-center text-4xl md:text-5xl lg:text-[65px] max-w-5xl left-2 text-gray font-[inter] font-medium leading-[65px] tracking-[-4px]"
+          className="text-center text-4xl md:text-5xl lg:text-[65px] max-w-5xl text-gray font-[inter] font-medium leading-[65px] tracking-[-4px]"
         >
           Big ideas, smart strategies, <br />
           and endless creativity to <br />
