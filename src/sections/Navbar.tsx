@@ -4,13 +4,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { Link } from "react-scroll";
+import { getCalApi } from "@calcom/embed-react";
 
 const navItems = ["Services", "Projects", "Process", "Reviews", "FaQ"];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Optional: prevent body scroll when mobile menu is open
+  // Initialize Cal.com
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "30min" });
+      cal("ui", {
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    })();
+  }, []);
+
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
@@ -42,10 +54,13 @@ const Navbar = () => {
         ))}
       </div>
 
-      {/* Call-to-Action Button (Desktop) */}
+      {/* Call-to-Action Button (Desktop) - Updated to Cal.com */}
       <div className="hidden md:block">
-        <button className="bg-black text-white px-6 py-2 rounded-full shadow-lg font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px]">
-          Get Started
+        <button
+          data-cal-link="prithviraj-panda-qtbcvw/30min"
+          className="bg-black text-white px-6 py-2 rounded-full shadow-lg font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px] hover:bg-opacity-90 transition"
+        >
+          Book a Call
         </button>
       </div>
 
@@ -80,7 +95,14 @@ const Navbar = () => {
               </Link>
             ))}
 
-
+            {/* Mobile Cal.com Button */}
+            <button
+              data-cal-link="prithviraj-panda-qtbcvw/30min"
+              className="bg-black text-white px-6 py-2 rounded-full shadow-lg font-inter text-[15px] font-medium leading-[22.5px] tracking-[-0.45px] mt-4"
+              onClick={() => setIsOpen(false)}
+            >
+              Book a Call
+            </button>
 
             {/* Close Button */}
             <button
