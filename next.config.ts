@@ -2,13 +2,35 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: [
-      "framerusercontent.com",
-      "cdn-icons-png.flaticon.com",
-      "img.youtube.com",
-      "res.cloudinary.com",
-      "getillustrations.b-cdn.net",
-      "www.svgrepo.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "framerusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn-icons-png.flaticon.com",
+      },
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "getillustrations.b-cdn.net",
+      },
+      {
+        protocol: "https",
+        hostname: "www.svgrepo.com",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+      },
     ],
   },
   /* Add any other config options here */

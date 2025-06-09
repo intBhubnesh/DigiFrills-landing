@@ -106,8 +106,8 @@ const AboutUs = () => {
         {/* Zephyr Callahan */}
         <div className="relative h-[500px] overflow-hidden rounded-3xl bg-[#f2f2f2] flex flex-col shadow-sm transition-transform hover:scale-[1.01]">
           <div className="absolute top-0 left-0 z-10">
-            <div className="bg-[#7988E7] text-white text-sm px-4 py-3 rounded-tl-2xl rounded-tr-2xl rounded-bl-3xl rounded-br-none flex items-center">
-              <span className="mr-1">✨</span>
+            <div className="bg-[#7988E7] text-white text-sm px-4 py-2 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-none flex items-center min-h-[60px] gap-2 ">
+              <span className="mr-2 text-lg">✨</span>
               CREATIVE WIZARD
             </div>
           </div>
@@ -153,7 +153,7 @@ const AboutUs = () => {
         {/* Thane Vesper */}
         <div className="relative h-[500px] overflow-hidden rounded-3xl bg-[#f2f2f2] flex flex-col shadow-sm transition-transform hover:scale-[1.01]">
           <div className="absolute top-0 left-0 z-10">
-            <div className="bg-[#7988E7] text-white text-sm px-4 py-3 rounded-tl-2xl rounded-tr-2xl rounded-bl-3xl rounded-br-none flex items-center">
+            <div className="bg-[#7988E7] text-white text-sm px-4 py-2 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-none flex items-center min-h-[60px] gap-2 ">
               <span className="mr-1">✨</span>
               STRATEGY GENIUS
             </div>
@@ -198,7 +198,7 @@ const AboutUs = () => {
         {/* Leander Frost */}
         <div className="relative h-[500px] overflow-hidden rounded-3xl bg-[#f2f2f2] flex flex-col shadow-sm transition-transform hover:scale-[1.01]">
           <div className="absolute top-0 left-0 z-10">
-            <div className="bg-[#7988E7] text-white text-sm px-4 py-3 rounded-tl-2xl rounded-tr-2xl rounded-bl-3xl rounded-br-none flex items-center">
+            <div className="bg-[#7988E7] text-white text-sm px-4 py-2 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-none flex items-center min-h-[60px] gap-2 ">
               <span className="mr-1">✨</span>
               TECH ALCHEMIST
             </div>
