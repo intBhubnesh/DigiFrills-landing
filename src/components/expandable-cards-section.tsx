@@ -2,46 +2,73 @@
 
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import { useMediaQuery } from "@/hooks/use-media-query";
+import Image from "next/image";
+
+// Mock useMediaQuery hook for this example
+const useMediaQuery = (query: string) => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+    const listener = () => setMatches(media.matches);
+    media.addListener(listener);
+    return () => media.removeListener(listener);
+  }, [matches, query]);
+
+  return matches;
+};
 
 type CardData = {
   number: string;
   title: string;
   description: string;
+  image: string; // Add image URL property
 };
 
 const cardData: CardData[] = [
-    {
-      number: "1",
-      title: "Discover & Understand",
-      description:
-        "We start by exploring your business needs and goals. Through research and collaboration, we uncover key insights to guide the project’s direction.",
-    },
-    {
-      number: "2",
-      title: "Design & Plan",
-      description:
-        "We transform insights into actionable plans. Our team crafts clear strategies and designs tailored to your objectives and user expectations.",
-    },
-    {
-      number: "3",
-      title: "Develop & Implement",
-      description:
-        "We build and integrate solutions with precision, using the latest technology to ensure seamless functionality and a smooth user experience.",
-    },
-    {
-      number: "4",
-      title: "Deliver & Support",
-      description:
-        "We launch your solution and provide ongoing support. Our team ensures everything runs smoothly and adapts as your business grows.",
-    },
-  ];
-
+  {
+    number: "1",
+    title: "Discover & Understand",
+    description:
+      "We start by exploring your business needs and goals. Through research and collaboration, we uncover key insights to guide the project's direction.",
+    image:
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749445639/document_paper_page_file_woman_checkmark_find_search_c7pxhv.png", // Research/discovery image
+  },
+  {
+    number: "2",
+    title: "Design & Plan",
+    description:
+      "We transform insights into actionable plans. Our team crafts clear strategies and designs tailored to your objectives and user expectations.",
+    image:
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749445646/medical_healthcare_medicine_lab_laboratory_test_tube_document_paper_aonoog.png", // Design/planning image
+  },
+  {
+    number: "3",
+    title: "Develop & Implement",
+    description:
+      "We build and integrate solutions with precision, using the latest technology to ensure seamless functionality and a smooth user experience.",
+    image:
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749445652/startup_man_presentation_graph_chart_pie_chart_statistics_analytics_gqz7yh.png", // Development/coding image
+  },
+  {
+    number: "4",
+    title: "Deliver & Support",
+    description:
+      "We launch your solution and provide ongoing support. Our team ensures everything runs smoothly and adapts as your business grows.",
+    image:
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749445667/time_timed_timer_envelope_email_mail_message_d2vmru.png", // Support/delivery image
+  },
+];
 
 export default function ExpandableCardsSection() {
   const [activeCard, setActiveCard] = useState<number | null>(0);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const numberRefs = useRef<Array<HTMLSpanElement | null>>([]);
+  const descriptionRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const imageRefs = useRef<Array<HTMLDivElement | null>>([]);
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const handleCardClick = (index: number) => {
@@ -56,7 +83,7 @@ export default function ExpandableCardsSection() {
       opacity: 1,
       duration: 0.4,
       ease: "power3.out",
-      overwrite: "auto"
+      overwrite: "auto",
     });
   };
 
@@ -67,7 +94,7 @@ export default function ExpandableCardsSection() {
       opacity: 0.8,
       duration: 0.4,
       ease: "power3.out",
-      overwrite: "auto"
+      overwrite: "auto",
     });
   };
 
@@ -83,11 +110,53 @@ export default function ExpandableCardsSection() {
           height: isActive ? "auto" : "60px",
           width: "100%",
           zIndex: isActive ? 50 : 40 - Math.abs(index - (activeCard || 0)),
-          background: isActive ? "linear-gradient(135deg, #444 -31.5%, #000 100%)" : "#f7f7f7",
+          background: isActive
+            ? "linear-gradient(135deg, #444 -31.5%, #000 100%)"
+            : "#f7f7f7",
           duration: 0.6,
           ease: "power3.inOut",
-          overwrite: "auto"
+          overwrite: "auto",
         });
+
+        // Animate description text reveal for mobile
+        const descContainer = descriptionRefs.current[index];
+        if (descContainer) {
+          if (isActive) {
+            gsap.to(descContainer, {
+              width: "100%",
+              duration: 0.6,
+              ease: "power3.inOut",
+              delay: 0.1,
+            });
+          } else {
+            gsap.to(descContainer, {
+              width: "0%",
+              duration: 0.6,
+              ease: "power3.inOut",
+            });
+          }
+        }
+
+        // Animate image reveal for mobile
+        const imageContainer = imageRefs.current[index];
+        if (imageContainer) {
+          if (isActive) {
+            gsap.to(imageContainer, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.6,
+              ease: "power3.inOut",
+              delay: 0.2,
+            });
+          } else {
+            gsap.to(imageContainer, {
+              opacity: 0,
+              scale: 0.8,
+              duration: 0.4,
+              ease: "power3.inOut",
+            });
+          }
+        }
       });
     } else {
       const totalWidth = 90;
@@ -110,11 +179,13 @@ export default function ExpandableCardsSection() {
           left: `${position}%`,
           width: `${width}%`,
           height: "500px",
-          background: isActive ? "linear-gradient(135deg, #444 -31.5%, #000 100%)" : "#f7f7f7",
+          background: isActive
+            ? "linear-gradient(135deg, #444 -31.5%, #000 100%)"
+            : "#f7f7f7",
           zIndex: isActive ? 50 : 40,
           duration: 0.6,
           ease: "power3.inOut",
-          overwrite: "auto"
+          overwrite: "auto",
         });
 
         position += width;
@@ -124,6 +195,46 @@ export default function ExpandableCardsSection() {
             x: "35%",
             opacity: 0.8,
           });
+        }
+
+        // Animate description text reveal for desktop
+        const descContainer = descriptionRefs.current[index];
+        if (descContainer) {
+          if (isActive) {
+            gsap.to(descContainer, {
+              width: "100%",
+              duration: 0.6,
+              ease: "power3.inOut",
+              delay: 0.1,
+            });
+          } else {
+            gsap.to(descContainer, {
+              width: "0%",
+              duration: 0.6,
+              ease: "power3.inOut",
+            });
+          }
+        }
+
+        // Animate image reveal for desktop
+        const imageContainer = imageRefs.current[index];
+        if (imageContainer) {
+          if (isActive) {
+            gsap.to(imageContainer, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.6,
+              ease: "power3.inOut",
+              delay: 0.2,
+            });
+          } else {
+            gsap.to(imageContainer, {
+              opacity: 0,
+              scale: 0.8,
+              duration: 0.4,
+              ease: "power3.inOut",
+            });
+          }
         }
       });
     }
@@ -154,22 +265,24 @@ export default function ExpandableCardsSection() {
                 minHeight: isMobile && isActive ? "200px" : "",
                 maxHeight: isMobile && isActive ? "70vh" : "",
                 padding: "20px 24px",
-                background: isActive ? "linear-gradient(135deg, #444 -31.5%, #000 100%)" : "",
+                background: isActive
+                  ? "linear-gradient(135deg, #444 -31.5%, #000 100%)"
+                  : "",
               }}
             >
+              {/* DESKTOP LAYOUT */}
               {!isMobile && (
                 <div className="flex flex-col h-full">
-                  <div
-                    className={`${
-                      isActive ? "flex items-start" : ""
-                    } overflow-visible`}
-                  >
+                  {/* Top section - number and title */}
+                  <div className="flex items-start mb-6">
                     <span
                       ref={(el) => {
                         numberRefs.current[index] = el;
                       }}
                       className={`text-8xl font-bold leading-none ${
-                        isActive ? "text-white" : "bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]"
+                        isActive
+                          ? "text-white"
+                          : "bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]"
                       }`}
                       style={{
                         position: "relative",
@@ -185,28 +298,105 @@ export default function ExpandableCardsSection() {
                       </h3>
                     )}
                   </div>
-                  <div className={`mt-auto mb-4 transition-opacity duration-500 ease-in-out ${isActive ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
-                    <p className="text-lg">{card.description}</p>
+
+                  {/* Image container for desktop - between title and description */}
+                  {isActive && (
+                    <div className="flex-grow flex items-center justify-center mb-6">
+                      <div
+                        ref={(el) => {
+                          imageRefs.current[index] = el;
+                        }}
+                        className="w-full max-w-2xl h-64 rounded-lg overflow-hidden shadow-lg opacity-0 relative"
+                        style={{ transform: "scale(0.8)" }}
+                      >
+                        <Image
+                          src={card.image}
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Bottom section - with controlled width for text reveal */}
+                  <div className="overflow-hidden">
+                    <div
+                      ref={(el) => {
+                        descriptionRefs.current[index] = el;
+                      }}
+                      className={`transition-opacity duration-500 ease-in-out overflow-hidden ${
+                        isActive ? "opacity-100" : "opacity-0"
+                      }`}
+                      style={{
+                        width: isActive ? "100%" : "0%",
+                      }}
+                    >
+                      <p className="text-lg leading-relaxed">
+                        {card.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
 
+              {/* MOBILE LAYOUT */}
               {isMobile && (
-                <div className="flex flex-col">
-                  <span
-                    className={`text-5xl font-bold ${
-                      !isActive ? "bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]" : "text-white"
-                    }`}
-                  >
-                    {card.number}
-                  </span>
-                  <div className={`transition-all duration-500 ease-in-out ${isActive ? 'opacity-100 max-h-[500px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                    <h3 className="mt-2 text-xl font-bold">{card.title}</h3>
-                    <p className="mt-4 text-base">{card.description}</p>
+                <div className="flex flex-col h-full">
+                  {/* Top section - number and title */}
+                  <div className="flex items-center mb-4">
+                    <span
+                      className={`text-5xl font-bold ${
+                        !isActive
+                          ? "bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]"
+                          : "text-white"
+                      }`}
+                    >
+                      {card.number}
+                    </span>
+                    <h3 className="ml-4 text-xl font-bold">{card.title}</h3>
                   </div>
-                  {!isActive && index > activeCard! && (
-                    <h3 className="mt-2 text-xl font-bold">{card.title}</h3>
+
+                  {/* Image container for mobile - between title and description */}
+                  {isActive && (
+                    <div className="flex-grow flex items-center justify-center mb-4">
+                      <div
+                        ref={(el) => {
+                          imageRefs.current[index] = el;
+                        }}
+                        className="w-full max-w-xs h-32 rounded-lg overflow-hidden shadow-lg opacity-0 relative"
+                        style={{ transform: "scale(0.8)" }}
+                      >
+                        <Image
+                          src={card.image}
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 300px"
+                        />
+                      </div>
+                    </div>
                   )}
+
+                  {/* Bottom section - with controlled width for text reveal */}
+                  <div className="overflow-hidden">
+                    <div
+                      ref={(el) => {
+                        descriptionRefs.current[index] = el;
+                      }}
+                      className={`transition-opacity duration-500 ease-in-out overflow-hidden ${
+                        isActive ? "opacity-100" : "opacity-0"
+                      }`}
+                      style={{
+                        width: isActive ? "100%" : "0%",
+                      }}
+                    >
+                      <p className="text-base leading-relaxed">
+                        {card.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

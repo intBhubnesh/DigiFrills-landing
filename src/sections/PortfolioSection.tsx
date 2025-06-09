@@ -39,11 +39,12 @@ const portfolioItems: PortfolioItem[] = [
       "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746854632/Dashboard_Progress_euj0sy.png",
     ],
     youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    siteUrl: "#", // Added View Site URL
     details: {
       challenge:
         "Planica approached us with a vision to revolutionize event planning and team coordination but needed expert guidance to transform their ideas from documentation into a polished, market-ready product quickly and efficiently.",
       features: [
-        "Strategic Product Consulting: We collaborated closely with Planica’s team to clarify their vision, define priorities, and establish a clear roadmap that aligned business goals with user needs.",
+        "Strategic Product Consulting: We collaborated closely with Planica's team to clarify their vision, define priorities, and establish a clear roadmap that aligned business goals with user needs.",
         "Rapid Design & Prototyping: Our design experts translated complex workflows into intuitive user interfaces, creating interactive prototypes that accelerated stakeholder feedback and iteration cycles.",
         "Agile Development & Task Management: Implemented streamlined task scheduling and team collaboration processes to ensure seamless communication and faster delivery without compromising quality.",
         "End-to-End Support & Launch Assistance: Guided Planica through testing, refinement, and deployment phases, ensuring a smooth transition from design to a fully functional live product.",
@@ -72,15 +73,28 @@ const portfolioItems: PortfolioItem[] = [
     title:
       "Zif Care - Accelerated HR Recruitment SaaS Launch by 50% Using Bubble",
     siteUrl: "#",
+    hasCarousel: true, // Add this property
+    carouselImages: [
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749443034/Screen_Part_filecq.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749444816/iPad_Pro_11_Inches_rzlnfx.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749444824/Frame_1321315740_1_i8lcru.png",
+    ],
     details: {
       challenge:
-        "Zif Care sought to build a comprehensive HR recruitment SaaS platform that streamlines hiring workflows, candidate management, and team collaboration. They needed a fast, scalable solution with a seamless user experience, built on Bubble’s no-code platform to accelerate time-to-market.",
+        "Zif Care sought to build a comprehensive HR recruitment SaaS platform that streamlines hiring workflows, candidate management, and team collaboration. They needed a fast, scalable solution with a seamless user experience, built on Bubble's no-code platform to accelerate time-to-market.",
       features: [
         "Thorough discovery and research phase to align product features with HR industry needs and user expectations.",
-        "Leveraged Bubble’s no-code capabilities to rapidly develop and iterate on complex recruitment workflows without sacrificing scalability or customization.",
+        "Leveraged Bubble's no-code capabilities to rapidly develop and iterate on complex recruitment workflows without sacrificing scalability or customization.",
         "Designed an intuitive UX/UI that simplifies applicant tracking, interview scheduling, and communication between recruiters and candidates.",
         "Implemented strategic product planning to prioritize core functionalities such as resume parsing, automated candidate communication, and onboarding integrations.",
         "Provided end-to-end support from prototype to launch, ensuring smooth deployment and post-launch optimizations for performance and user engagement.",
+      ],
+      achievements: [
+        // Optional: Add achievements section
+        "Accelerated product launch by 50% using no-code development",
+        "Successfully deployed scalable HR recruitment platform",
+        "Streamlined hiring workflows for improved efficiency",
+        "Enhanced user experience with intuitive interface design",
       ],
     },
   },
@@ -123,26 +137,67 @@ const portfolioItems: PortfolioItem[] = [
       ],
     },
   },
+  // NEW FOURTH CARD
+  {
+    id: 4,
+    type: "default",
+    image:
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749438598/Group_427318580_j7qnrm.png",
+    logo: "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749439182/Frame_1321315076_1_psri6z.png",
+    tags: ["WEB DEVELOPMENT", "UI/UX DESIGN", "EDUCATION PLATFORM"],
+    title: "UpskillLink - Professional Learning Platform",
+    siteUrl: "#", // Add actual URL when available
+    hasCarousel: true,
+    carouselImages: [
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749440148/Screen_nvwsjs.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749442060/Frame_1321315064_hp6gnz.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749442370/Screenshot_2025-06-09_094208_xy8sid.png",
+    ],
+    details: {
+      challenge:
+        "Designed and developed a comprehensive learning management platform that connects professionals with skill development opportunities. The challenge was to create an intuitive interface that serves both learners and educators while maintaining a modern, engaging user experience.",
+      features: [
+        "Interactive dashboard with progress tracking and analytics",
+        "Responsive design optimized for mobile and desktop learning",
+        "User-friendly course management and enrollment system",
+        "Real-time messaging and video call integration",
+        "Clean, modern UI with consistent branding and visual hierarchy",
+      ],
+      achievements: [
+        "Successfully launched a full-featured learning platform",
+        "Implemented responsive design across all device sizes",
+        "Created an intuitive user experience for diverse user types",
+        "Developed a scalable architecture for future feature expansion",
+      ],
+    },
+  },
 ];
 
 const PortfolioSection = () => {
-  // State to track which card is expanded (null = none)
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
-  // --- Carousel State for First Card ---
+  // State for all carousels
   const [carouselIndex, setCarouselIndex] = useState(1);
-  const [carouselImages, setCarouselImages] = useState<string[]>([]);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  // --- Carousel State for Third Card ---
+  const [carouselIndex2, setCarouselIndex2] = useState(1); // Added for Zif Care
   const [carouselIndex3, setCarouselIndex3] = useState(1);
-  const [carouselImages3, setCarouselImages3] = useState<string[]>([]);
-  const [isTransitioning3, setIsTransitioning3] = useState(false);
-  const [isPlaying3, setIsPlaying3] = useState(true);
+  const [carouselIndex4, setCarouselIndex4] = useState(1);
 
-  // Helper: clone first and last images for infinite loop effect
-  // Initialize cloned images once on mount
+  const [carouselImages, setCarouselImages] = useState<string[]>([]);
+  const [carouselImages2, setCarouselImages2] = useState<string[]>([]); // Added for Zif Care
+  const [carouselImages3, setCarouselImages3] = useState<string[]>([]);
+  const [carouselImages4, setCarouselImages4] = useState<string[]>([]);
+
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isTransitioning2, setIsTransitioning2] = useState(false); // Added for Zif Care
+  const [isTransitioning3, setIsTransitioning3] = useState(false);
+  const [isTransitioning4, setIsTransitioning4] = useState(false);
+
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying2, setIsPlaying2] = useState(true); // Added for Zif Care
+  const [isPlaying3, setIsPlaying3] = useState(true);
+  const [isPlaying4, setIsPlaying4] = useState(true);
+
+  // Initialize all carousels
   useEffect(() => {
     const getClonedImages = (images: string[]): string[] => {
       if (!images || images.length === 0) return [];
@@ -151,17 +206,27 @@ const PortfolioSection = () => {
       return [lastItem, ...images, firstItem];
     };
 
+    // Initialize each carousel
     if (portfolioItems[0].carouselImages) {
       setCarouselImages(getClonedImages(portfolioItems[0].carouselImages));
       setCarouselIndex(1);
+    }
+    if (portfolioItems[1].carouselImages) {
+      // Added for Zif Care
+      setCarouselImages2(getClonedImages(portfolioItems[1].carouselImages));
+      setCarouselIndex2(1);
     }
     if (portfolioItems[2].carouselImages) {
       setCarouselImages3(getClonedImages(portfolioItems[2].carouselImages));
       setCarouselIndex3(1);
     }
-  }, []); // Empty dependency array (runs once on mount)
+    if (portfolioItems[3].carouselImages) {
+      setCarouselImages4(getClonedImages(portfolioItems[3].carouselImages));
+      setCarouselIndex4(1);
+    }
+  }, []);
 
-  // --- Corrected Slide Functions ---
+  // Navigation functions for all carousels
   const nextSlide = useCallback(() => {
     if (carouselIndex >= carouselImages.length - 1) return;
     setIsTransitioning(true);
@@ -173,6 +238,20 @@ const PortfolioSection = () => {
     setIsTransitioning(true);
     setCarouselIndex((prev) => prev - 1);
   }, [carouselIndex]);
+
+  const nextSlide2 = useCallback(() => {
+    // Added for Zif Care
+    if (carouselIndex2 >= carouselImages2.length - 1) return;
+    setIsTransitioning2(true);
+    setCarouselIndex2((prev) => prev + 1);
+  }, [carouselIndex2, carouselImages2.length]);
+
+  const prevSlide2 = useCallback(() => {
+    // Added for Zif Care
+    if (carouselIndex2 <= 0) return;
+    setIsTransitioning2(true);
+    setCarouselIndex2((prev) => prev - 1);
+  }, [carouselIndex2]);
 
   const nextSlide3 = useCallback(() => {
     if (carouselIndex3 >= carouselImages3.length - 1) return;
@@ -186,7 +265,19 @@ const PortfolioSection = () => {
     setCarouselIndex3((prev) => prev - 1);
   }, [carouselIndex3]);
 
-  // Autoplay effects
+  const nextSlide4 = useCallback(() => {
+    if (carouselIndex4 >= carouselImages4.length - 1) return;
+    setIsTransitioning4(true);
+    setCarouselIndex4((prev) => prev + 1);
+  }, [carouselIndex4, carouselImages4.length]);
+
+  const prevSlide4 = useCallback(() => {
+    if (carouselIndex4 <= 0) return;
+    setIsTransitioning4(true);
+    setCarouselIndex4((prev) => prev - 1);
+  }, [carouselIndex4]);
+
+  // Autoplay for all carousels
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (isPlaying && expandedCard === 1) {
@@ -198,6 +289,17 @@ const PortfolioSection = () => {
   }, [isPlaying, expandedCard, nextSlide]);
 
   useEffect(() => {
+    // Added for Zif Care
+    let interval2: NodeJS.Timeout;
+    if (isPlaying2 && expandedCard === 2) {
+      interval2 = setInterval(() => {
+        nextSlide2();
+      }, 3000);
+    }
+    return () => clearInterval(interval2);
+  }, [isPlaying2, expandedCard, nextSlide2]);
+
+  useEffect(() => {
     let interval3: NodeJS.Timeout;
     if (isPlaying3 && expandedCard === 3) {
       interval3 = setInterval(() => {
@@ -207,18 +309,30 @@ const PortfolioSection = () => {
     return () => clearInterval(interval3);
   }, [isPlaying3, expandedCard, nextSlide3]);
 
-  // Toggle expand/collapse details
+  useEffect(() => {
+    let interval4: NodeJS.Timeout;
+    if (isPlaying4 && expandedCard === 4) {
+      interval4 = setInterval(() => {
+        nextSlide4();
+      }, 3000);
+    }
+    return () => clearInterval(interval4);
+  }, [isPlaying4, expandedCard, nextSlide4]);
+
   const toggleExpand = (index: number) => {
     if (expandedCard === index) {
       setExpandedCard(null);
     } else {
       setExpandedCard(index);
+      // Reset all carousels to first slide
       setCarouselIndex(1);
+      setCarouselIndex2(1);
       setCarouselIndex3(1);
+      setCarouselIndex4(1);
     }
   };
 
-  // Handle transition end for first card carousel (jump instantly if on clone)
+  // Transition end handlers
   const handleTransitionEnd = () => {
     setIsTransitioning(false);
     if (carouselIndex === 0) {
@@ -228,7 +342,16 @@ const PortfolioSection = () => {
     }
   };
 
-  // Handle transition end for third card carousel
+  const handleTransitionEnd2 = () => {
+    // Added for Zif Care
+    setIsTransitioning2(false);
+    if (carouselIndex2 === 0) {
+      setCarouselIndex2(carouselImages2.length - 2);
+    } else if (carouselIndex2 === carouselImages2.length - 1) {
+      setCarouselIndex2(1);
+    }
+  };
+
   const handleTransitionEnd3 = () => {
     setIsTransitioning3(false);
     if (carouselIndex3 === 0) {
@@ -238,10 +361,25 @@ const PortfolioSection = () => {
     }
   };
 
-  // Carousel styles with or without transition
+  const handleTransitionEnd4 = () => {
+    setIsTransitioning4(false);
+    if (carouselIndex4 === 0) {
+      setCarouselIndex4(carouselImages4.length - 2);
+    } else if (carouselIndex4 === carouselImages4.length - 1) {
+      setCarouselIndex4(1);
+    }
+  };
+
+  // Carousel styles
   const carouselStyle = {
     transform: `translateX(-${carouselIndex * 100}%)`,
     transition: isTransitioning ? "transform 0.5s ease-in-out" : "none",
+  };
+
+  const carouselStyle2 = {
+    // Added for Zif Care
+    transform: `translateX(-${carouselIndex2 * 100}%)`,
+    transition: isTransitioning2 ? "transform 0.5s ease-in-out" : "none",
   };
 
   const carouselStyle3 = {
@@ -249,11 +387,20 @@ const PortfolioSection = () => {
     transition: isTransitioning3 ? "transform 0.5s ease-in-out" : "none",
   };
 
-  // Pause autoplay on hover
+  const carouselStyle4 = {
+    transform: `translateX(-${carouselIndex4 * 100}%)`,
+    transition: isTransitioning4 ? "transform 0.5s ease-in-out" : "none",
+  };
+
+  // Mouse handlers for all carousels
   const handleMouseEnter = () => setIsPlaying(false);
   const handleMouseLeave = () => setIsPlaying(true);
+  const handleMouseEnter2 = () => setIsPlaying2(false); // Added for Zif Care
+  const handleMouseLeave2 = () => setIsPlaying2(true);
   const handleMouseEnter3 = () => setIsPlaying3(false);
   const handleMouseLeave3 = () => setIsPlaying3(true);
+  const handleMouseEnter4 = () => setIsPlaying4(false);
+  const handleMouseLeave4 = () => setIsPlaying4(true);
 
   return (
     <section
@@ -312,6 +459,7 @@ const PortfolioSection = () => {
                     alt={`${item.title} logo`}
                     width={81}
                     height={14.73}
+                    unoptimized
                   />
                 </div>
               </div>
@@ -325,6 +473,7 @@ const PortfolioSection = () => {
                 className="object-cover rounded-t-2xl rounded-b-2xl md:rounded-t-[30px] md:rounded-b-[30px]"
                 width={700}
                 height={528}
+                unoptimized
               />
             </div>
 
@@ -348,32 +497,9 @@ const PortfolioSection = () => {
               </h3>
 
               {/* Action Buttons */}
-              {item.id === 2 ? (
-                // Card 2: Only View Site button
-                <a
-                  href={item.siteUrl}
-                  className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #444 -31.5%, #000 100%)",
-                  }}
-                >
-                  <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
-                    View Site
-                  </span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 256 256"
-                    width="24"
-                    height="24"
-                    fill="white"
-                  >
-                    <path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z" />
-                  </svg>
-                </a>
-              ) : item.id === 3 ? (
-                // Card 3: Both View Site and Expand Details buttons
-                <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2">
+                {/* View Site Button for all cards */}
+                {item.siteUrl && (
                   <a
                     href={item.siteUrl}
                     className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
@@ -395,32 +521,9 @@ const PortfolioSection = () => {
                       <path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z" />
                     </svg>
                   </a>
-                  <div
-                    onClick={() => toggleExpand(item.id)}
-                    className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
-                    style={{
-                      background:
-                        "linear-gradient(119deg, #7988E7 -10.33%, #667DE7 17.78%, #2A59E3 100%)",
-                    }}
-                  >
-                    <span className="text-[17px] font-medium leading-[22.5px] tracking-[-0.45px] text-white font-inter">
-                      {expandedCard === item.id
-                        ? "Collapse Details"
-                        : "Expand Details"}
-                    </span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 256 256"
-                      width="24"
-                      height="24"
-                      fill="white"
-                    >
-                      <path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z" />
-                    </svg>
-                  </div>
-                </div>
-              ) : (
-                // Other cards: Only Expand Details button
+                )}
+
+                {/* Expand Details Button */}
                 <div
                   onClick={() => toggleExpand(item.id)}
                   className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
@@ -444,7 +547,7 @@ const PortfolioSection = () => {
                     <path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z" />
                   </svg>
                 </div>
-              )}
+              </div>
 
               {/* Expanded Details & Carousel */}
               <AnimatePresence>
@@ -517,19 +620,65 @@ const PortfolioSection = () => {
                       </div>
                     )}
 
-                    {/* YouTube Video (only for first card) */}
-                    {/* {item.youtubeUrl && item.id === 1 && (
-                      <div className="w-full h-[360px] rounded-xl overflow-hidden">
-                        <iframe
-                          className="w-full h-[360px] rounded-xl"
-                          src={item.youtubeUrl}
-                          title={`${item.title} Video`}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
+                    {/* NEW: Carousel for Card 2 (Zif Care) */}
+                    {item.hasCarousel && item.id === 2 && (
+                      <div
+                        className="relative w-full h-fit bg-gray-200 rounded-xl overflow-hidden"
+                        onMouseEnter={handleMouseEnter2}
+                        onMouseLeave={handleMouseLeave2}
+                        style={{ maxWidth: "100%" }}
+                      >
+                        <div
+                          className="flex h-fit"
+                          style={carouselStyle2}
+                          onTransitionEnd={handleTransitionEnd2}
+                        >
+                          {carouselImages2.map((image, index) => (
+                            <motion.div
+                              key={index}
+                              className="min-w-full h-fit relative flex items-center justify-center"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.5 }}
+                            >
+                              <Image
+                                src={image}
+                                alt={`Carousel item ${index + 1}`}
+                                width={700}
+                                height={320}
+                                className="w-full h-fit object-contain"
+                                style={{ objectFit: "contain" }}
+                              />
+                            </motion.div>
+                          ))}
+                        </div>
+
+                        <button
+                          onClick={prevSlide2}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
+                        >
+                          <Image
+                            width="40"
+                            height="40"
+                            src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
+                            alt="Previous"
+                            className="rotate-180"
+                          />
+                        </button>
+                        <button
+                          onClick={nextSlide2}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
+                        >
+                          <Image
+                            width="40"
+                            height="40"
+                            src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
+                            alt="Next"
+                          />
+                        </button>
                       </div>
-                    )} */}
+                    )}
 
                     {/* Carousel for Third Card */}
                     {item.hasCarousel && item.id === 3 && (
@@ -580,6 +729,67 @@ const PortfolioSection = () => {
                         </button>
                         <button
                           onClick={nextSlide3}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
+                        >
+                          <Image
+                            width="40"
+                            height="40"
+                            src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
+                            alt="Next"
+                          />
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Carousel for Fourth Card */}
+                    {item.hasCarousel && item.id === 4 && (
+                      <div
+                        className="relative w-full h-fit bg-gray-200 rounded-xl overflow-hidden"
+                        onMouseEnter={handleMouseEnter4}
+                        onMouseLeave={handleMouseLeave4}
+                        style={{ maxWidth: "100%" }}
+                      >
+                        <div
+                          className="flex h-fit"
+                          style={carouselStyle4}
+                          onTransitionEnd={handleTransitionEnd4}
+                        >
+                          {carouselImages4.map((image, index) => (
+                            <motion.div
+                              key={index}
+                              className="min-w-full h-fit relative flex items-center justify-center"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.5 }}
+                            >
+                              <Image
+                                src={image}
+                                alt={`Carousel item ${index + 1}`}
+                                width={700}
+                                height={320}
+                                className="w-full h-fit object-contain"
+                                style={{ objectFit: "contain" }}
+                              />
+                            </motion.div>
+                          ))}
+                        </div>
+
+                        {/* Navigation Buttons */}
+                        <button
+                          onClick={prevSlide4}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
+                        >
+                          <Image
+                            width="40"
+                            height="40"
+                            src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
+                            alt="Previous"
+                            className="rotate-180"
+                          />
+                        </button>
+                        <button
+                          onClick={nextSlide4}
                           className="absolute right-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
                         >
                           <Image

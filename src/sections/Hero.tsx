@@ -31,11 +31,6 @@ const Hero = () => {
     })();
   }, []);
 
-  // Function to open Google Calendar
-  const openGoogleCalendar = () => {
-    window.open("https://calendar.google.com", "_blank");
-  };
-
   return (
     <section
       ref={heroTextRef}
@@ -107,22 +102,6 @@ const Hero = () => {
             className="hero-text inline-flex w-fit bg-black text-white px-8 py-3 rounded-full shadow-lg font-inter text-lg font-medium leading-[22.5px] tracking-[-0.45px]"
           >
             Book a Call
-          </motion.button>
-
-          {/* Calendar Button */}
-          <motion.button
-            whileHover={{
-              backgroundColor: "#7988E7",
-              scale: 1.05,
-            }}
-            style={{
-              boxShadow:
-                "0px 1.344px 0.537px -0.625px rgba(0, 0, 0, 0.09), 0px 3.185px 1.274px -1.25px rgba(0, 0, 0, 0.09), 0px 5.809px 2.324px -1.875px rgba(0, 0, 0, 0.08), 0px 9.658px 3.863px -2.5px rgba(0, 0, 0, 0.08), 0px 15.597px 6.239px -3.125px rgba(0, 0, 0, 0.07), 0px 25.531px 10.212px -3.75px rgba(0, 0, 0, 0.06), 0px 43.962px 17.585px -4.375px rgba(0, 0, 0, 0.04)",
-            }}
-            onClick={openGoogleCalendar}
-            className="hero-text inline-flex w-fit bg-black text-white px-8 py-3 rounded-full shadow-lg font-inter text-lg font-medium leading-[22.5px] tracking-[-0.45px]"
-          >
-            Calendar
           </motion.button>
 
           {/* Portfolio Button */}

@@ -18,10 +18,10 @@ const logos = [
 ];
 const logosActive = [
   "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846559/logo_5_active_pckpdx.svg",
-  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846558/logo_2_active_set4kx.svg",
-  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846557/logo_1_active_zgze7z.svg",
+  "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749435086/Frame_1321315153_xnue8d.png",
+  "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749400613/Exclude_ccmjyb.png",
   "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846560/logo_3_active_vj90wt.svg",
-  "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846559/logo_4_active_fuasad.svg",
+  "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749435368/Vector_kfkgjv.png",
   "https://framerusercontent.com/images/g4yFX4nEgsyfKUkcJSsYZdlgCJM.svg",
   "https://framerusercontent.com/images/mGAxAGDBjt0JHg8MI0F9P9FkW0g.svg",
   "https://framerusercontent.com/images/vEfUDWPkZSWQLY8lC44HeDu6Ic.svg",
@@ -82,7 +82,9 @@ export default function GrowTogetherSection() {
       >
         We don’t just work <br /> together—
         <span className="">we </span>
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">grow</span>
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3]">
+          grow
+        </span>
         <span className=""> together.</span>
       </motion.h2>
 
@@ -108,8 +110,16 @@ export default function GrowTogetherSection() {
                 className={`
                   bg-gray-100 rounded-2xl md:rounded-3xl flex items-center justify-center
                   transition-all duration-500 ease-in-out
-                  ${activeLogoIndex === (rowIndex * row.length + i) ? 'shadow-lg transform -translate-y-1' : 'hover:shadow-md hover:transform hover:-translate-y-1'}
-                  ${activeLogoIndex === (rowIndex * row.length + i) ? 'bg-gray-50' : 'hover:bg-gray-50'}
+                  ${
+                    activeLogoIndex === rowIndex * row.length + i
+                      ? "shadow-lg transform -translate-y-1"
+                      : "hover:shadow-md hover:transform hover:-translate-y-1"
+                  }
+                  ${
+                    activeLogoIndex === rowIndex * row.length + i
+                      ? "bg-gray-50"
+                      : "hover:bg-gray-50"
+                  }
                   cursor-pointer
                   ${
                     windowWidth < 750
@@ -119,14 +129,16 @@ export default function GrowTogetherSection() {
                       : "w-24 h-24 p-6"
                   }
                 `}
-                onMouseEnter={() => setActiveLogoIndex(rowIndex * row.length + i)}
+                onMouseEnter={() =>
+                  setActiveLogoIndex(rowIndex * row.length + i)
+                }
                 onMouseLeave={() => setActiveLogoIndex(null)}
                 onClick={() => {
                   // Toggle active state on click
                   setActiveLogoIndex(
-                    activeLogoIndex === (rowIndex * row.length + i)
+                    activeLogoIndex === rowIndex * row.length + i
                       ? null
-                      : (rowIndex * row.length + i)
+                      : rowIndex * row.length + i
                   );
                 }}
               >
@@ -140,7 +152,11 @@ export default function GrowTogetherSection() {
                     className={`
                       object-contain w-full h-full
                       transition-all duration-500 ease-in-out
-                      ${activeLogoIndex === (rowIndex * row.length + i) ? 'opacity-0 transform scale-95' : 'group-hover:opacity-0 group-hover:transform group-hover:scale-95'}
+                      ${
+                        activeLogoIndex === rowIndex * row.length + i
+                          ? "opacity-0 transform scale-95"
+                          : "group-hover:opacity-0 group-hover:transform group-hover:scale-95"
+                      }
                       absolute inset-0
                     `}
                     priority={i < 3}
@@ -155,7 +171,11 @@ export default function GrowTogetherSection() {
                     className={`
                       object-contain w-full h-full
                       transition-all duration-500 ease-in-out
-                      ${activeLogoIndex === (rowIndex * row.length + i) ? 'opacity-100 transform scale-105' : 'opacity-0 transform scale-95 group-hover:opacity-100 group-hover:scale-105'}
+                      ${
+                        activeLogoIndex === rowIndex * row.length + i
+                          ? "opacity-100 transform scale-105"
+                          : "opacity-0 transform scale-95 group-hover:opacity-100 group-hover:scale-105"
+                      }
                     `}
                     priority={i < 3}
                   />
