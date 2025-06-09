@@ -35,7 +35,7 @@ const cardData: CardData[] = [
     description:
       "We start by exploring your business needs and goals. Through research and collaboration, we uncover key insights to guide the project's direction.",
     image:
-      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749445639/document_paper_page_file_woman_checkmark_find_search_c7pxhv.png", // Research/discovery image
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749489023/welding_helmet_protection_safety_gear_industrial_work_Vector_illustration-removebg-preview_hytart.png", // Research/discovery image
   },
   {
     number: "2",
@@ -43,7 +43,7 @@ const cardData: CardData[] = [
     description:
       "We transform insights into actionable plans. Our team crafts clear strategies and designs tailored to your objectives and user expectations.",
     image:
-      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749445646/medical_healthcare_medicine_lab_laboratory_test_tube_document_paper_aonoog.png", // Design/planning image
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749489022/ruler_blue_measuring_right_angle_drafting-removebg-preview_qnapzf.png", // Design/planning image
   },
   {
     number: "3",
@@ -51,7 +51,7 @@ const cardData: CardData[] = [
     description:
       "We build and integrate solutions with precision, using the latest technology to ensure seamless functionality and a smooth user experience.",
     image:
-      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749445652/startup_man_presentation_graph_chart_pie_chart_statistics_analytics_gqz7yh.png", // Development/coding image
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749489022/robotic_arm_mechanical_hand_technology_blueprint_wireframe__1_-removebg-preview_urcdue.png", // Development/coding image
   },
   {
     number: "4",
@@ -59,7 +59,7 @@ const cardData: CardData[] = [
     description:
       "We launch your solution and provide ongoing support. Our team ensures everything runs smoothly and adapts as your business grows.",
     image:
-      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749445667/time_timed_timer_envelope_email_mail_message_d2vmru.png", // Support/delivery image
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749489022/gear_settings_configuration_technical_support_Vector_illustration-removebg-preview_dr46st.png", // Support/delivery image
   },
 ];
 
@@ -137,13 +137,13 @@ export default function ExpandableCardsSection() {
           }
         }
 
-        // Animate image reveal for mobile
+        // Animate image reveal for mobile - UPDATED ZOOM VALUES
         const imageContainer = imageRefs.current[index];
         if (imageContainer) {
           if (isActive) {
             gsap.to(imageContainer, {
               opacity: 1,
-              scale: 1,
+              scale: 0.85, // Increased zoom out
               duration: 0.6,
               ease: "power3.inOut",
               delay: 0.2,
@@ -151,7 +151,7 @@ export default function ExpandableCardsSection() {
           } else {
             gsap.to(imageContainer, {
               opacity: 0,
-              scale: 0.8,
+              scale: 0.5, // More zoomed out
               duration: 0.4,
               ease: "power3.inOut",
             });
@@ -216,13 +216,13 @@ export default function ExpandableCardsSection() {
           }
         }
 
-        // Animate image reveal for desktop
+        // Animate image reveal for desktop - UPDATED ZOOM VALUES
         const imageContainer = imageRefs.current[index];
         if (imageContainer) {
           if (isActive) {
             gsap.to(imageContainer, {
               opacity: 1,
-              scale: 1,
+              scale: 0.85, // Increased zoom out
               duration: 0.6,
               ease: "power3.inOut",
               delay: 0.2,
@@ -230,7 +230,7 @@ export default function ExpandableCardsSection() {
           } else {
             gsap.to(imageContainer, {
               opacity: 0,
-              scale: 0.8,
+              scale: 0.5, // More zoomed out
               duration: 0.4,
               ease: "power3.inOut",
             });
@@ -301,19 +301,19 @@ export default function ExpandableCardsSection() {
 
                   {/* Image container for desktop - between title and description */}
                   {isActive && (
-                    <div className="flex-grow flex items-center justify-center mb-6">
+                    <div className="flex items-center justify-center mb-6">
                       <div
                         ref={(el) => {
                           imageRefs.current[index] = el;
                         }}
-                        className="w-full max-w-2xl h-64 rounded-lg overflow-hidden shadow-lg opacity-0 relative"
-                        style={{ transform: "scale(0.8)" }}
+                        className="w-full max-w-3xl h-60 rounded-lg overflow-hidden shadow-lg opacity-0 relative"
+                        style={{ transform: "scale(0.5)" }} // Updated initial scale
                       >
                         <Image
                           src={card.image}
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-contain" // Changed to contain
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                       </div>
@@ -360,19 +360,19 @@ export default function ExpandableCardsSection() {
 
                   {/* Image container for mobile - between title and description */}
                   {isActive && (
-                    <div className="flex-grow flex items-center justify-center mb-4">
+                    <div className="flex items-center justify-center mb-6">
                       <div
                         ref={(el) => {
                           imageRefs.current[index] = el;
                         }}
-                        className="w-full max-w-xs h-32 rounded-lg overflow-hidden shadow-lg opacity-0 relative"
-                        style={{ transform: "scale(0.8)" }}
+                        className="w-full max-w-sm h-32 rounded-lg overflow-hidden shadow-lg opacity-0 relative"
+                        style={{ transform: "scale(0.5)" }} // Updated initial scale
                       >
                         <Image
                           src={card.image}
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-contain" // Changed to contain
                           sizes="(max-width: 768px) 100vw, 300px"
                         />
                       </div>
