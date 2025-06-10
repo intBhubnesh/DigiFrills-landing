@@ -95,8 +95,8 @@ export default function Home() {
         <Testimonial />
       </Element>
 
-      {/* Pricing Section */}
-      <Element name="pricing" className="scroll-mt-24">
+      {/* FAQ Section */}
+      <Element name="faq" className="scroll-mt-24">
         <Faq faqs={faqItems} />
       </Element>
 
