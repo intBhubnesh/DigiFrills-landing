@@ -229,7 +229,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center text-4xl md:text-5xl lg:text-[65px] max-w-5xl text-gray font-[inter] font-medium leading-[65px] tracking-[-4px]"
+          className="text-left text-4xl md:text-5xl lg:text-[65px] max-w-5xl text-gray font-[inter] font-medium leading-[65px] tracking-[-4px]"
         >
           Big ideas, smart strategies, <br />
           and endless creativity to <br />

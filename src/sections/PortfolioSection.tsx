@@ -146,12 +146,11 @@ const portfolioItems: PortfolioItem[] = [
     logo: "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749439182/Frame_1321315076_1_psri6z.png",
     tags: ["WEB DEVELOPMENT", "UI/UX DESIGN", "EDUCATION PLATFORM"],
     title: "UpskillLink - Professional Learning Platform",
-    siteUrl: "#", // Add actual URL when available
     hasCarousel: true,
     carouselImages: [
       "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749440148/Screen_nvwsjs.png",
-      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749442060/Frame_1321315064_hp6gnz.png",
-      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749442370/Screenshot_2025-06-09_094208_xy8sid.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749491175/Mentors_px1mkp.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749491175/Student_lessons_tamgwb.png",
     ],
     details: {
       challenge:
@@ -499,7 +498,7 @@ const PortfolioSection = () => {
               {/* Action Buttons */}
               <div className="flex flex-col gap-2">
                 {/* View Site Button for all cards */}
-                {item.siteUrl && (
+                {item.siteUrl && item.id !== 4 && (
                   <a
                     href={item.siteUrl}
                     className="max-w-[640px] w-full h-[45.19px] flex justify-between items-center rounded-full md:rounded-[20px] px-[20px] py-[10px] cursor-pointer"
