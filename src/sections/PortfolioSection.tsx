@@ -103,8 +103,8 @@ const portfolioItems: PortfolioItem[] = [
     id: 3,
     type: "special",
     image:
-      "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746848767/Frame_1321314991_ck4occ.png",
-    logo: "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746850195/logo3active_tj5bmu.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749779873/Slice_1_viht39.png",
+    logo: "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749780372/Frame_1321315923_t4cgdm.png",
     tags: [
       "UI Design",
       "Framer Development",
