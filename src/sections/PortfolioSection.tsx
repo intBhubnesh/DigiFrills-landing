@@ -75,9 +75,9 @@ const portfolioItems: PortfolioItem[] = [
     siteUrl: "#",
     hasCarousel: true, // Add this property
     carouselImages: [
-      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749443034/Screen_Part_filecq.png",
-      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749444816/iPad_Pro_11_Inches_rzlnfx.png",
-      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749444824/Frame_1321315740_1_i8lcru.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749961484/Basic_details_tswgfv.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749961483/jobs_main_Screen_1_q99gs2.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749961483/dashboard_lgdgg9.png",
     ],
     details: {
       challenge:
@@ -446,11 +446,11 @@ const PortfolioSection = () => {
         {portfolioItems.map((item) => (
           <div
             key={item.id}
-            className="relative max-w-[700px] w-full flex flex-col items-center mx-auto overflow-hidden rounded-2xl md:rounded-[30px]"
+            className="relative max-w-[700px] w-full flex flex-col mx-auto overflow-hidden rounded-2xl md:rounded-[30px]"
           >
             {/* Logo */}
             {item.logo && (
-              <div className="absolute top-[499px] left-[25px] w-[109px] px-[14px] py-[7px] rounded-[14px] bg-[#f5f7f9] flex items-center justify-center">
+              <div className="absolute top-[499px] left-[25px] w-[109px] px-[14px] py-[7px] rounded-[14px] bg-[#f5f7f9] flex items-center justify-center z-10">
                 <div className="w-[81px] h-[27px] flex items-center justify-center">
                   <Image
                     className="object-fit"
@@ -465,11 +465,11 @@ const PortfolioSection = () => {
             )}
 
             {/* Card Image */}
-            <div className="max-w-[700px] w-full h-[528px]">
+            <div className="w-full h-[528px] overflow-hidden rounded-t-2xl md:rounded-t-[30px]">
               <Image
                 src={item.image}
                 alt={item.title}
-                className="object-cover rounded-t-2xl rounded-b-2xl md:rounded-t-[30px] md:rounded-b-[30px]"
+                className="object-cover w-full h-full"
                 width={700}
                 height={528}
                 unoptimized
@@ -477,7 +477,7 @@ const PortfolioSection = () => {
             </div>
 
             {/* Card Content */}
-            <div className="w-full bg-[#f5f7f9] p-[30px] rounded-b-2xl rounded-t-2xl md:rounded-b-[30px] md:rounded-t-[30px] flex flex-col gap-[23px]">
+            <div className="w-full bg-[#f5f7f9] p-[30px] flex flex-col gap-[23px] rounded-b-2xl md:rounded-b-[30px]">
               {/* Tags */}
               <div className="flex flex-wrap gap-[4px]">
                 {item.tags.map((tag) => (
@@ -547,7 +547,6 @@ const PortfolioSection = () => {
                   </svg>
                 </div>
               </div>
-
               {/* Expanded Details & Carousel */}
               <AnimatePresence>
                 {expandedCard === item.id && (

@@ -103,7 +103,7 @@ const AboutUs = () => {
 
       {/* Team Cards Section - Responsive Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:mx-0 lg:w-[1200px] lg:ml-[calc(50%-1200px/2)]">
-        {/* Zephyr Callahan */}
+        {/* Dinesh Chowdhary */}
         <div className="relative h-[500px] overflow-hidden rounded-3xl bg-[#f2f2f2] flex flex-col shadow-sm transition-transform hover:scale-[1.01]">
           <div className="absolute top-0 left-0 z-10">
             <div className="bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white text-sm px-4 py-2 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-none flex items-center min-h-[60px] gap-2 w-64">
@@ -114,8 +114,8 @@ const AboutUs = () => {
 
           <div className="flex-grow pt-4 px-4 overflow-hidden">
             <Image
-              src="https://framerusercontent.com/images/j0BPt8eDouyL58CQFUzoMWx1GQ.jpg"
-              alt="Zephyr Callahan"
+              src="https://res.cloudinary.com/dsza8fjtr/image/upload/v1749970078/WhatsApp_Image_2025-06-15_at_11.11.02_b65e808e_ds4p6j.jpg"
+              alt="Dinesh Chowdhary"
               width={800} // Estimate appropriate width
               height={600} // Estimate appropriate height
               className="w-full h-full object-cover rounded-3xl"
@@ -123,19 +123,23 @@ const AboutUs = () => {
           </div>
 
           <div className="p-4 pb-6">
-            <h3 className="font-bold text-xl">Zephyr Callahan</h3>
+            <h3 className="font-bold text-xl">Dinesh Chowdhary</h3>
             <p className="text-gray-600 text-sm mb-3">
               Lead Designer / Brand Strategist
             </p>
             <div className="flex space-x-2">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/dineshlavu/"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
                 className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
               >
                 <Linkedin size={14} />
               </a>
               <a
                 href="#"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
                 className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
               >
                 <svg
@@ -150,7 +154,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Thane Vesper */}
+        {/* Ajay Singh Raghuwanshi */}
         <div className="relative h-[500px] overflow-hidden rounded-3xl bg-[#f2f2f2] flex flex-col shadow-sm transition-transform hover:scale-[1.01]">
           <div className="absolute top-0 left-0 z-10">
             <div className="bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white text-sm px-4 py-2 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-none flex items-center min-h-[60px] gap-2 w-64">
@@ -160,27 +164,31 @@ const AboutUs = () => {
           </div>
           <div className="flex-grow pt-4 px-4 overflow-hidden">
             <Image
-              src="https://framerusercontent.com/images/kaneaOpStsoBu9aHY1ewfZxWDM.jpg"
-              alt="Thane Vesper"
+              src="https://res.cloudinary.com/dsza8fjtr/image/upload/v1749970067/ChatGPT_Image_Jun_15_2025_12_17_16_PM_slreld.png"
+              alt="Ajay Singh Raghuwanshi"
               width={800} // adjust to your layout
               height={600} // adjust to your layout
               className="w-full h-full object-cover rounded-3xl"
             />
           </div>
           <div className="p-4 pb-6">
-            <h3 className="font-bold text-xl">Thane Vesper</h3>
+            <h3 className="font-bold text-xl">Ajay Singh Raghuwanshi</h3>
             <p className="text-gray-600 text-sm mb-3">
               Business Development Manager
             </p>
             <div className="flex space-x-2">
               <a
                 href="#"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
                 className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
               >
                 <Linkedin size={14} />
               </a>
               <a
-                href="#"
+                href="https://x.com/Ajaysingh1009"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
                 className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
               >
                 <svg
@@ -195,7 +203,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Leander Frost */}
+        {/* Prithviraj Panda */}
         <div className="relative h-[500px] overflow-hidden rounded-3xl bg-[#f2f2f2] flex flex-col shadow-sm transition-transform hover:scale-[1.01]">
           <div className="absolute top-0 left-0 z-10">
             <div className="bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white text-sm px-4 py-2 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-none flex items-center min-h-[60px] gap-2 w-64">
@@ -205,25 +213,29 @@ const AboutUs = () => {
           </div>
           <div className="flex-grow pt-4 px-4 overflow-hidden">
             <Image
-              src="https://framerusercontent.com/images/KkMFGktt58w67vMjO5SZsR6OnBY.jpg?scale-down-to=2048"
-              alt="Leander Frost"
+              src="https://res.cloudinary.com/dsza8fjtr/image/upload/v1749969938/ChatGPT_Image_Jun_15_2025_12_13_24_PM_ebejms.png"
+              alt="Prithviraj Panda"
               width={800} // estimate or replace with actual
               height={600} // estimate or replace with actual
               className="w-full h-full object-cover rounded-3xl"
             />
           </div>
           <div className="p-4 pb-6">
-            <h3 className="font-bold text-xl">Leander Frost</h3>
+            <h3 className="font-bold text-xl">Prithviraj Panda</h3>
             <p className="text-gray-600 text-sm mb-3">Lead Developer</p>
             <div className="flex space-x-2">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/prithviraj-panda-707621225/"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
                 className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
               >
                 <Linkedin size={14} />
               </a>
               <a
-                href="#"
+                href="https://x.com/Prithvi00211510"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
                 className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
               >
                 <svg

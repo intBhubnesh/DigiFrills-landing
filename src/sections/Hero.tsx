@@ -12,7 +12,7 @@ const Hero = () => {
   const heroTextRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const { ref: mediaRef, inView: mediaInView } = useInView({
-    threshold: 0.5,
+    threshold: 0.9,
     triggerOnce: false,
   });
   const { ref: headingRef, inView: headingInView } = useInView({
