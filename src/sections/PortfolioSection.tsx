@@ -170,6 +170,42 @@ const portfolioItems: PortfolioItem[] = [
       ],
     },
   },
+
+  {
+    id: 5,
+    type: "default",
+    image:
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1750702714/share_content_dqdb8a.png",
+    logo: "https://res.cloudinary.com/dsza8fjtr/image/upload/v1750702201/Frame_6_v8981i.png",
+    tags: ["BUBBLE DEVELOPMENT", "UI/UX DESIGN", "SAAS PLATFORM"],
+    title:
+      "TopFounder: Bridging the gap between founders and their communities",
+    hasCarousel: true,
+    carouselImages: [
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1750708346/setting_txyh3t.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1750708346/upcoming_ks2kz8.png",
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1750708346/22_msxv7s.png",
+
+      "https://res.cloudinary.com/dsza8fjtr/image/upload/v1750708346/summery_bvroaa.png",
+    ],
+    details: {
+      challenge:
+        "Designed and developed a seamless platform experience for Top Founder, a company that connects startup founders with niche communities, resources, and collaboration opportunities. The challenge was to create an intuitive, engaging UI/UX that simplifies community discovery while fostering meaningful connections between founders.",
+      features: [
+        "Interactive homepage with personalized community recommendations",
+        "Mobile-first responsive design for accessibility on all devices",
+        "Streamlined onboarding flow tailored to founders and community managers",
+        "Real-time messaging and video call integration",
+        "Consistent visual identity with clean, modern UI components",
+      ],
+      achievements: [
+        "Delivered a fully functional and scalable founder-community platform",
+        "Enhanced user engagement through an intuitive, connection-focused design",
+        "Improved accessibility and retention with optimized mobile UX",
+        "Built a flexible UI system adaptable for future feature rollouts",
+      ],
+    },
+  },
 ];
 
 const PortfolioSection = () => {
@@ -177,24 +213,28 @@ const PortfolioSection = () => {
 
   // State for all carousels
   const [carouselIndex, setCarouselIndex] = useState(1);
-  const [carouselIndex2, setCarouselIndex2] = useState(1); // Added for Zif Care
+  const [carouselIndex2, setCarouselIndex2] = useState(1);
   const [carouselIndex3, setCarouselIndex3] = useState(1);
   const [carouselIndex4, setCarouselIndex4] = useState(1);
+  const [carouselIndex5, setCarouselIndex5] = useState(1);
 
   const [carouselImages, setCarouselImages] = useState<string[]>([]);
-  const [carouselImages2, setCarouselImages2] = useState<string[]>([]); // Added for Zif Care
+  const [carouselImages2, setCarouselImages2] = useState<string[]>([]);
   const [carouselImages3, setCarouselImages3] = useState<string[]>([]);
   const [carouselImages4, setCarouselImages4] = useState<string[]>([]);
+  const [carouselImages5, setCarouselImages5] = useState<string[]>([]);
 
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isTransitioning2, setIsTransitioning2] = useState(false); // Added for Zif Care
+  const [isTransitioning2, setIsTransitioning2] = useState(false);
   const [isTransitioning3, setIsTransitioning3] = useState(false);
   const [isTransitioning4, setIsTransitioning4] = useState(false);
+  const [isTransitioning5, setIsTransitioning5] = useState(false);
 
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isPlaying2, setIsPlaying2] = useState(true); // Added for Zif Care
+  const [isPlaying2, setIsPlaying2] = useState(true);
   const [isPlaying3, setIsPlaying3] = useState(true);
   const [isPlaying4, setIsPlaying4] = useState(true);
+  const [isPlaying5, setIsPlaying5] = useState(true);
 
   // Initialize all carousels
   useEffect(() => {
@@ -211,7 +251,6 @@ const PortfolioSection = () => {
       setCarouselIndex(1);
     }
     if (portfolioItems[1].carouselImages) {
-      // Added for Zif Care
       setCarouselImages2(getClonedImages(portfolioItems[1].carouselImages));
       setCarouselIndex2(1);
     }
@@ -222,6 +261,11 @@ const PortfolioSection = () => {
     if (portfolioItems[3].carouselImages) {
       setCarouselImages4(getClonedImages(portfolioItems[3].carouselImages));
       setCarouselIndex4(1);
+    }
+    // Initialize fifth carousel
+    if (portfolioItems[4].carouselImages) {
+      setCarouselImages5(getClonedImages(portfolioItems[4].carouselImages));
+      setCarouselIndex5(1);
     }
   }, []);
 
@@ -276,6 +320,18 @@ const PortfolioSection = () => {
     setCarouselIndex4((prev) => prev - 1);
   }, [carouselIndex4]);
 
+  const nextSlide5 = useCallback(() => {
+    if (carouselIndex5 >= carouselImages5.length - 1) return;
+    setIsTransitioning5(true);
+    setCarouselIndex5((prev) => prev + 1);
+  }, [carouselIndex5, carouselImages5.length]);
+
+  const prevSlide5 = useCallback(() => {
+    if (carouselIndex5 <= 0) return;
+    setIsTransitioning5(true);
+    setCarouselIndex5((prev) => prev - 1);
+  }, [carouselIndex5]);
+
   // Autoplay for all carousels
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -318,6 +374,16 @@ const PortfolioSection = () => {
     return () => clearInterval(interval4);
   }, [isPlaying4, expandedCard, nextSlide4]);
 
+  useEffect(() => {
+    let interval5: NodeJS.Timeout;
+    if (isPlaying5 && expandedCard === 5) {
+      interval5 = setInterval(() => {
+        nextSlide5();
+      }, 3000);
+    }
+    return () => clearInterval(interval5);
+  }, [isPlaying5, expandedCard, nextSlide5]);
+
   const toggleExpand = (index: number) => {
     if (expandedCard === index) {
       setExpandedCard(null);
@@ -328,6 +394,7 @@ const PortfolioSection = () => {
       setCarouselIndex2(1);
       setCarouselIndex3(1);
       setCarouselIndex4(1);
+      setCarouselIndex5(1);
     }
   };
 
@@ -369,6 +436,15 @@ const PortfolioSection = () => {
     }
   };
 
+  const handleTransitionEnd5 = () => {
+    setIsTransitioning5(false);
+    if (carouselIndex5 === 0) {
+      setCarouselIndex5(carouselImages5.length - 2);
+    } else if (carouselIndex5 === carouselImages5.length - 1) {
+      setCarouselIndex5(1);
+    }
+  };
+
   // Carousel styles
   const carouselStyle = {
     transform: `translateX(-${carouselIndex * 100}%)`,
@@ -391,6 +467,11 @@ const PortfolioSection = () => {
     transition: isTransitioning4 ? "transform 0.5s ease-in-out" : "none",
   };
 
+  const carouselStyle5 = {
+    transform: `translateX(-${carouselIndex5 * 100}%)`,
+    transition: isTransitioning5 ? "transform 0.5s ease-in-out" : "none",
+  };
+
   // Mouse handlers for all carousels
   const handleMouseEnter = () => setIsPlaying(false);
   const handleMouseLeave = () => setIsPlaying(true);
@@ -400,6 +481,8 @@ const PortfolioSection = () => {
   const handleMouseLeave3 = () => setIsPlaying3(true);
   const handleMouseEnter4 = () => setIsPlaying4(false);
   const handleMouseLeave4 = () => setIsPlaying4(true);
+  const handleMouseEnter5 = () => setIsPlaying5(false);
+  const handleMouseLeave5 = () => setIsPlaying5(true);
 
   return (
     <section
@@ -788,6 +871,67 @@ const PortfolioSection = () => {
                         </button>
                         <button
                           onClick={nextSlide4}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
+                        >
+                          <Image
+                            width="40"
+                            height="40"
+                            src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
+                            alt="Next"
+                          />
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Carousel for Fifth Card */}
+                    {item.hasCarousel && item.id === 5 && (
+                      <div
+                        className="relative w-full h-fit bg-gray-200 rounded-xl overflow-hidden"
+                        onMouseEnter={handleMouseEnter5}
+                        onMouseLeave={handleMouseLeave5}
+                        style={{ maxWidth: "100%" }}
+                      >
+                        <div
+                          className="flex h-fit"
+                          style={carouselStyle5}
+                          onTransitionEnd={handleTransitionEnd5}
+                        >
+                          {carouselImages5.map((image, index) => (
+                            <motion.div
+                              key={index}
+                              className="min-w-full h-fit relative flex items-center justify-center"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.5 }}
+                            >
+                              <Image
+                                src={image}
+                                alt={`Carousel item ${index + 1}`}
+                                width={700}
+                                height={320}
+                                className="w-full h-fit object-contain"
+                                style={{ objectFit: "contain" }}
+                              />
+                            </motion.div>
+                          ))}
+                        </div>
+
+                        {/* Navigation Buttons */}
+                        <button
+                          onClick={prevSlide5}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
+                        >
+                          <Image
+                            width="40"
+                            height="40"
+                            src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
+                            alt="Previous"
+                            className="rotate-180"
+                          />
+                        </button>
+                        <button
+                          onClick={nextSlide5}
                           className="absolute right-2 top-1/2 -translate-y-1/2 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm p-1.5 rounded-full hover:bg-[rgba(0,0,0,0.3)] transition-colors"
                         >
                           <Image
