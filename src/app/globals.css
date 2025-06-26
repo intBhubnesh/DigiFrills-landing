@@ -53,14 +53,14 @@ input {
   letter-spacing: -0.45px;
 }
 
-.benifit-text{
-    color: #0F0F0F;
-    font-family: Inter;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 31.2px; /* 130% */
-    letter-spacing: -0.96px;
+.benifit-text {
+  color: #0f0f0f;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 31.2px; /* 130% */
+  letter-spacing: -0.96px;
 }
 
 .hero-message {
@@ -161,4 +161,17 @@ li::marker {
 
 html {
   scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
