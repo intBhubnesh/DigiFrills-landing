@@ -20,7 +20,7 @@ const logosActive = [
   "https://res.cloudinary.com/dkfjhjdh6/image/upload/v1746846559/logo_5_active_pckpdx.svg",
   "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749435086/Frame_1321315153_xnue8d.png",
   "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749400613/Exclude_ccmjyb.png",
-  "https://res.cloudinary.com/dsza8fjtr/image/upload/v1750702202/logo11_1_l9fqug.png",
+  "https://res.cloudinary.com/dsza8fjtr/image/upload/v1750937087/logo11_1_z6bhth.png",
   "https://res.cloudinary.com/dsza8fjtr/image/upload/v1749435368/Vector_kfkgjv.png",
   "https://res.cloudinary.com/dsza8fjtr/image/upload/v1750702201/Frame_1321314938_ekuio3.png",
   "https://framerusercontent.com/images/mGAxAGDBjt0JHg8MI0F9P9FkW0g.svg",

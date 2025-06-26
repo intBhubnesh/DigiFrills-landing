@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, Suspense } from "react";
 import Navbar from "../sections/Navbar";
 import Hero from "../sections/Hero";
 import Work from "../sections/Work";
@@ -13,9 +14,9 @@ import ServiceSection from "@/sections/ServiceSection";
 import PortfolioSection from "@/sections/PortfolioSection";
 import AboutUs from "@/sections/AboutUs";
 import Faq from "@/sections/Faq";
-import { Element } from "react-scroll";
 import LoadingScreen from "@/sections/LoadingScreen";
-import { Suspense } from "react";
+import SmoothScroll from "@/components/SmoothScroll";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 const faqItems = [
   {
@@ -61,47 +62,71 @@ const faqItems = [
 ];
 
 export default function Home() {
+  const { scrollTo, scrollToTop } = useSmoothScroll();
+
+  // Attach global scroll access (optional, mostly for debugging)
+  useEffect(() => {
+    window.smoothScrollTo = scrollTo;
+    window.smoothScrollToTop = scrollToTop;
+
+    return () => {
+      delete window.smoothScrollTo;
+      delete window.smoothScrollToTop;
+    };
+  }, [scrollTo, scrollToTop]);
+
+  // ✅ Navigation handler passed to Navbar
+  const handleSmoothScroll = (target: string, offset: number = 80) => {
+    // NOTE: offset is passed as *positive* to scroll *above* the target
+    scrollTo(`#${target}`, { offset: -offset, duration: 1.2 });
+  };
+
   return (
-    <div className="w-full ">
-      <Suspense fallback={<div>Loading...</div>}>
-        <LoadingScreen />
-      </Suspense>
+    <SmoothScroll>
+      <div className="w-full">
+        <Suspense fallback={<LoadingScreen />}>
+          <LoadingScreen />
+        </Suspense>
 
-      <Navbar />
-      <Hero />
-      <BenefitsCarousel />
-      <GrowTogetherSection />
+        {/* ✅ Navbar with scroll handler */}
+        <Navbar onNavigate={handleSmoothScroll} />
 
-      {/* Services Section */}
-      <Element name="services" className="scroll-mt-24">
-        <ServiceSection />
-      </Element>
+        {/* ✅ All IDs must match the "target" in Navbar */}
+        <div id="home">
+          <Hero />
+        </div>
 
-      {/* Projects Section */}
-      <Element name="projects" className="scroll-mt-24">
-        <PortfolioSection />
-      </Element>
+        <BenefitsCarousel />
+        <GrowTogetherSection />
 
-      {/* Process Section */}
-      <Element name="process" className="scroll-mt-24">
-        <Work />
-        <Comparison />
-      </Element>
+        <div id="services" className="scroll-mt-24">
+          <ServiceSection />
+        </div>
 
-      <AboutUs />
+        <div id="projects" className="scroll-mt-24">
+          <PortfolioSection />
+        </div>
 
-      {/* Reviews Section */}
-      <Element name="reviews" className="scroll-mt-24">
-        <Testimonial />
-      </Element>
+        <div id="process" className="scroll-mt-24">
+          <Work />
+          <Comparison />
+        </div>
 
-      {/* FAQ Section */}
-      <Element name="faq" className="scroll-mt-24">
-        <Faq faqs={faqItems} />
-      </Element>
+        <div id="about" className="scroll-mt-24">
+          <AboutUs />
+        </div>
 
-      <QuoteSection />
-      <Footer />
-    </div>
+        <div id="reviews" className="scroll-mt-24">
+          <Testimonial />
+        </div>
+
+        <div id="faq" className="scroll-mt-24">
+          <Faq faqs={faqItems} />
+        </div>
+
+        <QuoteSection />
+        <Footer />
+      </div>
+    </SmoothScroll>
   );
 }

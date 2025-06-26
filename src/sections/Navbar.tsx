@@ -3,14 +3,22 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import { Link } from "react-scroll";
 import { getCalApi } from "@calcom/embed-react";
 
-const navItems = ["Services", "Projects", "Process", "Reviews", "FaQ"];
+type NavbarProps = {
+  onNavigate?: (target: string, offset?: number) => void;
+};
 
-const Navbar = () => {
+const navItems = [
+  { name: "Services", target: "services" },
+  { name: "Projects", target: "projects" },
+  { name: "Process", target: "process" },
+  { name: "Reviews", target: "reviews" },
+  { name: "FaQ", target: "faq" },
+];
+
+const Navbar = ({ onNavigate }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
-
   // Initialize Cal.com
   useEffect(() => {
     (async function () {
@@ -30,6 +38,29 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
+  // Handle navigation clicks with fallback
+  const handleNavClick = (target: string) => {
+    if (onNavigate) {
+      onNavigate(target);
+    } else if (typeof window !== "undefined" && window.lenis) {
+      window.lenis.scrollTo(`#${target}`, {
+        offset: -80,
+        duration: 1.2,
+      });
+    } else {
+      const element = document.getElementById(target);
+      if (element) {
+        const offsetTop = element.offsetTop - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      }
+    }
+
+    setIsOpen(false); // Close mobile menu
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-white px-6 md:px-12 py-4 flex justify-between items-center z-20 shadow-sm">
       {/* Logo */}
@@ -41,16 +72,13 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <div className="hidden md:flex space-x-8 text-sm text-[#0F0F0F] font-[inter] text-[15px] font-medium leading-[22.5px] tracking-[-0.45px]">
         {navItems.map((item) => (
-          <Link
-            key={item}
-            to={item.toLowerCase()}
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="cursor-pointer hover:text-gray-600"
+          <button
+            key={item.name}
+            onClick={() => handleNavClick(item.target)}
+            className="cursor-pointer hover:text-gray-600 transition-colors"
           >
-            {item}
-          </Link>
+            {item.name}
+          </button>
         ))}
       </div>
 
@@ -82,17 +110,13 @@ const Navbar = () => {
             className="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-6 text-sm font-medium z-50"
           >
             {navItems.map((item) => (
-              <Link
-                key={item}
-                to={item.toLowerCase()}
-                smooth={true}
-                duration={500}
-                offset={-80}
-                onClick={() => setIsOpen(false)}
-                className="cursor-pointer hover:text-gray-600 text-lg"
+              <button
+                key={item.name}
+                onClick={() => handleNavClick(item.target)}
+                className="cursor-pointer hover:text-gray-600 text-lg transition-colors"
               >
-                {item}
-              </Link>
+                {item.name}
+              </button>
             ))}
 
             {/* Mobile Cal.com Button */}

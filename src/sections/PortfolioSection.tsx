@@ -529,11 +529,11 @@ const PortfolioSection = () => {
         {portfolioItems.map((item) => (
           <div
             key={item.id}
-            className="relative max-w-[700px] w-full flex flex-col mx-auto overflow-hidden rounded-2xl md:rounded-[30px]"
+            className="relative max-w-[700px] w-full flex flex-col mx-auto gap-2 "
           >
             {/* Logo */}
             {item.logo && (
-              <div className="absolute top-[499px] left-[25px] w-[109px] px-[14px] py-[7px] rounded-[14px] bg-[#f5f7f9] flex items-center justify-center z-10">
+              <div className="absolute top-[508px] left-[25px] w-[109px] px-[14px] py-[7px] rounded-[14px] bg-[#f5f7f9] flex items-center justify-center z-10">
                 <div className="w-[81px] h-[27px] flex items-center justify-center">
                   <Image
                     className="object-fit"
@@ -548,7 +548,7 @@ const PortfolioSection = () => {
             )}
 
             {/* Card Image */}
-            <div className="w-full h-[528px] overflow-hidden rounded-t-2xl md:rounded-t-[30px]">
+            <div className="w-full h-[528px] overflow-hidden rounded-2xl md:rounded-[30px]">
               <Image
                 src={item.image}
                 alt={item.title}
@@ -560,7 +560,7 @@ const PortfolioSection = () => {
             </div>
 
             {/* Card Content */}
-            <div className="w-full bg-[#f5f7f9] p-[30px] flex flex-col gap-[23px] rounded-b-2xl md:rounded-b-[30px]">
+            <div className="w-full bg-[#f5f7f9] p-[30px] flex flex-col gap-[23px] rounded-2xl md:rounded-[30px]">
               {/* Tags */}
               <div className="flex flex-wrap gap-[4px]">
                 {item.tags.map((tag) => (
