@@ -250,6 +250,106 @@ const AboutUs = () => {
           </div>
         </div>
 
+        {/* Saicharan Kandukuri */}
+        <div className="relative h-[500px] overflow-hidden rounded-3xl bg-[#f2f2f2] flex flex-col shadow-sm transition-transform hover:scale-[1.01]">
+          <div className="absolute top-0 left-0 z-10">
+            <div className="bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white text-sm px-4 py-2 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-none flex items-center min-h-[60px] gap-2 w-64">
+              <span className="mr-2 text-lg">✨</span>
+              TECH PRODIGY
+            </div>
+          </div>
+
+          <div className="flex-grow pt-4 px-4 overflow-hidden">
+            <Image
+              src="https://res.cloudinary.com/dsza8fjtr/image/upload/v1751209987/8af3c920-6160-430e-a13a-10fcd714048e_xukafx.png"
+              alt="Saicharan Kandukuri "
+              width={800} // Estimate appropriate width
+              height={600} // Estimate appropriate height
+              className="w-full h-full object-cover rounded-3xl"
+            />
+          </div>
+
+          <div className="p-4 pb-6">
+            <h3 className="font-bold text-xl">Saicharan Kandukuri </h3>
+            <p className="text-gray-600 text-sm mb-3">Lead Developer</p>
+            <div className="flex space-x-2">
+              <a
+                href="https://www.linkedin.com/in/saicharankandukuri/"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
+                className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
+              >
+                <Linkedin size={14} />
+              </a>
+              <a
+                href="https://x.com/zman1x1"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
+                className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5"
+                  fill="currentColor"
+                >
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Vignesh Dusa */}
+        <div className="relative h-[500px] overflow-hidden rounded-3xl bg-[#f2f2f2] flex flex-col shadow-sm transition-transform hover:scale-[1.01]">
+          <div className="absolute top-0 left-0 z-10">
+            <div className="bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white text-sm px-4 py-2 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-none flex items-center min-h-[60px] gap-2 w-64">
+              <span className="mr-2 text-lg">✨</span>
+              DESIGN VICTOR
+            </div>
+          </div>
+
+          <div className="flex-grow pt-4 px-4 overflow-hidden">
+            <Image
+              src="https://res.cloudinary.com/dsza8fjtr/image/upload/v1751209816/ChatGPT_Image_Jun_29_2025_08_37_32_PM_qt0n9u.png"
+              alt="Vignesh Dusa "
+              width={800} // Estimate appropriate width
+              height={600} // Estimate appropriate height
+              className="w-full h-full object-cover rounded-3xl"
+            />
+          </div>
+
+          <div className="p-4 pb-6">
+            <h3 className="font-bold text-xl">Vignesh Dusa </h3>
+            <p className="text-gray-600 text-sm mb-3">
+              Lead Designer / Brand Strategist
+            </p>
+            <div className="flex space-x-2">
+              <a
+                href="https://www.linkedin.com/in/vigneshdusa/"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
+                className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
+              >
+                <Linkedin size={14} />
+              </a>
+              <a
+                href="#"
+                target="_blank" // Opens in new tab
+                rel="noopener noreferrer" // Security best practice
+                className="bg-gray-100 hover:bg-black hover:text-white rounded-md w-6 h-6 flex items-center justify-center transition-colors duration-200"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5"
+                  fill="currentColor"
+                >
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Join Our Team Card */}
         <div className="rounded-3xl bg-gradient-to-r from-[#7988E7] via-[#667DE7] to-[#2A59E3] text-white flex flex-col justify-between shadow-sm transition-transform hover:scale-[1.01]">
           <div className="p-6">
