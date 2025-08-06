@@ -125,7 +125,7 @@ const AboutUs = () => {
           <div className="p-4 pb-6">
             <h3 className="font-bold text-xl">Dinesh Chowdhary</h3>
             <p className="text-gray-600 text-sm mb-3">
-              Lead Designer / Brand Strategist
+              Bubble.io Developer / Project Manager
             </p>
             <div className="flex space-x-2">
               <a
