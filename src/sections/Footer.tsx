@@ -73,7 +73,7 @@ const Footer = () => {
           <div className="flex items-center gap-2 text-[#0260EB] font-semibold uppercase">
             <FaPhoneAlt size={14} /> Phone
           </div>
-          <p className="mt-2">(91) 911255393</p>
+          <p className="mt-2">(91) 9912525393</p>
         </div>
 
         <div>
